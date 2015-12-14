@@ -11,6 +11,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
+      <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 			<?php
 				// Start the Loop.
 				while ( have_posts() ) : the_post();
