@@ -27,7 +27,8 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
-
+			
+			<?php echo do_shortcode( '[adrotate banner="1"]' ); ?>
 		<?php
 			if ( have_posts() ) :
 				// Start the Loop.
