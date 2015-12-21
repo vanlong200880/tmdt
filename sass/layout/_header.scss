@@ -1,0 +1,148 @@
+#header{
+	border-bottom: 1px solid #d5d5d5;
+	margin-bottom: 15px;
+	.topbar{
+		background-color: $color-grey;
+		height: 30px;
+		line-height:30px;
+		.hotline{
+			float: right;
+			span.fa{
+				color: $color-dark-grey;
+				font-size: 16px;
+			}
+			span.name{
+				font-size: 13px;
+			}
+			span.number{
+				font-size: 18px;
+				font-weight: bold;
+				color: $color-base;
+			}
+		}
+		.social{
+			float: right;
+			margin-left: 10px;
+			a{
+				span.fa{
+					color: $color-dark-grey;
+					font-size: 20px;
+					&:hover{
+						color: $color-base;
+						@include transition(all ease-out .3s);
+					}
+				}
+			}
+		}
+		.wrap-user{
+			float: right;
+			margin-left: 10px;
+			ul{
+				li{
+					display: inline-block;
+					float: left;
+					margin-left: 10px;
+					a{
+						cursor: pointer;
+						color: $color-dark-grey;
+						span.fa{
+							color: $color-dark-grey;
+							font-size: 16px;
+							margin-right: 5px;
+						}
+						&:hover{
+							color: $color-base;
+						}
+					}
+				}
+			}
+		}
+	}
+	.top-adv{
+		padding: 5px 0;
+		img{
+			width: 1170px;
+			height: 60px;
+		}
+	}
+	.navigation{
+		.navbar{
+			margin-bottom: 0;
+			border:none;
+		}
+		.navbar-default{
+			background-color: transparent;
+			border-color: transparent;
+			.navbar-brand{
+				padding: 0 0 5px;
+				height: auto;
+			}
+			.navbar-nav{
+				li{
+					a{
+						color: #000;
+						font-weight: bold;
+						&:hover{
+							color: $color-base;
+						}
+					}
+				}
+				.active{
+					a{
+						background-color: transparent;
+						color: $color-base;
+					}
+				}
+			}
+			.user-post{
+				padding: 15px 0 0 0;
+				a{
+					background-color: $color-base;
+					@include border-radius(4px);
+					padding: 2px 5px;
+					color: #fff;
+					&:hover{
+						background-color: #000;
+					}
+				}
+			}
+		form.form-inline{
+			.form-group{
+				position: relative;
+					button.btn{
+						margin-top: 0px;
+					    padding: 7px 12px;
+					    position: absolute;
+					    background-color: #2A255C;
+					    right: 0;
+					    top: 0;
+					    border-radius: 0;
+					    border:none;
+					    i.fa{
+					    	color: #fff;
+					    }
+					}
+					input.form-control{
+						border-radius: 0;
+						width: 400px;
+					}
+					ul.dropdown-menu{
+						min-width: 364px;
+						border-radius: 0;
+						margin: 0;
+						padding: 0;
+						li{
+							border-bottom:1px solid #e7e7e7;
+							a{
+								padding: 5px 10px;
+							}
+							&:last-child{
+								border-bottom:none;
+							}
+						}
+					}
+				}
+			}
+		}
+	} 
+}

@@ -235,6 +235,16 @@ function twentyfourteen_scripts() {
 
 	// Load our main stylesheet.
 	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri() );
+  wp_enqueue_style( 'twentyfourteen-style-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0' );
+  wp_enqueue_style( 'twentyfourteen-style-font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '1.0' );
+  wp_enqueue_style( 'twentyfourteen-style-font-icon', get_template_directory_uri() . '/css/font-icon.css', array(), '1.0' );
+  wp_enqueue_style( 'twentyfourteen-style-custommenu', get_template_directory_uri() . '/css/custom-scroll-menu.css', array(), '1.0' );
+  
+  wp_enqueue_style( 'twentyfourteen-style-jquery-mCustomScrollbar', get_template_directory_uri() . '/css/jquery.mCustomScrollbar.css', array(), '1.0' );
+  
+  wp_enqueue_style( 'twentyfourteen-style-owl-carousel', get_template_directory_uri() . '/css/owl.carousel.css', array(), '1.0' );
+  wp_enqueue_style( 'twentyfourteen-style-owl-theme', get_template_directory_uri() . '/css/owl.theme.css', array(), '1.0' );
+  wp_enqueue_style( 'twentyfourteen-style-custom', get_template_directory_uri() . '/css/main.css', array(), '1.0' );
 
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style' ), '20131205' );
@@ -259,8 +269,13 @@ function twentyfourteen_scripts() {
 			'nextText' => __( 'Next', 'twentyfourteen' )
 		) );
 	}
-
-	wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150315', true );
+  wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/jquery.js', array( 'jquery' ), '1.0', true );
+//  wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150315', true );
+  wp_enqueue_script( 'twentyfourteen-bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '1.0', true );
+  
+  wp_enqueue_script( 'twentyfourteen-script-jquery-mCustomScrollbar', get_template_directory_uri() . '/js/jquery.mCustomScrollbar.js', array( 'jquery' ), '1.0', true );
+  wp_enqueue_script( 'twentyfourteen-script-owl-carousel-min', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ), '1.0', true );
+  wp_enqueue_script( 'twentyfourteen-script-custom', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
