@@ -43,13 +43,14 @@
       <div class="col-md-3 col-sm-3 col-xs-12">
         <div class="infomation title-footer">
           <h3>Thông tin</h3>
-          <ul>
-            <li><a href=""><span class="fa fa-angle-right"></span>Trang chủ</a></li>
-            <li><a href=""><span class="fa fa-angle-right"></span>Giới thiệu</a></li>
-            <li><a href=""><span class="fa fa-angle-right"></span>Tuyển dụng</a></li>
-            <li><a href=""><span class="fa fa-angle-right"></span>Quy định</a></li>
-            <li><a href=""><span class="fa fa-angle-right"></span>Liên hệ</a></li>
-          </ul>
+					<?php
+						wp_nav_menu( array(
+								'theme_location' => 'primary',
+								'menu'=> 'top_menu',
+								'menu_class' => '',
+								'container_class' => '',
+						) );
+					?>
         </div>
       </div>
 

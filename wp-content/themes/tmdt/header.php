@@ -122,7 +122,7 @@
 											<span class="icon-bar"></span>
 										</button>
 										<a class="navbar-brand" href="#">
-											<!-- <img src="images/logo.png" alt=""> -->
+											 <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt=""> 
 										</a>
 									</div>
 								
@@ -145,13 +145,14 @@
 												</button>
 											</div>	
 										</form>
-										<ul class="nav navbar-nav">
-											<li class="active"><a href="#">Trang chủ</a></li>
-											<li><a href="#">Giới thiệu</a></li>
-											<li><a href="#">Quy định</a></li>
-											<li><a href="#">Tuyển dụng</a></li>
-											<li><a href="#">Liên hệ</a></li>
-										</ul>
+										<?php
+												wp_nav_menu( array(
+														'theme_location' => 'primary',
+														'menu'=> 'top_menu',
+														'menu_class' => 'nav navbar-nav',
+														'container_class' => '',
+												) );
+										?>
 										<div class="user-post navbar-right">
 											<a href="#">
 												<span class="fa fa-file-text-o"></span>

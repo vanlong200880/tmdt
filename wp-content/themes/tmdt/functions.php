@@ -238,10 +238,8 @@ function twentyfourteen_scripts() {
   wp_enqueue_style( 'twentyfourteen-style-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0' );
   wp_enqueue_style( 'twentyfourteen-style-font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '1.0' );
   wp_enqueue_style( 'twentyfourteen-style-font-icon', get_template_directory_uri() . '/css/font-icon.css', array(), '1.0' );
+	wp_enqueue_style( 'twentyfourteen-style-jquery-mCustomScrollbar', get_template_directory_uri() . '/css/jquery.mCustomScrollbar.css', array(), '1.0' );
   wp_enqueue_style( 'twentyfourteen-style-custommenu', get_template_directory_uri() . '/css/custom-scroll-menu.css', array(), '1.0' );
-  
-  wp_enqueue_style( 'twentyfourteen-style-jquery-mCustomScrollbar', get_template_directory_uri() . '/css/jquery.mCustomScrollbar.css', array(), '1.0' );
-  
   wp_enqueue_style( 'twentyfourteen-style-owl-carousel', get_template_directory_uri() . '/css/owl.carousel.css', array(), '1.0' );
   wp_enqueue_style( 'twentyfourteen-style-owl-theme', get_template_directory_uri() . '/css/owl.theme.css', array(), '1.0' );
   wp_enqueue_style( 'twentyfourteen-style-custom', get_template_directory_uri() . '/css/main.css', array(), '1.0' );
@@ -532,3 +530,4 @@ require get_template_directory() . '/inc/customizer.php';
 if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow'] ) {
 	require get_template_directory() . '/inc/featured-content.php';
 }
+include 'include/functions-uni.php';
