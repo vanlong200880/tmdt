@@ -27,19 +27,17 @@
 						<?php 
 									$attachment_id = get_post_thumbnail_id(get_the_ID());
 									if (!empty($attachment_id)) { 
-										the_post_thumbnail(array(800, 533)); ?>
+										the_post_thumbnail('full'); ?>
 									<?php }else{ ?>
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
 								<?php	} ?>
-<!--						<img src="<?php echo get_template_directory_uri(); ?>/images/adv-1.jpg" alt="">-->
 					</a>
 					<figcaption>
 						<p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
-						<p class="address"><?php echo get_field('address'); ?></p>
+						<?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
 						<p>
 							<span>Bình chọn:</span>
 							<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-							<?php //if(function_exists('the_ratings')) { the_ratings(); } ?>
 						</p>
 					</figcaption>
 				</figure>

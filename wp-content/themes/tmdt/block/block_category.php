@@ -13,52 +13,7 @@
 							<?php get_template_part('block/slider'); ?>
 						</div>
 						<div class="col-md-4 col-sm-12 col-xs-12">
-							<div class="top-sub-adv">
-								<div class="show-adv">
-									<figure>
-										<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/health-1.jpg" alt=""></a>
-										<figcaption>
-											<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-											<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-											<p>
-												<span>Bình chọn:</span>
-												<img src="<?php echo get_template_directory_uri(); ?>/images/vote.png" alt="">
-											</p>
-										</figcaption>
-									</figure>
-								</div>
-
-								<div class="show-adv">
-									<figure>
-										<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/real-1.jpg" alt=""></a>
-										<figcaption>
-											<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-											<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-											<p>
-												<span>Bình chọn:</span>
-												<img src="<?php echo get_template_directory_uri(); ?>/images/vote.png" alt="">
-											</p>
-										</figcaption>
-									</figure>
-								</div>
-
-								<div class="show-adv">
-									<figure>
-										<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/taste-1.jpg" alt=""></a>
-										<figcaption>
-											<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-											<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-											<p>
-												<span>Bình chọn:</span>
-												<img src="<?php echo get_template_directory_uri(); ?>/images/vote.png" alt="">
-											</p>
-										</figcaption>
-									</figure>
-								</div>
-
-								
-
-							</div><!--end top-sub-adv-->
+              <?php get_template_part('block/top3'); ?>
 						</div>
 					</div>
 				</div>
