@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Vote
+ * Template Name: Hot
  *
  * @package WordPress
  * @subpackage Twenty_Fourteen
@@ -8,6 +8,93 @@
  */
 
 get_header(); ?>
+
+<section id="categories" class="categories all-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a href="<?php echo get_site_url() ?>">Trang chủ</a></li>
+          <li class="active">Bình chọn nhiều nhất</li>
+        </ol>
+      </div>
+    </div>
+    <?php
+	wp_reset_postdata();
+  $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+	$args = array (					 
+			'post_status'    => 'publish',		
+			'order'          => 'DESC',
+			'orderby'        => 'menu_order',
+			'post_type'      => 'post',
+			'category_name'  => 'news',
+      'paged'          => $paged,
+			'posts_per_page' => 120,
+		);
+		$the_query = new WP_Query( $args ); 
+		
+		$arrSort = array();
+		if($the_query->have_posts()):?>
+		<?php while ($the_query->have_posts()){
+			$the_query->the_post();
+			$the_query->post->vote = uni_get_total_rating_by_post(get_the_ID());
+				$arrSort[] = $the_query->post;
+		}
+		usort($arrSort, function($a, $b) {
+			return $b->vote - $a->vote;
+		});
+		$the_query->posts = $arrSort;
+		?>
+		<ul class="row">
+			<?php while ($the_query->have_posts()){
+				$the_query->the_post();
+				?>
+      <li class="col-md-2 col-sm-2 col-xs-6 show-article">
+        <figure>
+          <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+            <?php 
+									$attachment_id = get_post_thumbnail_id(get_the_ID());
+									if (!empty($attachment_id)) { 
+										the_post_thumbnail(array(183,122)); ?>
+									<?php }else{ ?>
+									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
+								<?php	} ?>
+            <div class="blur"></div>
+          </a>
+
+          <figcaption>
+            <p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                <?php the_title(); ?>
+              </a>
+            </p>
+            <?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
+            <p>
+              <span>Bình chọn:</span>
+              <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+            </p>
+          </figcaption>
+      </figure>
+      </li>
+
+		<?php	} ?>
+		</ul>
+<?php else: ?>
+    <div class="row">
+      <div class="col-md-12">Dữ liệu đang cập nhật.</div>
+    </div>
+    <?php endif; ?>
+
+    <div class="row">
+      <div class="paging col-md-12">
+      <nav>
+        <nav>
+							<?php  wp_pagenavi(array( 'query' => $the_query)) ;  ?>
+        </nav>
+      </nav>
+    </div><!--end pagination-->
+    </div>
+  </div>
+</section>
 
 <?php
 get_footer();

@@ -11,48 +11,67 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
-
-			<?php if ( have_posts() ) : ?>
-
-			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Category Archives: %s', 'twentyfourteen' ), single_cat_title( '', false ) ); ?></h1>
-
-				<?php
-					// Show an optional term description.
-					$term_description = term_description();
-					if ( ! empty( $term_description ) ) :
-						printf( '<div class="taxonomy-description">%s</div>', $term_description );
-					endif;
+<section id="categories" class="categories all-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a href="<?php echo get_site_url() ?>">Trang chủ</a></li>
+          <li class="active"><?php printf( __( '%s', 'twentyfourteen' ), single_cat_title( '', false ) ); ?></li>
+        </ol>
+      </div>
+    </div>
+    <?php
+	wp_reset_postdata();
+		if ( have_posts() ) :?>
+		<ul class="row">
+			<?php while ( have_posts() ) : the_post();
 				?>
-			</header><!-- .archive-header -->
+      <li class="col-md-2 col-sm-2 col-xs-6 show-article">
+        <figure>
+          <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+            <?php 
+									$attachment_id = get_post_thumbnail_id(get_the_ID());
+									if (!empty($attachment_id)) { 
+										the_post_thumbnail(array(183,122)); ?>
+									<?php }else{ ?>
+									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
+								<?php	} ?>
+            <div class="blur"></div>
+          </a>
 
-			<?php
-					// Start the Loop.
-					while ( have_posts() ) : the_post();
+          <figcaption>
+            <p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                <?php the_title(); ?>
+              </a>
+            </p>
+            <?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
+            <p>
+              <span>Bình chọn:</span>
+              <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+            </p>
+          </figcaption>
+      </figure>
+      </li>
 
-					/*
-					 * Include the post format-specific template for the content. If you want to
-					 * use this in a child theme, then include a file called called content-___.php
-					 * (where ___ is the post format) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
+		<?php endwhile; ?>
+		</ul>
+<?php else: ?>
+    <div class="row">
+      <div class="col-md-12">Dữ liệu đang cập nhật.</div>
+    </div>
+    <?php endif; ?>
 
-					endwhile;
-					// Previous/next page navigation.
-					twentyfourteen_paging_nav();
-
-				else :
-					// If no content, include the "No posts found" template.
-					get_template_part( 'content', 'none' );
-
-				endif;
-			?>
-		</div><!-- #content -->
-	</section><!-- #primary -->
-
+    <div class="row">
+      <div class="paging col-md-12">
+      <nav>
+        <nav>
+							<?php  twentyfourteen_paging_nav();  ?>
+        </nav>
+      </nav>
+    </div><!--end pagination-->
+    </div>
+  </div>
+</section>
 <?php
-get_sidebar( 'content' );
-get_sidebar();
 get_footer();

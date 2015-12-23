@@ -14,8 +14,8 @@ get_header(); ?>
     <div class="row">
       <div class="col-md-12">
         <ol class="breadcrumb">
-          <li><a href="#">Trang chủ</a></li>
-          <li class="active"><?php the_title(); ?></li>
+          <li><a href="<?php echo get_site_url() ?>">Trang chủ</a></li>
+          <li class="active">Bài viết mới nhất</li>
         </ol>
       </div>
     </div>
@@ -34,8 +34,8 @@ get_header(); ?>
 		$the_query = new WP_Query( $args ); 
 		if($the_query->have_posts()):?>
 		<ul class="row">
-			<?php while ($the_query->have_posts()){ 
-				$the_query->the_post(); 
+			<?php while ($the_query->have_posts()){
+				$the_query->the_post();
 				?>
       <li class="col-md-2 col-sm-2 col-xs-6 show-article">
         <figure>

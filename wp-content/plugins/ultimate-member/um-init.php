@@ -2,7 +2,11 @@
 
 class UM_API {
 
+	public $is_filtering;
+	
 	function __construct() {
+	
+		$this->is_filtering = 0;
 
 		require_once um_path . 'core/um-short-functions.php';
 		
@@ -11,7 +15,7 @@ class UM_API {
 		}
 
 		add_action('init',  array(&$this, 'init'), 0);
-		
+
 		add_action('init',  array(&$this, 'load_addons') );
 
 		$this->honeypot = 'request';

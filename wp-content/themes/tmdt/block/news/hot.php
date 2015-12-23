@@ -12,7 +12,7 @@
                 'value'      => true,
             ),
         ),
-			'posts_per_page' => 8,
+			'posts_per_page' => 12,
 		);
 		$the_query = new WP_Query( $args ); 
 		if($the_query->have_posts()):?>
@@ -46,7 +46,7 @@
           </figcaption>
       </figure>
       </li>
-
+			
 		<?php	} ?>
 		</ul>
 <?php else: ?>
