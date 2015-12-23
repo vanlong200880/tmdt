@@ -4,6 +4,7 @@
 	font-size:14px;
 	text-decoration:none;
 	display:inline-block;
+	@include transition(all ease-out .3s);
 }
 .btn-base{
 	@extend %btn;
@@ -11,6 +12,13 @@
 	background-color:$color-button;
 	&:hover{
 		background-color:$color-base;
-		color: #fff;
+	}
+}
+.btn-user{
+	@extend %btn;
+	color:#fff;
+	background-color:$color-base;
+	&:hover{
+		background-color:#000;
 	}
 }

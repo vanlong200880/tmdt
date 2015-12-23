@@ -14,7 +14,7 @@
 		}
 		ul{
 			background: $color-bg-categories;
-  			height: 335px;
+  			height: 341px;
   			li{
   				border-bottom: 1px solid #d5d5d5;
 				height: 55px;
@@ -58,7 +58,7 @@
   				&:hover{
   					a{
   						&:after{
-  							width: 276px;
+  							width: 175px;
   							@include transition(width 0.2s);
   						}
   					}
@@ -135,7 +135,7 @@
 						}
 					}
 					p.address, span{
-						font-size: 11px;
+						font-size: 12px;
 						color: #b2b2b1;
 					}
 				}
@@ -189,7 +189,7 @@
 					width: 50%;
 					float: left;
 					p, span{
-						font-size: 11px;
+						font-size: 12px;
 						color: $color-address;
 					}
 					p{
@@ -221,7 +221,7 @@
 	}
 }
 
-.tab-vote{
+.tab-vote, .tab-content-details{
 	background: $color-grey;
 	margin-bottom: 10px;
 	.nav-tabs{
@@ -274,6 +274,18 @@
 	.viewmore{
 		text-align: center;
 		margin: 10px 0;
+	}
+}
+.tab-content-details{
+	background-color: transparent;
+	border:1px solid #d5d5d5;
+	.nav-tabs{
+		background: $color-dark-grey;
+		li.active{
+			&:after{
+				border-top: 14px solid $color-dark-grey;
+			}
+		}
 	}
 }
 /*--all bài post chung--*/
@@ -338,7 +350,7 @@
 					}
 				}
 				p.address{
-					font-size: 13px;
+					font-size: 12px;
 					font-weight: normal;
 					text-align: left;
 					height: 40px;
@@ -347,7 +359,7 @@
 					margin-bottom: 5px;
 				}
 				p, span{
-					font-size: 13px;
+					font-size: 12px;
 				}
 			}
 		}
@@ -423,7 +435,7 @@
 			}
 		}
 	}
-	.show-sub{
+	.show-sub, .show-article-details{
 			width: 100%;
 			display: inline-block;
 			margin-bottom: 5px;
@@ -459,7 +471,7 @@
 					width: 50%;
 					float: left;
 					p, span{
-						font-size: 11px;
+						font-size: 12px;
 						color: $color-address;
 					}
 					p{
@@ -524,4 +536,32 @@
 			height: 100px;
 		}
 	}
+}
+/*--categories--*/
+.categories{
+	.breadcrumb{
+		background: transparent;
+		border-radius: 0;
+		border-bottom: 1px solid #d5d5d5;
+		padding: 8px 0;
+		a{
+			font-size: 16px;
+		}
+	}
+	.paging{
+		.pagination{
+			margin: 10px 0 0;
+			li{
+				a, span{
+					color: #000;
+					&:hover, &:focus{
+						color: #fff;
+					    background-color: $color-base;
+					    border-color: $color-base;
+					}
+				}
+				
+			}
+		}
+	} 
 }
