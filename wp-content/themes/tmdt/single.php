@@ -69,15 +69,15 @@ get_header(); ?>
 							<div class="tab-content-details">
 								<!-- Nav tabs -->
 							   <ul class="nav nav-tabs" role="tablist">
-							      <li><a href="#info" aria-controls="info" data-toggle="tab">Thông tin</a></li>
+							      <li class="active"><a href="#info" aria-controls="info" data-toggle="tab">Thông tin</a></li>
 							      <li><span>|</span></li>
-							      <li class="active"><a href="#map" aria-controls="map" data-toggle="tab">Bản đồ</a></li>
+							      <li><a href="#map1" aria-controls="map1" data-toggle="tab">Bản đồ</a></li>
 							      <li><span>|</span></li>
 							      <li><a href="#comment" aria-controls="comment" data-toggle="tab">Bình luận</a></li>
 							   </ul>
 							   <!-- Tab panes -->
 								<div class="tab-content">
-									<div role="tabpanel" class="tab-pane" id="info">
+									<div role="tabpanel" class="tab-pane active" id="info">
 										<div class="show-dt-editor">
                       <?php the_content(); ?>
 											<p>Người đăng: 
@@ -88,7 +88,7 @@ get_header(); ?>
 										</div>
 										
 									</div><!--end info-->
-									<div role="tabpanel" class="tab-pane active" id="map">
+									<div role="tabpanel" class="tab-pane" id="map1">
 										<div class="load-map">
                       <?php
                           $address = get_field('address');
@@ -137,65 +137,6 @@ get_header(); ?>
                       ?>
 											<!--<img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/map-1.jpg" alt="">-->
 										</div>
-										<div class="other-location">
-											<div class="page-header">
-						                        <h2>
-						                        	<span class="fa fa-map-marker"></span>
-						                        	Địa điểm khác
-						                        </h2>
-						                    </div>
-						                    <ul class="more-location row">
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-						                    	<li class="col-md-4">
-						                    		<span class="fa fa-map-marker"></span>
-						                    		<a href="#">Công Ty TNHH Liên Tập</a>
-						                    	</li>
-
-						                    </ul>
-										</div>
 									</div><!--end info-->
 									<div role="tabpanel" class="tab-pane" id="comment">
 										<div class="vote-top">
@@ -223,117 +164,56 @@ get_header(); ?>
 
 						</div><!--end content-details-->
 						<div id="sidebar" class="col-md-3">
-							<div class="title-details">
-								<h2>
-									<span class="fa fa-newspaper-o"></span>
-									Bài liên quan
-								</h2>
-							</div>
-							<div class="show-article-details">
-								<figure>
-									<a href="#">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fashion-2.jpg" alt="">
-										<div class="blur"></div>
-									</a>
-									<figcaption>
-										<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-										<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-										<p>
-											<span>Bình chọn:</span>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/vote.png" alt="">
-										</p>
-									</figcaption>
-								</figure>
-							</div>
+							<?php
+							global $post;
 
-							<div class="show-article-details">
-								<figure>
-									<a href="#">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fashion-2.jpg" alt="">
-										<div class="blur"></div>
-									</a>
-									<figcaption>
-										<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-										<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-										<p>
-											<span>Bình chọn:</span>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/vote.png" alt="">
-										</p>
-									</figcaption>
-								</figure>
-							</div>
-
-							<div class="show-article-details">
-								<figure>
-									<a href="#">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fashion-2.jpg" alt="">
-										<div class="blur"></div>
-									</a>
-									<figcaption>
-										<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-										<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-										<p>
-											<span>Bình chọn:</span>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/vote.png" alt="">
-										</p>
-									</figcaption>
-								</figure>
-							</div>
-
-							<div class="show-article-details">
-								<figure>
-									<a href="#">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fashion-2.jpg" alt="">
-										<div class="blur"></div>
-									</a>
-									<figcaption>
-										<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-										<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-										<p>
-											<span>Bình chọn:</span>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/vote.png" alt="">
-										</p>
-									</figcaption>
-								</figure>
-							</div>
-
-							<div class="show-article-details">
-								<figure>
-									<a href="#">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fashion-2.jpg" alt="">
-										<div class="blur"></div>
-									</a>
-									<figcaption>
-										<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-										<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-										<p>
-											<span>Bình chọn:</span>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/vote.png" alt="">
-										</p>
-									</figcaption>
-								</figure>
-							</div>
-
-							<div class="show-article-details">
-								<figure>
-									<a href="#">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/fashion-2.jpg" alt="">
-										<div class="blur"></div>
-									</a>
-									<figcaption>
-										<p><a href="#">Công ty TNHH 1 thành viên thương mại điện tử MTV</a></p>
-										<p class="address">237/92A Trần Văn Đang, Phường 11, Quận 3, Tp. Hồ Chí Minh</p>
-										<p>
-											<span>Bình chọn:</span>
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/vote.png" alt="">
-										</p>
-									</figcaption>
-								</figure>
-							</div>
-
-
+								$category = get_the_category($post->ID);
+                $featured = array (					 
+                    'post_status'    => 'publish',		
+                    'order'          => 'DESC',
+                    'orderby'        => 'date',
+                    'post_type'      => 'post',
+                    'category_name'  => $category[0]->slug,
+										'posts_per_page' => 5,
+                    'post__not_in'   => array(get_the_ID())
+                );
+                $featured_the_query = new WP_Query( $featured ); 
+                if($featured_the_query){ ?>
+								<div class="title-details">
+									<h2>
+										<span class="fa fa-newspaper-o"></span>
+										Bài liên quan
+									</h2>
+								</div>
+								<?php	while ($featured_the_query->have_posts()){
+                        $featured_the_query->the_post(); ?>
+								<div class="show-article-details">
+									<figure>
+										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+												<?php 
+											$attachment_id = get_post_thumbnail_id(get_the_ID());
+											if (!empty($attachment_id)) { 
+												the_post_thumbnail(array(132, 88)); ?>
+											<?php }else{ ?>
+											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
+										<?php	} ?>
+												<div class="blur"></div>
+											</a>
+										<figcaption>
+											<p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
+											<?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
+											<p>
+												<span>Bình chọn:</span>
+												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+											</p>
+										</figcaption>
+									</figure>
+								</div>
+									<?php } ?>
+								<?php }
+?>
 							<div class="adv-details">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/banner-right.jpg" alt="">
+								<?php echo adrotate_ad(10); ?>
 							</div>
 
 						</div>
@@ -346,7 +226,13 @@ get_header(); ?>
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>    
 <script type="text/javascript">
-    function init_map() {
+jQuery(document).ready(function(){
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		e.target
+		e.relatedTarget
+		init_map();
+	})
+	function init_map() {
         var myOptions = {
             zoom: 14,
             center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
@@ -366,6 +252,8 @@ get_header(); ?>
         infowindow.open(map, marker);
     }
     google.maps.event.addDomListener(window, 'load', init_map);
+});
+    
 </script>
 
 <?php

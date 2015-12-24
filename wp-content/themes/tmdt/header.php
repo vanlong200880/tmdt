@@ -31,39 +31,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<?php //if ( get_header_image() ) : ?>
-<!--	<div id="site-header">
-		<a href="<?php //echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<img src="<?php //header_image(); ?>" width="<?php //echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-		</a>
-	</div>-->
-	<?php //endif; ?>
-
-<!--	<header id="masthead" class="site-header" role="banner">
-		<div class="header-main">
-			<h1 class="site-title"><a href="<?php //echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php //bloginfo( 'name' ); ?></a></h1>
-
-			<div class="search-toggle">
-				<a href="#search-container" class="screen-reader-text" aria-expanded="false" aria-controls="search-container"><?php _e( 'Search', 'twentyfourteen' ); ?></a>
-			</div>
-
-			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
-				<button class="menu-toggle"><?php// _e( 'Primary Menu', 'twentyfourteen' ); ?></button>
-				<a class="screen-reader-text skip-link" href="#content"><?php// _e( 'Skip to content', 'twentyfourteen' ); ?></a>
-				<?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'menu_id' => 'primary-menu' ) ); ?>
-			</nav>
-		</div>
-
-		<div id="search-container" class="search-box-wrapper hide">
-			<div class="search-box">
-				<?php //get_search_form(); ?>
-			</div>
-		</div>
-	</header> #masthead -->
-
-	<!--<div id="main" class="site-main">-->
-  
   <div id="wrapper">
     <header id="header">
 				<div class="topbar">
@@ -101,9 +68,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-								<a href="#">
-									<img src="<?php echo get_template_directory_uri(); ?>/images/banner-top.jpg" alt="">
-								</a>
+								<?php echo adrotate_ad(11); ?>
 							</div>
 						</div>
 					</div>
@@ -121,30 +86,53 @@
 											<span class="icon-bar"></span>
 											<span class="icon-bar"></span>
 										</button>
-										<a class="navbar-brand" href="#">
+										<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 											 <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt=""> 
 										</a>
 									</div>
 								
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse navbar-ex1-collapse">
-										<form class="navbar-form navbar-left form-inline" role="search">
+										<?php	get_search_form() ?>
+										<style>
+												.ui-autocomplete{
+													width: 200px;
+													border: 1px solid #DDD;
+													background: #E7E7E7;
+													z-index: 999;
+													position: absolute;
+												}
+											</style>
+										
+<!--										<form class="navbar-form navbar-left form-inline" role="search">
 											<div class="form-group dropdown">
-												<input type="text" class="form-control dropdown-toggle" placeholder="Tìm theo danh mục" id="dropdownCategories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-												<ul class="dropdown-menu" aria-labelledby="dropdownCategories">
-													<li><a href="">Thời trang & Sức khỏe</a></li>
-													<li><a href="">Ẩm thực & Tiệc</a></li>
-													<li><a href="">Nguồn địa ốc</a></li>
-													<li><a href="">4 mùa & Khuyến mãi</a></li>
-													<li><a href="">Điện & Gia dụng</a></li>
-													<li><a href="">Xe & Công nghệ</a></li>
+												<input type="text" class="form-control" id="tags">
+												<ul id="red" class="dropdown-menu">
+													<li><span data-key="a">Thời trang & Sức khỏe</span></li>
+													<li><span data-key="b">Ẩm thực & Tiệc</span></li>
+													<li><span data-key="c">Nguồn địa ốc</span></li>
+													<li><span data-key="e">4 mùa & Khuyến mãi</span></li>
+													<li><span data-key="g">Điện & Gia dụng</span></li>
+													<li><span data-key="h">Xe & Công nghệ</span></li>
 												</ul>
 												
 												<button type="submit" class="btn btn-default">
 													<i class="fa fa-search"></i>
 												</button>
-											</div>	
-										</form>
+											</div>
+											
+											<style>
+												.ui-autocomplete{
+													width: 200px;
+													/*background: #000;*/
+													border: 1px solid #DDD;
+													background: #E7E7E7;
+													z-index: 999;
+													position: absolute;
+												}
+											</style>
+
+										</form>-->
 										<?php
 												wp_nav_menu( array(
 														'theme_location' => 'primary',
@@ -154,7 +142,7 @@
 												) );
 										?>
 										<div class="user-post navbar-right">
-											<a href="#">
+											<a href="<?php echo esc_url( home_url( '/' ) ); ?>/dang-tin">
 												<span class="fa fa-file-text-o"></span>
 												Đăng tin
 											</a>

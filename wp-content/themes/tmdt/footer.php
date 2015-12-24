@@ -98,17 +98,6 @@
 
 		</div><!-- #main -->
 
-<!--		<footer id="colophon" class="site-footer" role="contentinfo">
-
-			<?php //get_sidebar( 'footer' ); ?>
-
-			<div class="site-info">
-				<?php //do_action( 'twentyfourteen_credits' ); ?>
-				<a href="<?php //echo esc_url( __( 'https://wordpress.org/', 'twentyfourteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyfourteen' ), 'WordPress' ); ?></a>
-			</div> .site-info 
-		</footer> #colophon 
-	</div> #page -->
-
 	<?php wp_footer(); ?>
 
 
@@ -220,6 +209,20 @@
 	    </div>
 	  </div>
 	</div><!--end register-->
-  
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/dark-hive/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script type="text/javascript">
+		var sources = [];
+			$('#searchAjax span').each(function(i,ele){
+				sources.push({'label': $(ele).text(), 'value': $(ele).text(), 'key' : $(ele).attr('data-key')});
+			});
+			$( "#s" )
+				.autocomplete({
+					source: sources,
+					select: function (event, ui){
+						$('#searchform').submit();
+					}
+				})
+		</script>
 </body>
 </html>

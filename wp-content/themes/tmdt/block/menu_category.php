@@ -1,7 +1,6 @@
 <?php
 $parentId = get_category_by_slug('news');
 $args = array(
-	'category_custom_field' => 'category_order',
 	'orderby'           => 'category_order',
 	'order'             => 'DESC',
 	'parent'            => $parentId->term_id,
