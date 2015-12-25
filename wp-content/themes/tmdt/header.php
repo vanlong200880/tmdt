@@ -30,7 +30,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body dir="rtl" <?php body_class(); ?>>
   <div id="wrapper">
     <header id="header">
 				<div class="topbar">

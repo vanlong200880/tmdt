@@ -66,3 +66,18 @@ function uni_search_form( $form ) {
 
 add_filter( 'get_search_form', 'uni_search_form' );
 
+//customize the PageNavi HTML before it is output
+function zen_pagination($html) {
+	$out = '';
+ 
+	//wrap a's and span's in li's
+	$out = str_replace("<a","<li><a",$html);	
+    $out = str_replace("<div class='wp-pagenavi'>"," ",$out);
+    $out = str_replace("</div>"," ",$out);
+	$out = str_replace("</a>","</a></li>",$out);
+	$out = str_replace("<span","<li><span",$out);	
+	$out = str_replace("</span>","</span></li>",$out);
+ 
+	return '<ul class="pagination">'.$out.'</ul>';
+}
+add_filter( 'wp_pagenavi', 'zen_pagination', 10, 2 );

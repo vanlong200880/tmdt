@@ -864,6 +864,39 @@ h6 {
       border-bottom: none;
       margin-bottom: 0; }
 
+.search {
+  margin-bottom: 10px; }
+  .search .show-search .show-article-details {
+    margin-bottom: 10px; }
+    .search .show-search .show-article-details figure figcaption p.review {
+      margin-top: 5px; }
+      .search .show-search .show-article-details figure figcaption p.review span {
+        color: #333;
+        font-weight: bold; }
+  .search .title-map h2 {
+    font-size: 16px;
+    background: #575756;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    padding-left: 10px; }
+
+.contact .title-contact h2 {
+  margin-bottom: 0; }
+.contact .info-company {
+  border: 1px solid #d5d5d5;
+  padding: 10px; }
+  .contact .info-company p {
+    margin-bottom: 2px; }
+  .contact .info-company p.map-company {
+    margin-top: 20px; }
+
+.about .content-user.content-about {
+  padding: 20px; }
+  .about .content-user.content-about p {
+    font-style: normal; }
+
 #footer {
   font-size: 13px;
   background: #202d41; }
