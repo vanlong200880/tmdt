@@ -29,8 +29,7 @@
 	<![endif]-->
 	<?php wp_head(); ?>
 </head>
-
-<body dir="rtl" <?php body_class(); ?>>
+<body <?php //body_class(); ?> <?php echo is_search()?'onload="initialize()"':'' ?>>
   <div id="wrapper">
     <header id="header">
 				<div class="topbar">
