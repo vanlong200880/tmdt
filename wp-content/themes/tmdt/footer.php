@@ -109,7 +109,9 @@
 	        <h4 class="modal-title" id="exampleModalLabel">Đăng nhập</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form>
+					<?php //echo do_shortcode('[ajax_login]'); ?>
+					<?php echo do_shortcode('[wpcrl_login_form]'); ?>
+<!--	        <form>
 	          	<form id="login-form" method="post" enctype="multipart/form-data">
                 <div class="login-error"><p class="error" id="login-error"></p></div>
 					<div class="form-group">
@@ -133,7 +135,7 @@
                 	<span>Bạn chưa có tài khoản</span>
                 	<a href="#" id="sign-up-here">Đăng ký tại đây</a>
                 </p>
-				</form>
+				</form>-->
 	        </form>
 	      </div>
 	    </div>
@@ -150,7 +152,8 @@
 	        <h4 class="modal-title" id="exampleModalLabel">Đăng ký</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form id="register-form" class="form-horizontal" method="post" enctype="multipart/form-data">
+					<?php echo do_shortcode('[wpcrl_register_form]'); ?>
+<!--	        <form id="register-form" class="form-horizontal" method="post" enctype="multipart/form-data">
 			   <div class="form-group">
 			      <label for="sponsor-id" class="col-sm-4 control-label">Họ & Tên:<span class="validation">*</span> </label>
 			      <div class="col-sm-8">
@@ -204,7 +207,7 @@
 			         </div>
 			      </div>
 			   </div>
-			</form>
+			</form>-->
 	      </div>
 	    </div>
 	  </div>

@@ -864,6 +864,12 @@ h6 {
       border-bottom: none;
       margin-bottom: 0; }
 
+.login-form .zm_alr_form_container {
+  width: 100%;
+  display: inline-block; }
+  .login-form .zm_alr_form_container .error-container {
+    width: 100%; }
+
 .search {
   margin-bottom: 10px; }
   .search .show-search .show-article-details {
