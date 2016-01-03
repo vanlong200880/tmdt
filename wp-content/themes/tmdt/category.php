@@ -66,7 +66,7 @@ get_header(); ?>
       <div class="paging col-md-12">
       <nav>
         <nav>
-							<?php  twentyfourteen_paging_nav();  ?>
+          <?php wp_pagenavi() ;  ?>
         </nav>
       </nav>
     </div><!--end pagination-->

@@ -531,3 +531,4 @@ if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow
 	require get_template_directory() . '/inc/featured-content.php';
 }
 include 'include/functions-uni.php';
+include 'login-ajax/custom-ajax-auth.php';

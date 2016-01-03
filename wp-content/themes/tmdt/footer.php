@@ -100,8 +100,8 @@
 
 	<?php wp_footer(); ?>
 
-
-<div class="modal fade bs-example-modal-sm login-form" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    
+<div class="modal fade bs-example-modal-sm login-form-1" id="login-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog modal-sm" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -109,42 +109,40 @@
 	        <h4 class="modal-title" id="exampleModalLabel">Đăng nhập</h4>
 	      </div>
 	      <div class="modal-body">
-					<?php //echo do_shortcode('[ajax_login]'); ?>
-					<?php echo do_shortcode('[wpcrl_login_form]'); ?>
-<!--	        <form>
-	          	<form id="login-form" method="post" enctype="multipart/form-data">
-                <div class="login-error"><p class="error" id="login-error"></p></div>
-					<div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" id="username" name="username" value="" placeholder="Tên đăng nhập">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="Mật khẩu">
-                    </div>
-                </div>
-                <div class="form-group">
-					<button type="button" id="login-submit" class="btn btn-primary">Đăng nhập</button>
-                    <a href="#" class="forgot-password control-label">Quên mật khẩu?</a>
-                </div>
-                <div class="login-line"></div>
-                <p>
-                	<span>Bạn chưa có tài khoản</span>
-                	<a href="#" id="sign-up-here">Đăng ký tại đây</a>
-                </p>
-				</form>-->
+					<form id="login" class="ajax-auth" action="login" method="post" enctype="multipart/form-data">
+            <p class="status"></p>  
+            <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
+            
+            <div class="form-group">
+                  <label for="username">Tên đăng nhập</label>
+                  <input id="username" type="text" class="form-control required" name="username">
+            </div>
+            
+            <div class="form-group">
+                  <label for="password">Mật khẩu</label>
+                  <input id="password" type="password" class="form-control required" name="password">
+            </div>
+            
+            <div class="form-group">
+              <input class="btn btn-primary submit_button" type="submit" value="Đăng nhập">
+                <a href="#" class="forgot-password control-label">Quên mật khẩu?</a>
+            </div>
+            <div class="login-line"></div>
+            <p>
+              <span>Bạn chưa có tài khoản</span>
+              <a href="#" id="sign-up-here">Đăng ký tại đây</a>
+            </p>
 	        </form>
 	      </div>
 	    </div>
 	  </div>
-	</div><!--end login-->
+	</div>
+    
+    <!--end login-->
 
 
 
-	<div class="modal fade login-form" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	<div class="modal fade login-form" id="register-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -152,66 +150,60 @@
 	        <h4 class="modal-title" id="exampleModalLabel">Đăng ký</h4>
 	      </div>
 	      <div class="modal-body">
-					<?php echo do_shortcode('[wpcrl_register_form]'); ?>
-<!--	        <form id="register-form" class="form-horizontal" method="post" enctype="multipart/form-data">
-			   <div class="form-group">
-			      <label for="sponsor-id" class="col-sm-4 control-label">Họ & Tên:<span class="validation">*</span> </label>
-			      <div class="col-sm-8">
-			         <input type="text" class="form-control" name="fullname" id="fullname">
-			         <p class="error" id="fullname-error"></p>
-			      </div>
-			   </div>
-			   
-			   <div class="form-group">
-			      <label for="email" class="col-sm-4 control-label">Email:<span class="validation">*</span> </label>
-			      <div class="col-sm-8">
-			         <input type="email" class="form-control" name="email" id="email">
-			         <p class="error" id="email-error"></p>
-			      </div>
-			   </div>
-			   <div class="form-group">
-			      <label for="member-name" class="col-sm-4 control-label">Tên đăng nhập:<span class="validation">*</span> </label>
-			      <div class="col-sm-8">
-			         <input type="text" class="form-control" name="username" id="username">
-			         <p class="error" id="username-error"></p>
-			      </div>
-			   </div>
-			   <div class="form-group">
-			      <label for="member-name" class="col-sm-4 control-label">Mật khẩu:<span class="validation">*</span> </label>
-			      <div class="col-sm-8">
-			         <input type="password" class="form-control" name="password" id="password">
-			         <p class="error" id="password-error"></p>
-			      </div>
-			   </div>
-			   <div class="form-group">
-			      <label for="member-name" class="col-sm-4 control-label">Xác nhận lại mật khẩu:<span class="validation">*</span> </label>
-			      <div class="col-sm-8">
-			         <input type="password" class="form-control" name="confirm-password" id="confirm-password">
-			         <p class="error" id="confirm-password-error"></p>
-			      </div>
-			   </div>
-			   
-			   <div class="form-group">
-			      <label for="security" class="col-sm-4 control-label"></label>
-			      <div class="col-sm-8">
-			         <div class="row">
-			            <div class="col-sm-3">
-			               <button type="button" id="register-submit" class="btn btn-primary">Đăng ký</button>
-			            </div>
-			            <div class="col-sm-9">
-			               <p>
-			               	<span>Bạn đã có tài khoản rồi?</span> 
-			               	<a href="#" id="login-here">Đăng nhập</a>
-			               </p>
-			            </div>
-			         </div>
-			      </div>
-			   </div>
-			</form>-->
+          <form id="register" class="ajax-auth form-horizontal" action="register" method="post">
+            <p class="status"></p>
+              <?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>
+            
+            <div class="form-group">
+              <label for="signonname" class="col-sm-4 control-label">Tên đăng nhập:<span class="validation">*</span> </label>
+              <div class="col-sm-8">
+                 <input id="signonname" type="text" name="signonname" class="form-control required">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="col-sm-4 control-label">Email:<span class="validation">*</span> </label>
+              <div class="col-sm-8">
+                 <input id="email" type="text" class="form-control required email" name="email">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="signonpassword" class="col-sm-4 control-label">Mật khẩu:<span class="validation">*</span> </label>
+              <div class="col-sm-8">
+                 <input id="signonpassword" type="password" class="form-control required" name="signonpassword" >
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="password2" class="col-sm-4 control-label">Nhập lại mật khẩu:<span class="validation">*</span> </label>
+              <div class="col-sm-8">
+                 <input type="password" id="password2" class="form-control required" name="password2" equalTo ="#signonpassword" maxlength="40">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="security" class="col-sm-4 control-label"></label>
+              <div class="col-sm-8">
+                 <div class="row">
+                    <div class="col-sm-3">
+                       <input class="btn btn-primary submit_button " type="submit" value="Đăng ký">
+                    </div>
+                    <div class="col-sm-9">
+                       <p>
+                        <span>Bạn đã có tài khoản rồi?</span> 
+                        <a href="#" id="login-here">Đăng nhập</a>
+                       </p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+          </form>
 	      </div>
 	    </div>
 	  </div>
-	</div><!--end register-->
+	</div>
+  <!--end register-->
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/dark-hive/jquery-ui.css">
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript">

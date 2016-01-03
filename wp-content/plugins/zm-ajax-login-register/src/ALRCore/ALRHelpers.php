@@ -19,28 +19,28 @@ Class ALRHelpers {
                 'code' => 'success'
                 ),
             'username_exists' => array(
-                'description' => __('Tên đăng nhập đã tồn tại.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __('Invalid username', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'error-container',
                 'code' => 'show_notice'
                 ),
             'invalid_username' => array(
-                'description' => __( 'Tên đăng nhập không đúng.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __( 'Invalid username', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'error-container',
                 'code' => 'show_notice'
                 ),
             'username_does_not_exists' => array(
-                'description' => __( 'Tên đăng nhập không tồn tại.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __( 'Invalid username', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'error-container',
                 'code' => 'show_notice'
                 ),
 
             'incorrect_password' => array(
-                'description' => __( 'Mật khẩu không đúng.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __( 'Invalid', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'error-container',
                 'code' => 'show_notice'
                 ),
             'passwords_do_not_match' => array(
-                'description' => __('Nhập lại mật khẩu không đúng.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __('Passwords do not match.', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' =>'error-container',
                 'code' => 'show_notice'
                 ),
@@ -51,23 +51,23 @@ Class ALRHelpers {
                 'code' => 'success'
                 ),
             'email_invalid' => array(
-                'description' => __( 'Email không đúng.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __( 'Invalid Email', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'error-container',
                 'code' => 'show_notice'
                 ),
             'email_in_use' => array(
-                'description' => __( 'Email đã có người sử dụng.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __( 'Invalid Email', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'error-container',
                 'code' => 'show_notice'
                 ),
 
             'success_login' => array(
-                'description' => __( 'Đăng nhập thành công.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __( 'Success! One moment while we log you in...', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'success-container',
                 'code' => 'success_login'
                 ),
             'success_registration' => array(
-                'description' => __( 'Đăng ký thành công.', ZM_ALR_TEXT_DOMAIN ),
+                'description' => __( 'Success! One moment while we log you in...', ZM_ALR_TEXT_DOMAIN ),
                 'cssClass' => 'noon success-container',
                 'code' => 'success_registration'
                 )

@@ -126,15 +126,15 @@ Class ALRLogin {
     public function getLogInForm(){
 
         $links_html = $this->_zm_alr_html->buildFormHtmlLinks( array(
-//            $this->prefix . '_not_a_member' => array(
-//                'href' => '#',
-//                'class' => 'not-a-member-handle',
-//                'text' => __( 'Are you a member?', ZM_ALR_TEXT_DOMAIN ),
-//                ),
+            $this->prefix . '_not_a_member' => array(
+                'href' => '#',
+                'class' => 'not-a-member-handle',
+                'text' => __( 'Are you a member?', ZM_ALR_TEXT_DOMAIN ),
+                ),
             $this->prefix . '_lost_password_url' => array(
                 'href' => wp_lostpassword_url(),
                 'class' => '',
-                'text' => __( 'Quên mật khẩu',ZM_ALR_TEXT_DOMAIN )
+                'text' => __( 'Forgot Password',ZM_ALR_TEXT_DOMAIN )
                 )
             ), $this->prefix );
 
@@ -144,12 +144,12 @@ Class ALRLogin {
 
         $fields_html = $this->_zm_alr_html->buildFormFieldsHtml( array(
             $this->prefix . '_user_name' => array(
-                'title' => __( 'Tên đăng nhập', ZM_ALR_TEXT_DOMAIN ),
+                'title' => __( 'User Name', ZM_ALR_TEXT_DOMAIN ),
                 'type' => 'text',
                 'extra' => 'autocorrect="none" autocapitalize="none"'
                 ),
             $this->prefix . '_password' => array(
-                'title' => __( 'Mật khẩu', ZM_ALR_TEXT_DOMAIN ),
+                'title' => __( 'Password', ZM_ALR_TEXT_DOMAIN ),
                 'type' => 'password',
                 'extra' => 'autocorrect="none" autocapitalize="none"'
                 ),
@@ -158,7 +158,7 @@ Class ALRLogin {
                 'type' => 'checkbox'
                 ),
             $this->prefix . '_submit_button' => array(
-                'title' => __( 'Đăng nhập', ZM_ALR_TEXT_DOMAIN ),
+                'title' => __( 'Login', ZM_ALR_TEXT_DOMAIN ),
                 'type' => 'submit'
                 )
             ), $this->prefix );

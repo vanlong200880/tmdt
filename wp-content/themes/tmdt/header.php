@@ -30,6 +30,12 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php //body_class(); ?> <?php echo is_search()?'onload="initialize()"':'' ?>>
+  <?php if (is_user_logged_in()) { ?>
+    	<a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a>
+<?php } else { get_template_part('ajax', 'auth'); ?>            	
+        <a class="login_button" id="show_login" href="">Login</a>
+        <a class="login_button" id="show_signup" href="">Signup</a>
+<?php } ?>
   <div id="wrapper">
     <header id="header">
 				<div class="topbar">
@@ -39,10 +45,10 @@
 								<div class="wrap-user">
 									<ul>
 										<li>
-											<a data-toggle="modal" data-target="#register"><span class="fa fa-sign-in"></span>Đăng ký</a>
+											<a data-toggle="modal" data-target="#register-form"><span class="fa fa-sign-in"></span>Đăng ký</a>
 										</li>
 										<li>
-											<a data-toggle="modal" data-target="#login"><span class="fa fa-sign-in"></span>Đăng nhập</a>
+											<a data-toggle="modal" data-target="#login-form"><span class="fa fa-sign-in"></span>Đăng nhập</a>
 										</li>
 									</ul>
 								</div>

@@ -118,7 +118,7 @@ Class ALRRegister {
 
         $fields_html = $this->_zm_alr_html->buildFormFieldsHtml( array(
             $this->prefix . '_user_name' => array(
-                'title' => __( 'Tên đăng nhập', ZM_ALR_TEXT_DOMAIN ),
+                'title' => __( 'User Name', ZM_ALR_TEXT_DOMAIN ),
                 'type' => 'text',
                 'required' => true,
                 'extra' => 'autocorrect="none" autocapitalize="none"'
@@ -130,18 +130,18 @@ Class ALRRegister {
                 'extra' => 'autocorrect="none" autocapitalize="none"'
                 ),
             $this->prefix . '_password' => array(
-                'title' => __( 'Mật khẩu', ZM_ALR_TEXT_DOMAIN ),
+                'title' => __( 'Password', ZM_ALR_TEXT_DOMAIN ),
                 'type' => 'password',
                 'required' => true,
                 'extra' => 'autocorrect="none" autocapitalize="none"'
                 ),
             $this->prefix . '_confirm_password' => array(
-                'title' => __( 'Nhập lại mật khẩu', ZM_ALR_TEXT_DOMAIN ),
+                'title' => __( 'Confirm Password', ZM_ALR_TEXT_DOMAIN ),
                 'type' => 'password',
                 'extra' => 'autocorrect="none" autocapitalize="none"'
                 ),
             $this->prefix . '_submit_button' => array(
-                'title' => __( 'Đăng ký', ZM_ALR_TEXT_DOMAIN ),
+                'title' => __( 'Register', ZM_ALR_TEXT_DOMAIN ),
                 'type' => 'submit',
                 'extra' => 'disabled'
                 )
@@ -152,7 +152,7 @@ Class ALRRegister {
             $this->prefix . '_not_a_member' => array(
                 'href' => '#',
                 'class' => 'already-registered-handle',
-                'text' => __( 'Đã có tài khoản?', ZM_ALR_TEXT_DOMAIN ),
+                'text' => __( 'Already registered?', ZM_ALR_TEXT_DOMAIN ),
                 )
             ), $this->prefix );
 
@@ -222,12 +222,6 @@ Class ALRRegister {
         elseif ( $valid['username']['code'] == 'show_notice' ){
 
             $status = $this->_zm_alr_helpers->status('invalid_username');
-
-        }
-				
-				elseif ( $valid['confirm_password']['code'] == 'show_notice' ){
-
-            $status = $this->_zm_alr_helpers->status('confirm_password');
 
         }
 
