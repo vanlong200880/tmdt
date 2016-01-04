@@ -9,6 +9,15 @@
 
 get_header(); 
 global $current_user;
+$filter = array();
+if(isset($_GET['filter']) && $_GET['filter'] == 'pending'){
+	$filter = array('pending');
+}elseif (isset($_GET['filter']) && $_GET['filter'] == 'publish') {
+	$filter = array('publish');
+}else{
+	$filter = array('publish','pending');
+}
+
 ?>
 <section class="categories details user all-article">
 	<div class="container">
@@ -29,24 +38,24 @@ global $current_user;
 							Thông tin bài post
 							<div class="status">
 								<span>Trạng thái</span>
-								<select name="" id="">
-									<option value="">Đã post</option>
-									<option value="">Chờ duyệt</option>
+								<select name="user-post-user" id="user-post-filter">
+                  <option value="<?php echo get_site_url() ?>/list-post/">-- Tất cả --</option>
+									<option <?php echo ($_GET['filter'] == 'publish')?'selected':''; ?> value="<?php echo get_site_url() ?>/list-post/?filter=publish">Đã post</option>
+									<option <?php echo ($_GET['filter'] == 'pending')?'selected':''; ?> value="<?php echo get_site_url() ?>/list-post/?filter=pending">Chờ duyệt</option>
 								</select>
 							</div>
 						</h2>
 					</div>
+          <script type="text/javascript">
+          jQuery(document).ready(function($){
+            $( "#user-post-filter" ).on('change',function() {
+              window.location.href = $(this).val();
+            });
+          });
+          </script>
 					<div class="content-user content-post">
 						<ul class="row">
 <?php
-$filter = array();
-if(isset($_GET['filter']) && $_GET['filter'] == 'pending'){
-	$filter = array('pending');
-}elseif (isset($_GET['filter']) && $_GET['filter'] == 'publish') {
-	$filter = array('publish');
-}else{
-	$filter = array('publish','pending');
-}
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $args = array(
 		'post_status' => $filter,
@@ -54,7 +63,7 @@ $args = array(
     'order'         =>  'DESC',
 		'post_type'      => 'post',
 		'author'        =>  $current_user->ID,
-		'category__not_in' => array('uncategorized'),
+		'category__not_in' => array(1),
 		'paged'          => $paged,
     'posts_per_page' => 80
     );
@@ -80,11 +89,11 @@ if($the_query->have_posts()){
 											<p><a href="<?php echo (get_post_status(get_the_ID()) != 'pending')? get_the_permalink(): '#'; ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
 											<?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
 											<p class="edit-delete">
-												<a>
+                        <a href="<?php echo get_site_url() ?>/edit-post/?pid=<?php echo get_the_ID(); ?>&action=edit">
 													<span class="fa fa-pencil-square"></span>
 													Sửa
 												</a>
-												<a>
+												<a href="<?php echo get_site_url() ?>/edit-post/?pid=<?php echo get_the_ID(); ?>&action=del&_wpnonce=f0f2bb2c7d" onclick="return confirm('Bạn có muốn xoá không?');">
 													<span class="fa fa-trash-o"></span>
 													Xóa
 												</a>
