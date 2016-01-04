@@ -8,6 +8,7 @@
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
+global $current_user;
 ?><!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -30,12 +31,6 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php //body_class(); ?> <?php echo is_search()?'onload="initialize()"':'' ?>>
-  <?php if (is_user_logged_in()) { ?>
-    	<a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a>
-<?php } else { get_template_part('ajax', 'auth'); ?>            	
-        <a class="login_button" id="show_login" href="">Login</a>
-        <a class="login_button" id="show_signup" href="">Signup</a>
-<?php } ?>
   <div id="wrapper">
     <header id="header">
 				<div class="topbar">
@@ -44,12 +39,21 @@
 							<div class="col-md-12 text-right">
 								<div class="wrap-user">
 									<ul>
+										  <?php if (is_user_logged_in()) { ?>
 										<li>
-											<a data-toggle="modal" data-target="#register-form"><span class="fa fa-sign-in"></span>Đăng ký</a>
+											<span></span>
+											<a href="#"><?php echo $current_user->display_name ?></a>
+											<a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a>
 										</li>
-										<li>
-											<a data-toggle="modal" data-target="#login-form"><span class="fa fa-sign-in"></span>Đăng nhập</a>
-										</li>
+										
+										<?php } else { get_template_part('ajax', 'auth'); ?>     
+													<li>
+														<a data-toggle="modal" data-target="#register-form"><span class="fa fa-sign-in"></span>Đăng ký</a>
+													</li>
+													<li>
+														<a data-toggle="modal" data-target="#login-form"><span class="fa fa-sign-in"></span>Đăng nhập</a>
+													</li>
+										<?php } ?>
 									</ul>
 								</div>
 								<div class="social">
