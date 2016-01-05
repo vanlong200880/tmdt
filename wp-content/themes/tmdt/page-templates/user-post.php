@@ -141,34 +141,7 @@ get_header(); ?>
 						</div><!--end left-user-->
 
 						<div id="sidebar" class="col-md-3">
-							<div class="title-details title-user">
-								<h2>
-									<span class="fa fa-newspaper-o"></span>
-									Tài khoản người dùng
-								</h2>
-							</div>
-							
-							<div class="info-user">
-								<ul>
-									<li>
-										<span class="fa fa-user"></span>
-										<span>Nguyễn Văn A</span>
-									</li>
-									<li>
-										<span class="fa fa-pencil-square"></span>
-										<a href="#">Thay đổi tài khoản</a>
-									</li>
-									<li>
-										<span class="fa fa-file-text-o"></span>
-										<a href="#">Thông tin bài post</a>
-									</li>
-									<li>
-										<span class="fa fa-sign-out"></span>
-										<a href="#">Thoát</a>
-									</li>
-								</ul>
-							</div>
-
+							<?php get_template_part('block/menu-user-profile'); ?>
 						</div>
 					</div>
 

@@ -98,7 +98,7 @@ if($the_query->have_posts()){
 													Xóa
 												</a>
 												<span class="waiting">
-													<?php echo (get_post_status(get_the_ID()) == 'pending')? 'Pending': 'Published'; ?>
+													<?php echo (get_post_status(get_the_ID()) == 'pending')? 'Chờ duyệt': 'Đã đăng'; ?>
 												</span>
 											</p>
 										</figcaption>

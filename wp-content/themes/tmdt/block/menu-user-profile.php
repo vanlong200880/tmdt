@@ -17,7 +17,11 @@ global $current_user;
 		</li>
 		<li>
 			<span class="fa fa-pencil-square"></span>
-			<a href="<?php echo get_site_url() ?>/change-password/">Thay đổi tài khoản</a>
+			<a href="<?php echo get_site_url() ?>/edit-profile/">Thay đổi tài khoản</a>
+		</li>
+		<li>
+			<span class="fa fa-pencil-square"></span>
+			<a href="<?php echo get_site_url() ?>/change-password/">Đổi mật khẩu</a>
 		</li>
 		<li>
 			<span class="fa fa-file-text-o"></span>

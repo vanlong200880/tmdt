@@ -55,6 +55,19 @@
 					}
 				}
 			}
+			.info-user-accout{
+				width: 100%;
+				margin-bottom: 15px;
+				span.left{
+					color: #333;
+					width: 15%;
+					display: inline-block;
+				}
+				span.right{
+					font-weight: bold;
+					margin-left: 5px;
+				}
+			}
 		}
 		.content-post{
 			padding: 10px 20px;

@@ -825,6 +825,16 @@ h6 {
         color: #e30513; }
       .user .all-content-user .content-user .form-horizontal .form-group button {
         border: none; }
+    .user .all-content-user .content-user .info-user-accout {
+      width: 100%;
+      margin-bottom: 15px; }
+      .user .all-content-user .content-user .info-user-accout span.left {
+        color: #333;
+        width: 15%;
+        display: inline-block; }
+      .user .all-content-user .content-user .info-user-accout span.right {
+        font-weight: bold;
+        margin-left: 5px; }
   .user .all-content-user .content-post {
     padding: 10px 20px; }
     .user .all-content-user .content-post p {
@@ -863,12 +873,6 @@ h6 {
     .user .info-user ul li:last-child {
       border-bottom: none;
       margin-bottom: 0; }
-
-.login-form .zm_alr_form_container {
-  width: 100%;
-  display: inline-block; }
-  .login-form .zm_alr_form_container .error-container {
-    width: 100%; }
 
 .search {
   margin-bottom: 10px; }
