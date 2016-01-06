@@ -53,6 +53,37 @@
 						&:hover{
 							color: $color-base;
 						}
+						span.avarta{
+							position: relative;
+							top: -1px;
+							img{
+								width: 22px;
+								height: 22px;
+							}
+						}
+					}
+					ul.dropdown-menu{
+						background-color: $color-grey;
+						right: 0;
+						width: 200px;
+						left: inherit;
+						li{
+							display: block;
+							border-bottom: 1px solid #d5d5d5;
+							width: 100%; 
+							margin-left: 0;
+							padding-left: 10px;
+							a{
+								display: inline-block;
+								padding: 0;
+								&:hover{
+									background-color: transparent;
+								}
+							}
+							&:last-child{
+								border-bottom:0;
+							}
+						}
 					}
 				}
 			}

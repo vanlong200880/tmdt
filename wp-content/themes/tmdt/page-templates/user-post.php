@@ -7,7 +7,12 @@
  * @since Twenty Fourteen 1.0
  */
 
-get_header(); ?>
+get_header(); 
+if(!is_user_logged_in())
+{
+  wp_redirect( home_url());
+}
+?>
 
 <section class="categories details user all-article">
 				<div class="container">

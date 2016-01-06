@@ -25,7 +25,7 @@
           <a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/health-1.jpg" alt=""></a>
           <figcaption>
             <p>
-              <a href=""<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+              <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                 <?php the_title(); ?>
               </a>
             </p>

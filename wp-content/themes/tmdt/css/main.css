@@ -148,6 +148,30 @@ h6 {
             margin-right: 5px; }
           #header .topbar .wrap-user ul li a:hover {
             color: #e30513; }
+          #header .topbar .wrap-user ul li a span.avarta {
+            position: relative;
+            top: -1px; }
+            #header .topbar .wrap-user ul li a span.avarta img {
+              width: 22px;
+              height: 22px; }
+        #header .topbar .wrap-user ul li ul.dropdown-menu {
+          background-color: #ececec;
+          right: 0;
+          width: 200px;
+          left: inherit; }
+          #header .topbar .wrap-user ul li ul.dropdown-menu li {
+            display: block;
+            border-bottom: 1px solid #d5d5d5;
+            width: 100%;
+            margin-left: 0;
+            padding-left: 10px; }
+            #header .topbar .wrap-user ul li ul.dropdown-menu li a {
+              display: inline-block;
+              padding: 0; }
+              #header .topbar .wrap-user ul li ul.dropdown-menu li a:hover {
+                background-color: transparent; }
+            #header .topbar .wrap-user ul li ul.dropdown-menu li:last-child {
+              border-bottom: 0; }
   #header .top-adv {
     padding: 5px 0; }
     #header .top-adv img {
