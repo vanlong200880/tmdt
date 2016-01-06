@@ -20,9 +20,7 @@ $sorted_cats = array();
 if($sorted_cats){
 	 foreach ( $sorted_cats as $category ) { ?>
 		<li class="color-item-<?php echo $category->term_id; ?> <?php echo $category->slug; ?>">
-			<a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php echo $category->name; ?>">
-					<span class="icon-<?php echo $category->term_id; ?> icon-icon-health-<?php echo $category->term_id; ?>"></span>
-					<?php echo $category->name; ?>
+			<a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php echo $category->name; ?>"><span class="icon-<?php echo $category->term_id; ?> icon-icon-health-<?php echo $category->term_id; ?>"></span><?php echo trim($category->name); ?>
 			</a>
 		</li>
 <?php	 }

@@ -44,7 +44,12 @@ if($cats){
 				<div class="show-title-article">
           <h2>
             <a href="<?php echo get_category_link( $value->term_id ); ?>">
-							<?php echo $value->name; ?> 
+							<?php
+							$name = str_replace(array("amp;","&", '&#38;', '&amp;', '--'), '-', $value->name);
+							$name = explode('-', $name);
+							echo '<span>'.$name[0]. '</span>'; 
+							echo (!empty($name[1]))? '&'.$name[1]: '';
+							?> 
             </a>
           </h2>
         </div>
@@ -165,7 +170,12 @@ if($cats){
 				<div class="show-title-article">
           <h2>
             <a href="<?php echo get_category_link( $value->term_id ); ?>">
-							<?php echo $value->name;?> 
+							<?php 
+								$name = str_replace(array("amp;","&", '&#38;', '&amp;', '--'), '-', $value->name);
+								$name = explode('-', $name);
+								echo '<span>'.$name[0]. '</span>'; 
+								echo (!empty($name[1]))? '&'.$name[1]: '';
+							?> 
             </a>
           </h2>
         </div>
