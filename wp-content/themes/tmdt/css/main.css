@@ -691,12 +691,15 @@ h6 {
         color: #e30513; }
     .all-article .show-sub figure figcaption p.address, .all-article .show-article-details figure figcaption p.address {
       margin-bottom: 5px;
-      display: inline-block; }
+      display: inline-block;
+      height: 45px;
+      overflow: hidden; }
   .all-article .show-sub:last-child, .all-article .show-article-details:last-child {
     margin-bottom: 0; }
 .all-article .show-sub.show-sub-2 {
   width: 23%;
-  display: inline-block;
+  display: block;
+  float: left;
   margin-bottom: 0;
   margin-right: 10px; }
   .all-article .show-sub.show-sub-2 figure a {
@@ -847,6 +850,7 @@ h6 {
           margin-left: 10px; }
       .user .all-content-user .content-user .form-horizontal .form-group span.validation {
         color: #e30513; }
+      .user .all-content-user .content-user .form-horizontal .form-group input[type='submit'],
       .user .all-content-user .content-user .form-horizontal .form-group button {
         border: none; }
     .user .all-content-user .content-user .info-user-accout {

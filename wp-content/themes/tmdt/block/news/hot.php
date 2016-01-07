@@ -38,7 +38,15 @@
                 <?php the_title(); ?>
               </a>
             </p>
-            <?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
+            <?php if(get_field('address')): ?>
+						<p class="address">
+							<?php echo get_field('address'); ?>
+						</p> 
+							<?php else: ?>
+						<p class="address">
+							<?php echo strip_tags(get_the_excerpt()); ?>
+						</p>
+							<?php endif; ?>
             <p>
               <span>Bình chọn:</span>
               <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
@@ -58,7 +66,7 @@ wp_reset_postdata();
 			'orderby'        => 'date',
 			'post_type'      => 'post',
 			'category_name'  => 'news',
-			'posts_per_page' => 8,
+			'posts_per_page' => 12,
 		);
   $the_post_query = new WP_Query( $arg ); 
 		if($the_post_query->have_posts()): ?>
@@ -84,7 +92,15 @@ wp_reset_postdata();
                 <?php the_title(); ?>
               </a>
             </p>
-            <?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
+            <?php if(get_field('address')): ?>
+						<p class="address">
+							<?php echo get_field('address'); ?>
+						</p> 
+							<?php else: ?>
+						<p class="address">
+							<?php echo strip_tags(get_the_excerpt()); ?>
+						</p>
+							<?php endif; ?>
             <p>
               <span>Bình chọn:</span>
               <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>

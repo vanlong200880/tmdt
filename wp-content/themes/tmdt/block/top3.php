@@ -22,7 +22,15 @@
 				?>
       <div class="show-adv">
         <figure>
-          <a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/health-1.jpg" alt=""></a>
+          <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+						<?php 
+									$attachment_id = get_post_thumbnail_id(get_the_ID());
+									if (!empty($attachment_id)) { 
+										the_post_thumbnail('full'); ?>
+									<?php }else{ ?>
+									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
+								<?php	} ?>
+					</a>
           <figcaption>
             <p>
               <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
@@ -31,6 +39,8 @@
             </p>
             <?php if(get_field('address')): ?>
             <p class="address"><?php echo get_field('address'); ?></p>
+						<?php else: ?>
+						<p class="address"><?php the_excerpt_max_charlength(25); ?></p>
             <?php endif; ?>
             <p>
               <span>Bình chọn:</span>

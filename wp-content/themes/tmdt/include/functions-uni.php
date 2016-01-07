@@ -111,3 +111,20 @@ function geocode($address){
       return false;
   }
 }
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function the_excerpt_max_charlength($length = 0) {
+	$excerpt = strip_tags(get_the_excerpt());
+    $arrString = explode(' ', $excerpt);
+    $str = array_slice($arrString, 0, $length);
+    if(count($arrString) > $length){
+        $str = implode( ' ', $str).'...';
+    }else
+    {
+        $str = implode( ' ', $str);
+    }
+    echo $str;
+}

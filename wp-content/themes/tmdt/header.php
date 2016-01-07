@@ -158,4 +158,4 @@ global $current_user;
 				</div><!--end navigation-->
 			</header>
     
-    <?php get_template_part('block/block_category'); ?>
+    <?php //get_template_part('block/block_category'); ?>
