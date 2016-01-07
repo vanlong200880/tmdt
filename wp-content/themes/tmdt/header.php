@@ -158,4 +158,7 @@ global $current_user;
 				</div><!--end navigation-->
 			</header>
     
-    <?php //get_template_part('block/block_category'); ?>
+    <?php 
+//      if(is_front_page() || is_category() || is_home() || is_search() || is_archive())
+        get_template_part('block/block_category'); 
+      ?>
