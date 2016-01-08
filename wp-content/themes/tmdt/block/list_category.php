@@ -219,7 +219,7 @@ if($cats){
 						// list post
 						while ($the_query->have_posts()){
 							$the_query->the_post(); ?>
-							<div class="show-large show-big">
+							<div class="show-large">
 								<figure>
 									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 										<?php 
