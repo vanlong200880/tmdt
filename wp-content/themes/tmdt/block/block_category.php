@@ -4,9 +4,7 @@
 						<div class="col-md-2 col-sm-4 col-xs-12">
 							<div class="category-menu-left">
 								<h2>Danh mục</h2>
-								<ul class="menu-left mCustomScrollbar">
 									<?php get_template_part('block/menu_category'); ?>
-								</ul>
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-8 col-xs-12">

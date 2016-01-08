@@ -17,12 +17,16 @@ $sorted_cats = array();
 	usort($sorted_cats, function($a, $b) {
     return $a->order - $b->order;
 });
-if($sorted_cats){
+if($sorted_cats){ ?>
+<ul class="menu-left mCustomScrollbar">
+	<?php 
 	 foreach ( $sorted_cats as $category ) { ?>
 		<li class="color-item-<?php echo $category->term_id; ?> <?php echo $category->slug; ?>">
 			<a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php echo $category->name; ?>"><span class="icon-<?php echo $category->term_id; ?> icon-icon-health-<?php echo $category->term_id; ?>"></span><?php echo trim($category->name); ?>
 			</a>
 		</li>
-<?php	 }
+<?php	 } ?>
+		</ul>
+		<?php
 }
 ?>
