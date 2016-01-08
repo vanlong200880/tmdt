@@ -68,7 +68,7 @@ wp_reset_postdata();
 			<?php while ($the_post_query->have_posts()){ 
 				$the_post_query->the_post(); 
 				?>
-      <li class="col-md-2 col-sm-2 col-xs-6 show-article">
+      <li class="col-md-2 col-sm-3 col-xs-6 show-article">
         <figure>
           <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php 

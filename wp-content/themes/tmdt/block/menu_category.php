@@ -18,7 +18,6 @@ $sorted_cats = array();
     return $a->order - $b->order;
 });
 if($sorted_cats){ ?>
-<ul class="menu-left mCustomScrollbar">
 	<?php 
 	 foreach ( $sorted_cats as $category ) { ?>
 		<li class="color-item-<?php echo $category->term_id; ?> <?php echo $category->slug; ?>">
@@ -26,7 +25,6 @@ if($sorted_cats){ ?>
 			</a>
 		</li>
 <?php	 } ?>
-		</ul>
 		<?php
 }
 ?>

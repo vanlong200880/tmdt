@@ -1,12 +1,17 @@
 <section id="wrap-new-adv" class="wrap-new-adv">
 				<div class="container">
 					<div class="row">
+            <?php if(!wpmd_is_phone()): ?>
 						<div class="col-md-2 col-sm-4 col-xs-12">
 							<div class="category-menu-left">
 								<h2>Danh mục</h2>
-									<?php get_template_part('block/menu_category'); ?>
+                <ul class="menu-left mCustomScrollbar">
+                  <?php get_template_part('block/menu_category'); ?>
+                </ul>
+									
 							</div>
 						</div>
+            <?php endif; ?>
 						<div class="col-md-6 col-sm-8 col-xs-12">
 							<?php get_template_part('block/slider'); ?>
 						</div>

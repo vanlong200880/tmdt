@@ -1,5 +1,9 @@
 <?php
 	wp_reset_postdata();
+  $item = 3;
+  if(wpmd_is_tablet()){
+    $item = 6;
+  }
 	$args = array (					 
 			'post_status'    => 'publish',		
 			'order'          => 'DESC',
@@ -12,7 +16,7 @@
                 'value'      => true,
             ),
         ),
-			'posts_per_page' => 3,
+			'posts_per_page' => $item,
 		);
 		$the_query = new WP_Query( $args ); 
 		if($the_query->have_posts()){?>
