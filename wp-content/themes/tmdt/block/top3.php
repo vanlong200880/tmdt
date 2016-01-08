@@ -37,11 +37,7 @@
                 <?php the_title(); ?>
               </a>
             </p>
-            <?php if(get_field('address')): ?>
-            <p class="address"><?php echo get_field('address'); ?></p>
-						<?php else: ?>
 						<p class="address"><?php the_excerpt_max_charlength(25); ?></p>
-            <?php endif; ?>
             <p>
               <span>Bình chọn:</span>
               <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>

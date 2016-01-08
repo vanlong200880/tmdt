@@ -95,15 +95,9 @@ if($cats){
 									<figcaption>
 										<p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
 										<div class="wrapp-info">
-											<?php if(get_field('address')): ?>
 											<p class="address">
-												<?php echo get_field('address'); ?>
-											</p> 
-												<?php else: ?>
-											<p class="address">
-												<?php the_excerpt_max_charlength(20); ?>
+												<?php the_excerpt_max_charlength(30); ?>
 											</p>
-												<?php endif; ?>
 											<p>
 												<span>Bình chọn:</span>
 												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
@@ -160,15 +154,9 @@ if($cats){
 											<?php the_title(); ?>
 										</a>
 									</p>
-                  <?php if(get_field('address')): ?>
-									<p class="address">
-										<?php echo get_field('address'); ?>
-									</p> 
-										<?php else: ?>
 									<p class="address">
 										<?php the_excerpt_max_charlength(15); ?>
 									</p>
-										<?php endif; ?>
 										<p>
 											<span>Bình chọn:</span>
 											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
@@ -250,15 +238,9 @@ if($cats){
 											</a>
 										</p>
 										<div class="wrapp-info">
-											<?php if(get_field('address')): ?>
-											<p class="address">
-												<?php echo get_field('address'); ?>
-											</p> 
-												<?php else: ?>
 											<p class="address">
 												<?php the_excerpt_max_charlength(20); ?>
 											</p>
-												<?php endif; ?>
 										<p>
 											<span>Bình chọn:</span>
 											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
@@ -289,7 +271,7 @@ if($cats){
 									'value'      => true,
 							),
 						),
-						'posts_per_page' => 4,
+						'posts_per_page' => 3,
 					);
 					$the_query = new WP_Query( $args );
 					if($the_query->have_posts()){ ?>
@@ -316,16 +298,9 @@ if($cats){
 													<?php the_title(); ?>
 												</a>
 											</p>
-											
-											<?php if(get_field('address')): ?>
-											<p class="address">
-												<?php echo get_field('address'); ?>
-											</p> 
-												<?php else: ?>
 											<p class="address">
 												<?php the_excerpt_max_charlength(12); ?>
 											</p>
-												<?php endif; ?>
 											<p>
 												<span>Bình chọn:</span>
 												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
