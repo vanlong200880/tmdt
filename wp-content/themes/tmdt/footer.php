@@ -207,17 +207,23 @@
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/dark-hive/jquery-ui.css">
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript">
-		var sources = [];
+		$(function () {
+			var sources = [];
 			$('#searchAjax span').each(function(i,ele){
 				sources.push({'label': $(ele).text(), 'value': $(ele).text(), 'key' : $(ele).attr('data-key')});
 			});
-			$( "#s" )
-				.autocomplete({
-					source: sources,
-					select: function (event, ui){
-						$('#searchform').submit();
-					}
-				})
+    $("#s").autocomplete({
+        source: sources,
+        minLength: 0,
+				select: function (event, ui){
+					$(this).val(ui.item.value);
+					$('#searchform').submit();
+				}
+    }).focus(function(event){ 
+       $(this).autocomplete('search', $(this).val());
+			 
+     });
+});
 		</script>
 </body>
 </html>
