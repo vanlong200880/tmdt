@@ -75,7 +75,7 @@ global $current_user;
 														<a data-toggle="modal" data-target="#register-form"><span class="fa fa-sign-in"></span>Đăng ký</a>
 													</li>
 													<li>
-														<a data-toggle="modal" data-target="#login-form"><span class="fa fa-sign-in"></span>Đăng nhập</a>
+														<a data-toggle="modal" data-target="#login-form"><span class="fa fa-user-plus"></span>Đăng nhập</a>
 													</li>
 										<?php } ?>
 									</ul>

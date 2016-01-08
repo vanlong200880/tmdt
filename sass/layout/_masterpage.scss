@@ -28,11 +28,11 @@
 					z-index: 10;
 					&:hover{
 						color: #fff;
-						span.icon-17, .icon-7, .icon-13, .icon-15, .icon-14, .icon-6{
+						span.icon-9, .icon-5, .icon-4, .icon-8, .icon-6, .icon-7{
 							color: #fff;
 						}
 					}
-					span.icon-17, .icon-7, .icon-13, .icon-15, .icon-14, .icon-6{
+					span.icon-9, .icon-5, .icon-4, .icon-8, .icon-6, .icon-7{
 						font-size: 20px;
 						color: #575756;
 						display: inline-flex;
@@ -42,7 +42,7 @@
 					}
 				}
   			}
-  			li.vehicle-technology, .fashion-health, .real-estate-source, .home-electronics, .taste-event, .seasons-promotion{
+  			li.color-item-9, .color-item-5, .color-item-4, .color-item-8, .color-item-6, .color-item-7{
   				a{
   					&:after{
   						content: " ";
@@ -58,48 +58,48 @@
   				&:hover{
   					a{
   						&:after{
-  							width: 175px;
+  							width: 183px;
   							@include transition(width 0.2s);
   						}
   					}
   				}
   			}
-  			li.vehicle-technology{
+  			li.color-item-9{
   				a{
   					&:after{
 						background: $color-vehicle-technology;
   					}
   				}
   			}
-  			li.fashion-health{
+  			li.color-item-5{
   				a{
   					&:after{
 						background: $color-fashion-health;
   					}
   				}
   			}
-  			li.real-estate-source{
+  			li.color-item-4{
   				a{
   					&:after{
 						background: $color-real-estate-source;
   					}
   				}
   			}
-  			li.home-electronics{
+  			li.color-item-8{
   				a{
   					&:after{
 						background: $color-home-electronics;
   					}
   				}
   			}
-  			li.taste-event{
+  			li.color-item-6{
   				a{
   					&:after{
 						background: $color-taste-event;
   					}
   				}	
   			}
-  			li.seasons-promotion{
+  			li.color-item-7{
   				a{
   					&:after{
 						background: $color-seasons-promotion;
@@ -310,6 +310,7 @@
 		figure{
 			position: relative;
 			overflow: hidden;
+			margin-bottom: 5px;
 			a{
 				position: relative;
 				overflow: hidden;
@@ -369,7 +370,7 @@
 			figcaption{
 				.wrapp-info{
 					border-top:1px solid #d5d5d5;
-					border-bottom:1px solid #d5d5d5;
+/*					border-bottom:1px solid #d5d5d5;*/
 					padding: 5px 0;
 				}
 				p.description{
@@ -380,6 +381,19 @@
 					overflow: hidden;
 					line-height: 20px;
 					margin-top: 5px;
+				}
+			}
+		}
+	}
+	.show-big{
+		figure{
+			figcaption{
+				.wrapp-info{
+					border-bottom: none;
+				}
+				a{
+					overflow: auto;
+					height: auto;
 				}
 			}
 		}
@@ -473,6 +487,11 @@
 					p, span{
 						font-size: 12px;
 						color: $color-address;
+						
+					}
+					span{
+						position: relative;
+						top: 2px;
 					}
 					p{
 						a{
@@ -491,7 +510,7 @@
 						}
 					}
 					p.address{
-						margin-bottom: 5px;
+						margin-bottom: 0;
 						display: inline-block;
 						height: 45px;
 						overflow: hidden;
@@ -532,7 +551,7 @@
 	}
 }
 #wrapp-adv-device{
-	margin: 10px 0;
+	margin: 15px 0;
 	.adv-device{
 		img{
 			width: 570px;
