@@ -1,0 +1,24 @@
+/*-fix scroll menu--*/
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger:focus .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+#mCSB_1_dragger_vertical{
+  width: 8px;
+  background-color: #666 !important;
+  border-radius: 20px !important;
+  -webkit-transition:none;
+  -moz-transition:none;
+  -o-transition:none;
+  transition:none;
+}
+.mCSB_inside > .mCSB_container{
+  margin-right: 8px;
+}
+.mCSB_scrollTools{
+  width: 8px;
+}
+#mCSB_1_dragger_vertical{
+  height: 80px !important;
+}
