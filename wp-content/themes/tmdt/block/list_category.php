@@ -80,7 +80,7 @@ if($cats){
 					while ($the_query->have_posts()){
 						$the_query->the_post(); ?>
 						<div class="col-md-12 col-sm-12- col-xs-12">
-							<div class="show-large show-large-2">
+							<div class="show-large show-large-2 show-big">
 								<figure>
 									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 										<?php 
@@ -219,7 +219,7 @@ if($cats){
 						// list post
 						while ($the_query->have_posts()){
 							$the_query->the_post(); ?>
-							<div class="show-large">
+							<div class="show-large show-big">
 								<figure>
 									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 										<?php 
