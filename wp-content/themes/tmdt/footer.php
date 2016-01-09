@@ -125,12 +125,12 @@
             
             <div class="form-group">
               <input class="btn btn-primary submit_button" type="submit" value="Đăng nhập">
-                <a href="#" class="forgot-password control-label">Quên mật khẩu?</a>
+                <a class="forgot-password control-label">Quên mật khẩu?</a>
             </div>
             <div class="login-line"></div>
             <p>
               <span>Bạn chưa có tài khoản</span>
-              <a href="#" id="sign-up-here">Đăng ký tại đây</a>
+              <a id="sign-up-here">Đăng ký tại đây</a>
             </p>
 	        </form>
 	      </div>
@@ -192,7 +192,7 @@
                     <div class="col-sm-9">
                        <p>
                         <span>Bạn đã có tài khoản rồi?</span> 
-                        <a href="#" id="login-here">Đăng nhập</a>
+                        <a id="login-here">Đăng nhập</a>
                        </p>
                     </div>
                  </div>
@@ -204,9 +204,54 @@
 	  </div>
 	</div>
   <!--end register-->
+  <!-- forgot password -->
+    <div id="forgot" class="modal fade deposit-form" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Quên mật khẩu?</h4>
+            </div>
+            <div class="modal-body">
+              <form id="forgot_password" class="ajax-auth" action="forgot_password" method="post">
+                <p class="status"></p>
+                <?php wp_nonce_field('ajax-forgot-nonce', 'forgotsecurity'); ?>  
+                <div class="form-group">
+                  <label for="user_login">Username or E-mail</label>
+                  <input id="user_login" type="text" class="form-control required" name="user_login">
+                </div>
+                 <input id="forgotpassword-submit" class="btn btn-primary submit_button" type="submit" value="Gửi">
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/dark-hive/jquery-ui.css">
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript">
+    jQuery(document).ready(function($){
+      // user login
+        $("#sign-up-here").on('click', function(){
+            $(".close").trigger('click');
+            setTimeout(function(){ 
+                 $("#register-form").modal('show'); 
+             }, 500);
+        });
+        $("#login-here").on('click', function(){
+            $(".close").trigger('click');
+            setTimeout(function(){ 
+                 $("#login-form").modal('show');
+             }, 500);
+        });
+        $(".forgot-password.control-label").on('click', function(){
+            $(".close").trigger('click');
+            setTimeout(function(){ 
+                 $("#forgot").modal('show'); 
+             }, 500);
+        });
+    });
+    
 		$(function () {
 			var sources = [];
 			$('#searchAjax span').each(function(i,ele){

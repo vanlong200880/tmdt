@@ -70,8 +70,8 @@ jQuery(document).ready(function ($) {
         });
       e.preventDefault();
       // Client side form validation
-      if (jQuery("#register").length){
-        jQuery("#register").validate(
+      if ($(this).attr('id') == 'register'){
+        $("#register").validate(
           {
             rules:{
               password2:{ equalTo:'#signonpassword'
@@ -79,9 +79,35 @@ jQuery(document).ready(function ($) {
             }
           }
         );
-      }else if (jQuery("#login").length){
-        jQuery("#login").validate();}
+      }else if ($(this).attr('id') == 'login'){
+        $("#login").validate();}
     });
 	
+  
+  // Perform AJAX forget password on form submit
+	$('form#forgot_password').on('submit', function(e){
+		if (!$(this).valid()) return false;
+		$('p.status', this).show().text(ajax_auth_object.loadingmessage);
+		ctrl = $(this);
+		$.ajax({
+			type: 'POST',
+            dataType: 'json',
+            url: ajax_auth_object.ajaxurl,
+			data: { 
+				'action': 'ajaxforgotpassword', 
+				'user_login': $('#user_login').val(), 
+				'security': $('#forgotsecurity').val(), 
+			},
+			success: function(data){					
+				$('p.status',ctrl).text(data.message);				
+			}
+		});
+		e.preventDefault();
+		return false;
+	});
+ 
+// Client side form validation
+    if(jQuery('#forgot_password').length)
+		jQuery('#forgot_password').validate();
 	
 });

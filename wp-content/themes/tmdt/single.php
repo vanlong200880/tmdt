@@ -26,7 +26,6 @@ get_header(); ?>
 								<div class="row">
 									<div class="col-md-6">
                     <?php twentyfourteen_post_thumbnail(); ?>
-                    <!--<img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/real-1.jpg" alt="">-->
 									</div>
 									<div class="col-md-6 show-info-dt">
                     <h5><?php the_title(); ?></h5>
@@ -166,7 +165,7 @@ get_header(); ?>
 												<?php 
 											$attachment_id = get_post_thumbnail_id(get_the_ID());
 											if (!empty($attachment_id)) { 
-												the_post_thumbnail(array(132, 88)); ?>
+												the_post_thumbnail(array(188, 122)); ?>
 											<?php }else{ ?>
 											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
 										<?php	} ?>
