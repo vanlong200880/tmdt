@@ -35,8 +35,8 @@ if(wpmd_is_tablet()){
 }
 if(wpmd_is_phone())
 {
-	$width = 480;
-	$height = 320;
+	$width = 767;
+	$height = 511;
 }
 if($cats){
 	?>
