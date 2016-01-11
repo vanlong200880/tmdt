@@ -50,9 +50,9 @@ function uni_search_form( $form ) {
 		$list .= '</ul>';
 	}
 	$form = '
-	<form class="navbar-form navbar-left form-inline" method="get" id="searchform" role="search" action="' . home_url( '/' ) . '">
+	<form class="navbar-form navbar-left form-inline" method="get" id="searchform" role="search" action="' . home_url( '/tim-kiem' ) . '">
         <div class="form-group form-group-sp">
-				<input type="text" class="form-control" value="' . get_search_query() . '" name="s" id="s">
+				<input type="text" class="form-control" value="' . get_search_query() . '" name="keyword" id="s">
 					'.$list.'
             <button type="submit" id="searchsubmit" value="'. esc_attr__( 'Search' ) .'" class="btn btn-default">
                 <i class="fa fa-search"></i>
@@ -126,5 +126,5 @@ function the_excerpt_max_charlength($length = 0) {
     {
         $str = implode( ' ', $str);
     }
-    echo $str;
+    return $str;
 }

@@ -1,5 +1,12 @@
 <?php
 	wp_reset_postdata();
+	$width = 183;
+	$height = 122;
+	if(wpmd_is_phone())
+	{
+		$width = 360;
+		$height = 240;
+	}
 	$tab_args = array (					 
 			'post_status'    => 'publish',		
 			'order'          => 'DESC',
@@ -32,7 +39,7 @@
             <?php 
 									$attachment_id = get_post_thumbnail_id(get_the_ID());
 									if (!empty($attachment_id)) { 
-										the_post_thumbnail(array(183,122)); ?>
+										the_post_thumbnail(array($width,$height)); ?>
 									<?php }else{ ?>
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
 								<?php	} ?>
@@ -45,7 +52,7 @@
               </a>
             </p>
 						<p class="address">
-							<?php the_excerpt_max_charlength(12); ?>
+							<?php echo the_excerpt_max_charlength(12); ?>
 						</p>
             <p>
               <span>Bình chọn:</span>

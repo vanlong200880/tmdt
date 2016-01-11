@@ -106,7 +106,7 @@ if($cats){
 										<p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
 										<div class="wrapp-info">
 											<p class="address">
-												<?php the_excerpt_max_charlength(30); ?>
+												<?php echo the_excerpt_max_charlength(30); ?>
 											</p>
 											<p>
 												<span>Bình chọn:</span>
@@ -115,7 +115,7 @@ if($cats){
 										</div>
 										
 										<?php if(get_field('address')): ?>
-											<p class="description"><?php the_excerpt_max_charlength(20); ?></p>
+											<p class="description"><?php echo the_excerpt_max_charlength(20); ?></p>
 										<?php endif; ?>
 									</figcaption>
 								</figure>
@@ -165,7 +165,7 @@ if($cats){
 										</a>
 									</p>
 									<p class="address">
-										<?php the_excerpt_max_charlength(15); ?>
+										<?php echo the_excerpt_max_charlength(15); ?>
 									</p>
 										<p>
 											<span>Bình chọn:</span>
@@ -249,7 +249,7 @@ if($cats){
 										</p>
 										<div class="wrapp-info">
 											<p class="address">
-												<?php the_excerpt_max_charlength(20); ?>
+												<?php echo the_excerpt_max_charlength(20); ?>
 											</p>
 										<p>
 											<span>Bình chọn:</span>
@@ -257,7 +257,7 @@ if($cats){
 										</p>
 										</div>
 										<?php if(get_field('address')): ?>
-											<p class="description"><?php the_excerpt_max_charlength(20); ?></p>
+											<p class="description"><?php echo the_excerpt_max_charlength(20); ?></p>
 										<?php endif; ?>
 		
 									</figcaption>
@@ -309,7 +309,7 @@ if($cats){
 												</a>
 											</p>
 											<p class="address">
-												<?php the_excerpt_max_charlength(12); ?>
+												<?php echo the_excerpt_max_charlength(12); ?>
 											</p>
 											<p>
 												<span>Bình chọn:</span>

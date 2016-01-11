@@ -22,7 +22,7 @@ get_header(); ?>
 		<div class="row">
 <?php
 wp_reset_postdata();
-$keyword = $_GET['s'];
+$keyword = $_GET['keyword'];
 if(!empty($keyword)){
 	$data = getListCategory('news');
 	$slug = '';
@@ -54,13 +54,14 @@ if(!empty($keyword)){
 	$args['posts_per_page'] = 4;
 	$args['paged'] = $paged;
 	
-	
 	$my_the_query = new WP_Query( $args );
+	
+//	var_dump($my_the_query);
+	$pagename = get_query_var('pagename');
   if($my_the_query->have_posts()): ?>
 		<div class="col-md-8 show-search">
       <ul class="row" id="list-map">
 		<?php 
-    
     $jsonData = array();
     while ($my_the_query->have_posts()){
 			$my_the_query->the_post(); 
@@ -73,11 +74,12 @@ if(!empty($keyword)){
       // create json map
       $address = get_field('address');
       $dataLatLng = geocode($address);
+			$des = the_excerpt_max_charlength(30);
       $jsonData[] = array(
         'title' => get_the_title(),
         'lng' => $dataLatLng[0],
         'lat' => $dataLatLng[1],
-        'address' => '<p class="address">'.get_field('address').'</p>',
+        'address' => '<p class="address">'.$des.'</p>',
         'vote' => '<p><span>Bình chọn:</span>'.do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]').'</p>',
         'comment' => '<p class="review">Bình luận: <span>23.000</span></p>',
         'img' => $img,
@@ -91,8 +93,8 @@ if(!empty($keyword)){
 			<div class="row">
 			<div class="paging col-md-12">
 					<?php	 wp_pagenavi(array('query' => $my_the_query )) ;
-					?>
 					
+					?>
 			</div>
 		</div>
 		</div>

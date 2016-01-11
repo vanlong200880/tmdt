@@ -98,16 +98,14 @@ jQuery(document).ready(function ($) {
 				'user_login': $('#user_login').val(), 
 				'security': $('#forgotsecurity').val(), 
 			},
-			success: function(data){					
+			success: function(data){
 				$('p.status',ctrl).text(data.message);				
 			}
 		});
 		e.preventDefault();
-		return false;
-	});
- 
-// Client side form validation
+		// Client side form validation
     if(jQuery('#forgot_password').length)
 		jQuery('#forgot_password').validate();
-	
+		return false;
+	});	
 });

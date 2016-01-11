@@ -37,7 +37,7 @@
 						<?php if(get_field('address')): ?><p class="address">
 							<?php echo get_field('address'); ?></p> 
 						<?php else: ?>
-						<p class="address"><?php the_excerpt_max_charlength(20); ?></p>
+						<p class="address"><?php echo the_excerpt_max_charlength(20); ?></p>
 								<?php endif; ?>
 						<p>
 							<span>Bình chọn:</span>

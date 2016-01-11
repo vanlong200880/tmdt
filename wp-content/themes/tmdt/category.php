@@ -45,7 +45,7 @@ get_header(); ?>
                 <?php the_title(); ?>
               </a>
             </p>
-            <p class="address"><?php the_excerpt_max_charlength(12); ?></p>
+            <p class="address"><?php echo the_excerpt_max_charlength(12); ?></p>
             <p>
               <span>Bình chọn:</span>
               <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
