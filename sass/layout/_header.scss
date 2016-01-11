@@ -178,3 +178,25 @@
 		}
 	} 
 }
+.ui-widget {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px;
+}
+ul.ui-widget-content{   
+    min-width: 364px;
+    background-color: #fff !important;
+    background:none;
+    border: 1px solid rgba(0,0,0,.15);
+    li{
+        border-bottom:1px solid #e7e7e7;
+        padding: 5px 10px;
+        color: #333;
+        &:last-child{
+            border-bottom:none;
+        }
+        &:focus{
+            outline: none !important;
+            background-color: #d5d5d5;
+        }
+    }
+}
