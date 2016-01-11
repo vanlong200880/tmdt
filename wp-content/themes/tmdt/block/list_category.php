@@ -33,6 +33,11 @@ if(wpmd_is_tablet()){
 	$width = 380;
 	$height = 300;
 }
+if(wpmd_is_phone())
+{
+	$width = 480;
+	$height = 320;
+}
 if($cats){
 	?>
 <section class="all-article">

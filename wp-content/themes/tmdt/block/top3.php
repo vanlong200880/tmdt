@@ -54,7 +54,5 @@
         </figure>
       </div>
 		<?php	} ?>
-			
 		</div>
-		
 <?php } ?>
