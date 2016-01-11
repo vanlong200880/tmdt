@@ -314,4 +314,3 @@ global $current_user;
 				</div><!--end navigation-->
 			</header>
       <?php endif; ?>
-    <?php get_template_part('block/block_category');  ?>

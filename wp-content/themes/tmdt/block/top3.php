@@ -4,6 +4,10 @@
   if(wpmd_is_tablet()){
     $item = 6;
   }
+	$char = 25;
+	if(wpmd_is_phone()){
+		$char = 15;
+	}
 	$args = array (					 
 			'post_status'    => 'publish',		
 			'order'          => 'DESC',
@@ -41,7 +45,7 @@
                 <?php the_title(); ?>
               </a>
             </p>
-						<p class="address"><?php the_excerpt_max_charlength(25); ?></p>
+						<p class="address"><?php the_excerpt_max_charlength($char); ?></p>
             <p>
               <span>Bình chọn:</span>
               <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>

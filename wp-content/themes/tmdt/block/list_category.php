@@ -27,7 +27,12 @@ $cats = array();
 	usort($cats, function($a, $b) {
     return $a->order - $b->order;
 });
-
+$width = 280;
+$height = 200;
+if(wpmd_is_tablet()){
+	$width = 380;
+	$height = 300;
+}
 if($cats){
 	?>
 <section class="all-article">
@@ -86,7 +91,7 @@ if($cats){
 										<?php 
 									$attachment_id = get_post_thumbnail_id(get_the_ID());
 									if (!empty($attachment_id)) { 
-										the_post_thumbnail(array(280, 200)); ?>
+										the_post_thumbnail(array($width, $height)); ?>
 									<?php }else{ ?>
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
 								<?php	} ?>
@@ -143,7 +148,7 @@ if($cats){
 										<?php 
 									$attachment_id = get_post_thumbnail_id(get_the_ID());
 									if (!empty($attachment_id)) { 
-										the_post_thumbnail(array(280, 200)); ?>
+										the_post_thumbnail(array($width, $height)); ?>
 									<?php }else{ ?>
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
 								<?php	} ?>
@@ -225,7 +230,7 @@ if($cats){
 										<?php 
 									$attachment_id = get_post_thumbnail_id(get_the_ID());
 									if (!empty($attachment_id)) {
-										the_post_thumbnail(array(280, 200)); ?>
+										the_post_thumbnail(array($width, $height)); ?>
 									<?php }else{ ?>
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
 								<?php	} ?>
@@ -286,7 +291,7 @@ if($cats){
                       <?php 
                         $attachment_id = get_post_thumbnail_id(get_the_ID());
                         if (!empty($attachment_id)) { 
-                          the_post_thumbnail(array(280, 200)); ?>
+                          the_post_thumbnail(array($width, $height)); ?>
                         <?php }else{ ?>
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
                       <?php	} ?>

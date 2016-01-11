@@ -9,7 +9,7 @@
 
 get_header(); 
 ?>
-
+<?php get_template_part('block/block_category');  ?>
 <section class="categories details user all-article">
 				<div class="container">
 					<div class="col-md-12">

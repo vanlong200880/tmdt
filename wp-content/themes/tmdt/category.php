@@ -10,7 +10,7 @@
  */
 
 get_header(); ?>
-
+<?php get_template_part('block/block_category');  ?>
 <section id="categories" class="categories all-article">
   <div class="container">
     <div class="row">
