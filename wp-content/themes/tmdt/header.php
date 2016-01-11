@@ -131,60 +131,67 @@ global $current_user;
     <header id="header">
       <div class="container">
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-xs-6 logo-sp">
             <a class="navbar-brand-sp" href="<?php echo esc_url( home_url( '/' ) ); ?>">
               <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt=""> 
            </a>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-6 text-right">
             <span class="menu-top">
               <i class="fa fa-bars"></i>
             </span>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <span class="menu-mb"><i class="fa fa-list"></i></span>
-          </div>
-          <div class="col-xs-4">
-            <div class="form-search">
-              <i class="fa fa-search"></i>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="user-post navbar-right">
-              <a data-toggle="modal" data-target="#login-form">
-                <span class="fa fa-file-text-o"></span>
-                Đăng tin
-              </a>
-            </div>
-          </div>
-        </div>
+		  
+		  
+        
       </div>
+		<div class="row">
+			  <div class="menu-top-mobile navigation">
+				<nav  class="navbar navbar-default">
+				  <div class="container">
+					<div class="row">
+					  <div class="col-md-12">
+						<?php
+						  wp_nav_menu( array(
+							  'theme_location' => 'primary',
+							  'menu'=> 'top_menu',
+							  'menu_class' => 'nav navbar-nav',
+							  'container_class' => '',
+						  ) );
+						?>
+					  </div>
+					</div>
+				  </div>
+				</nav>
+			  </div>
+		  </div>
+		<div class="row menu-sp-header">
+		  <div class="col-xs-4">
+			<span class="menu-mb"><i class="fa fa-list"></i></span>
+		  </div>
+		  <div class="col-xs-4">
+			<div class="form-search">
+			  <i class="fa fa-search"></i>
+			</div>
+		  </div>
+		  <div class="col-xs-4">
+			<div class="user-post navbar-right">
+			  <a data-toggle="modal" data-target="#login-form">
+				<span class="fa fa-file-text-o"></span>
+				Đăng tin
+			  </a>
+			</div>
+		  </div>
+		</div>
     </header>
+	
     <div class="menu-sp-2-search">
       <div class="container">
         <?php	get_search_form() ?>
       </div>
     </div>
-    <div class="menu-top-mobile navigation">
-      <nav  class="navbar navbar-default">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'primary',
-                    'menu'=> 'top_menu',
-                    'menu_class' => 'nav navbar-nav',
-                    'container_class' => '',
-                ) );
-              ?>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
+    
     <?php endif; ?>
 
     <?php if(wpmd_is_notphone()): ?>

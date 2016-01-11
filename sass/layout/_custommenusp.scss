@@ -1,4 +1,5 @@
 /*Fix menu for mobile */
+@media (max-width:767px){
 	html, body{
 		position: relative;
 	}
@@ -86,7 +87,7 @@
 		font-size: 30px;
 		padding-top: 15px;
 	}
-	.menu-sp-2{
+	.menu-sp-header{
 		margin: 5px 0 10px;
 		background-color: #e30513;
 		width: 100%;
@@ -94,24 +95,67 @@
 		line-height: 30px;
 		color: #f4f4f4;
 		text-align: center;
+		.col-xs-4{
+			border-right:1px solid #ff7885;
+			&:last-child{
+				border-right: none;
+			}
+		}
+		.user-post{
+			a{
+				color: #fff;
+			}
+		}
+		i.fa{
+			font-size: 18px;
+		}
+		span{
+			i.fa-list{
+				position: relative;
+				top: 2px;
+			}
+		}
 	}
-	.menu-sp-2 .col-xs-4{
-		border-right:1px solid #ff7885;
+	.menu-top_menu-container{
+		background-color: $color-grey;
+		ul{
+			li{
+				padding-left: 10px;
+				border-bottom: 1px solid #d5d5d5;
+				&:first-child{
+					border-top: 1px solid #d5d5d5;
+				}
+			}
+		}
 	}
-	.menu-sp-2 .col-xs-4:last-child{
-		border-right: none;
+	.menu-showing{
+		#header{
+			border-bottom: none;
+			.logo-sp{
+				padding-top: 3px;
+			}
+		}
 	}
-	.menu-sp-2 i.fa{
-		margin-right: 5px;
-		font-size: 16px;
-		font-weight: normal;
+	.menu-mobile{
+		.mobile-login{
+			.wrap-user{
+				width: 100%;
+				display: block;
+				padding: 7px;		
+				ul{
+					li{
+						display: inline-block;
+						a{
+							color: #000;
+							margin-right: 7px;
+							span.fa{
+								margin-right: 3px;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
-	.menu-sp-2 .language{
-		position: absolute;
-		right: 0;
-	}
-	.menu-sp-2 .language a{
-		height: 22px;
-    	width: 35px;
-    	margin-left: 0;
-	}
+}
+	
