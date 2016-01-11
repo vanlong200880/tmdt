@@ -49,11 +49,11 @@ global $current_user;
                 <ul class="dropdown-menu" aria-labelledby="dropdownUser">
                   <li>
                     <span class="fa fa-pencil-square"></span>
-                    <a href="<?php echo get_site_url() ?>/edit-profile/">Thay đổi tài khoản</a>
+                    <a href="<?php echo get_site_url() ?>/account/">Thông tin tài khoản</a>
                   </li>
                   <li>
                     <span class="fa fa-pencil-square"></span>
-                    <a href="<?php echo get_site_url() ?>/change-password/">Đổi mật khẩu</a>
+                    <a href="<?php echo get_site_url() ?>/edit-profile/">Thay đổi tài khoản</a>
                   </li>
                   <li>
                     <span class="fa fa-file-text-o"></span>
@@ -206,7 +206,12 @@ global $current_user;
 										<li>
 											<a class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown">
 												<span class="avarta">
-                          <?php echo get_avatar(get_the_author_meta($current_user->user_email), $size = '22'); ?> 
+                          <?php
+                           if(get_user_meta(1, 'user_avatar', true)){ ?>
+                            <img src="<?php echo get_user_meta(1, 'user_avatar', true); ?>" alt="<?php echo $current_user->display_name ?>">
+                           <?php }else{ ?>
+                             <span class="fa fa-user"></span>
+                           <?php } ?>
 												</span>
 												<?php echo $current_user->display_name ?>
 												<span class="caret"></span>
@@ -214,11 +219,11 @@ global $current_user;
 											<ul class="dropdown-menu" aria-labelledby="dropdownUser">
                         <li>
                           <span class="fa fa-pencil-square"></span>
-                          <a href="<?php echo get_site_url() ?>/edit-profile/">Thay đổi tài khoản</a>
+                          <a href="<?php echo get_site_url() ?>/account/">Thông tin tài khoản</a>
                         </li>
                         <li>
                           <span class="fa fa-pencil-square"></span>
-                          <a href="<?php echo get_site_url() ?>/change-password/">Đổi mật khẩu</a>
+                          <a href="<?php echo get_site_url() ?>/edit-profile/">Thay đổi tài khoản</a>
                         </li>
                         <li>
                           <span class="fa fa-file-text-o"></span>

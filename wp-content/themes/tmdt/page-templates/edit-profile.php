@@ -51,6 +51,7 @@ get_header();
 
 						<div id="sidebar" class="col-md-3">
 							<?php get_template_part('block/menu-user-profile'); ?>
+              <?php get_template_part('block/menu_right'); ?>
 						</div>
 					</div>
 
