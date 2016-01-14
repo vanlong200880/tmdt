@@ -101,7 +101,7 @@
 	<?php wp_footer(); ?>
 
     
-<div class="modal fade bs-example-modal-sm login-form-1" id="login-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade bs-example-modal-sm login-form" id="login-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 	  <div class="modal-dialog modal-sm" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -155,36 +155,36 @@
               <?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>
             
             <div class="form-group">
-              <label for="signonname" class="col-sm-4 control-label">Tên đăng nhập:<span class="validation">*</span> </label>
-              <div class="col-sm-8">
+              <label for="signonname" class="col-sm-3 control-label">Tên đăng nhập:<span class="validation">*</span> </label>
+              <div class="col-sm-9">
                  <input id="signonname" type="text" name="signonname" class="form-control required">
               </div>
             </div>
             
             <div class="form-group">
-              <label for="email" class="col-sm-4 control-label">Email:<span class="validation">*</span> </label>
-              <div class="col-sm-8">
+              <label for="email" class="col-sm-3 control-label">Email:<span class="validation">*</span> </label>
+              <div class="col-sm-9">
                  <input id="email" type="text" class="form-control required email" name="email">
               </div>
             </div>
             
             <div class="form-group">
-              <label for="signonpassword" class="col-sm-4 control-label">Mật khẩu:<span class="validation">*</span> </label>
-              <div class="col-sm-8">
+              <label for="signonpassword" class="col-sm-3 control-label">Mật khẩu:<span class="validation">*</span> </label>
+              <div class="col-sm-9">
                  <input id="signonpassword" type="password" class="form-control required" name="signonpassword" >
               </div>
             </div>
             
             <div class="form-group">
-              <label for="password2" class="col-sm-4 control-label">Nhập lại mật khẩu:<span class="validation">*</span> </label>
-              <div class="col-sm-8">
+              <label for="password2" class="col-sm-3 control-label">Nhập lại mật khẩu:<span class="validation">*</span> </label>
+              <div class="col-sm-9">
                  <input type="password" id="password2" class="form-control required" name="password2" equalTo ="#signonpassword" maxlength="40">
               </div>
             </div>
             
             <div class="form-group">
-              <label for="security" class="col-sm-4 control-label"></label>
-              <div class="col-sm-8">
+              <label for="security" class="col-sm-3 control-label"></label>
+              <div class="col-sm-9">
                  <div class="row">
                     <div class="col-sm-3">
                        <input class="btn btn-primary submit_button " type="submit" value="Đăng ký">

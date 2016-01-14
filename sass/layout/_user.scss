@@ -93,6 +93,9 @@
 					@include border-radius(4px);
 				}
 			}
+			.show-article-details{
+				
+			}
 		}
 	}
 	.title-user{
@@ -113,6 +116,12 @@
 					color: #000;
 					&:hover{
 						color: $color-base;
+					}
+					span.icon-9, .icon-5, .icon-4, .icon-8, .icon-6, .icon-7{
+						font-size: 18px;
+						margin-right: 5px;
+						position: relative;
+						top: 4px;
 					}
 				}
 				&:last-child{

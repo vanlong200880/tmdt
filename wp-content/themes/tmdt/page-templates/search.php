@@ -100,21 +100,7 @@ if(!empty($keyword)){
 		</div>
 			<div class="col-md-4">
         <div id="map" style="width: 100%; height: 380px"></div>
-        <style>
-          .show-map{
-            position: absolute;
-            width: 350px;
-            height: 200px;
-            border: 1px solid #000;
-            background: #FFF;
-            color: #000;
-            display: none;
-            z-index: 1054;
-          }
-          .show-map:hover{
-            display: block !important;
-          }
-        </style>
+
         <div class="show-map"></div>
 				<table border="1"> 
           <tr> 
@@ -195,7 +181,7 @@ if(!empty($keyword)){
 //                infowindow.open(map,marker);
                   var projection = overlay.getProjection(); 
                   var pixel = projection.fromLatLngToContainerPixel(marker.getPosition());
-                  $(".show-map").css({top: pixel.y, left: pixel.x - 330, 'display': 'block'});
+                  $(".show-map").css({top: pixel.y - 5, left: pixel.x - 330, 'display': 'block'});
                   $(".show-map").empty().append(contentString);
                 });
                 // Switch icon on marker mouseover and mouseout
@@ -258,7 +244,7 @@ if(!empty($keyword)){
                   var lng = beach.lat;
                   var point = new google.maps.LatLng(lat,lng);
                   var html = '<div class="row">';
-                  html += '<div class="col-md-8">';
+                  html += '<div class="col-md-8 hover-info">';
                   html += '<p class="name"><a href="'+beach.baseurl+'">'+beach.title+'</a></p>';
                   html += beach.vote;
                   html += beach.comment;
