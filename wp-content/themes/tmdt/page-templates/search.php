@@ -112,7 +112,7 @@ if(!empty($keyword)){
             </td> 
           </tr> 
         </table>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDig37w0D8HPxteA9wKJCRtjMI2DuZNCWQ&language=vi"></script>
+        <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDig37w0D8HPxteA9wKJCRtjMI2DuZNCWQ&language=vi"></script>-->
 				<script>
           //<![CDATA[
           var side_bar_html = "";

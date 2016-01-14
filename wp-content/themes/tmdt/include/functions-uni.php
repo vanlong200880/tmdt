@@ -49,16 +49,19 @@ function uni_search_form( $form ) {
 		}
 		$list .= '</ul>';
 	}
+	$keyword = '';
+	if(isset($_GET['keyword'])){
+		$keyword = $_GET['keyword'];
+	}
 	$form = '
 	<form class="navbar-form navbar-left form-inline" method="get" id="searchform" role="search" action="' . home_url( '/tim-kiem' ) . '">
         <div class="form-group form-group-sp">
-				<input type="text" class="form-control" value="' . get_search_query() . '" name="keyword" id="keyword">
+				<input type="text" class="form-control" value="' . $keyword . '" name="keyword" id="keyword">
 					'.$list.'
             <button type="submit" id="searchsubmit" value="'. esc_attr__( 'Search' ) .'" class="btn btn-default">
                 <i class="fa fa-search"></i>
             </button>
 		</div>
-		
 	</form>';
 
 	return $form;
