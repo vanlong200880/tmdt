@@ -271,7 +271,9 @@ if(!empty($keyword)){
           { 
             size: new google.maps.Size(150,50)
           });
-
+					jQuery(document).ready(function($){
+					initialize();
+					})
         </script>
         
 

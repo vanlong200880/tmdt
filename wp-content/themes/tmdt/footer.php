@@ -226,9 +226,6 @@
         </div>
       </div>
     </div>
-  
-		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/dark-hive/jquery-ui.css">
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript">
     jQuery(document).ready(function($){
       // user login
@@ -257,7 +254,7 @@
 			$('#searchAjax span').each(function(i,ele){
 				sources.push({'label': $(ele).text(), 'value': $(ele).text(), 'key' : $(ele).attr('data-key')});
 			});
-    $("#s").autocomplete({
+    $("#keyword").autocomplete({
         source: sources,
         minLength: 0,
 				select: function (event, ui){

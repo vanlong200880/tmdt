@@ -87,7 +87,6 @@ if($the_query->have_posts()){
 											</a>
 										<figcaption>
 											<p><a href="<?php echo (get_post_status(get_the_ID()) != 'pending')? get_the_permalink(): '#'; ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
-											<?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
 											<p class="edit-delete">
                         <a href="<?php echo get_site_url() ?>/edit-post/?pid=<?php echo get_the_ID(); ?>&action=edit">
 													<span class="fa fa-pencil-square"></span>

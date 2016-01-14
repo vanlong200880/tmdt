@@ -30,7 +30,7 @@ global $current_user;
 	<![endif]-->
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> <?php echo (is_page('tim-kiem'))?'onload="initialize()"':'' ?>>
+<body <?php body_class(); ?>>
   <?php if(wpmd_is_phone()): ?>
 	<div class="menu-mobile">
     <div class="menu-sp-left mCustomScrollbar">
