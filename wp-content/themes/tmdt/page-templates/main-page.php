@@ -15,22 +15,17 @@ get_header();
 					<div class="col-md-12">
 						<div class="row">
 							<?php
-				// Start the Loop.
-				while ( have_posts() ) : the_post();
-				endwhile;
-			?>
-
-							
+								// Start the Loop.
+								while ( have_posts() ) : the_post(); ?>
 							 <ol class="breadcrumb">
-									
 										<?php if(function_exists('bcn_display'))
 										{
 												bcn_display();
 										}?>
 								</ol>
+							<?php endwhile; ?>
 						</div>
 					</div>
-
 					<div class="row">
 						<div class="col-md-9">
 							<div class="main-page">

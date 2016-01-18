@@ -18,10 +18,16 @@ if(!is_user_logged_in())
 				<div class="container">
 					<div class="col-md-12">
 						<div class="row">
-							<ol class="breadcrumb">
-								<li><a href="#">Trang chủ</a></li>
-								<li class="active">Thông tin người dùng</li>
-							</ol>	
+							<?php
+								// Start the Loop.
+								while ( have_posts() ) : the_post(); ?>
+							 <ol class="breadcrumb">
+										<?php if(function_exists('bcn_display'))
+										{
+												bcn_display();
+										}?>
+								</ol>
+							<?php endwhile; ?>
 						</div>	
 					</div>
 
