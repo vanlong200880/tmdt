@@ -113,10 +113,6 @@ if($cats){
 												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
 											</p>
 										</div>
-										
-										<?php if(get_field('address')): ?>
-											<p class="description"><?php echo the_excerpt_max_charlength(20); ?></p>
-										<?php endif; ?>
 									</figcaption>
 								</figure>
 							</div>
@@ -256,9 +252,6 @@ if($cats){
 											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
 										</p>
 										</div>
-										<?php if(get_field('address')): ?>
-											<p class="description"><?php echo the_excerpt_max_charlength(20); ?></p>
-										<?php endif; ?>
 		
 									</figcaption>
 								</figure>
