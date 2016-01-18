@@ -8,6 +8,10 @@
  */
 
 get_header();
+if(!is_user_logged_in())
+{
+  wp_redirect( home_url());
+}
 //$pid = $_GET['pid'];
 //$action = $_GET['action'];
 //$arr = array('edit', 'del');

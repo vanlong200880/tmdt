@@ -10,6 +10,10 @@
 get_header(); ?>
 <?php 
  global $current_user;
+ if(!is_user_logged_in())
+{
+  wp_redirect( home_url());
+}
 ?>
 <section class="categories details user all-article">
 	<div class="container">
@@ -60,7 +64,9 @@ get_header(); ?>
 			</div><!--end left-user-->
 
 			<div id="sidebar" class="col-md-3">
+        <?php get_template_part('block/menu_right'); ?>
 				<?php get_template_part('block/menu-user-profile'); ?>
+        
 			</div>
 		</div>
 

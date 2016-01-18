@@ -131,3 +131,11 @@ function the_excerpt_max_charlength($length = 0) {
     }
     return $str;
 }
+
+function hide_admin_bar_from_front_end(){
+  if (is_blog_admin()) {
+    return true;
+  }
+  return false;
+}
+add_filter( 'show_admin_bar', 'hide_admin_bar_from_front_end' );

@@ -9,6 +9,10 @@
 
 get_header(); 
 global $current_user;
+if(!is_user_logged_in())
+{
+  wp_redirect( home_url());
+}
 $filter = array();
 if(isset($_GET['filter']) && $_GET['filter'] == 'pending'){
 	$filter = array('pending');

@@ -8,12 +8,10 @@
  */
 
 get_header();
-//$pid = $_GET['pid'];
-//$action = $_GET['action'];
-//$arr = array('edit', 'del');
-//if(!isset($pid) || !is_numeric($pid) || !in_array($action, $arr)){
-//	wp_redirect( home_url(). '/list-user-post/'); exit;
-//}
+if(!is_user_logged_in())
+{
+  wp_redirect( home_url());
+}
 ?>
 
 <section class="categories details user all-article">
@@ -56,8 +54,9 @@ get_header();
 						</div><!--end left-user-->
 
 						<div id="sidebar" class="col-md-3">
-							<?php get_template_part('block/menu-user-profile'); ?>
               <?php get_template_part('block/menu_right'); ?>
+							<?php get_template_part('block/menu-user-profile'); ?>
+              
 						</div>
 					</div>
 

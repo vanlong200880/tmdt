@@ -39,6 +39,9 @@ define('DB_COLLATE', '');
 define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/tmdt');
 define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/tmdt');
 
+define( 'WPCF7_ADMIN_READ_CAPABILITY', 'manage_options' );
+define( 'WPCF7_ADMIN_READ_WRITE_CAPABILITY', 'manage_options' );
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
