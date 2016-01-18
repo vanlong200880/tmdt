@@ -11,6 +11,8 @@
 	$char = 25;
 	if(wpmd_is_phone()){
 		$char = 15;
+		$row = 'row';
+		$col = 'col-sm-12';
 	}
 	$args = array (					 
 			'post_status'    => 'publish',		
