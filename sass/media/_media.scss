@@ -11,11 +11,11 @@
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
 	@import "responsive/tablet_768_1024_Landscape";
 }
+@media  (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape){
+	@import "responsive/tablet_1024_Landscape";
+}
 @media (max-width:767px){
 	@import "responsive/tablet_767";
-}
-@media screen and (min-width: 1024px) and (orientation: landscape){
-	@import "responsive/tablet_1024_Landscape";
 }
 @media (min-width:640px) and (max-width: 767px){
 	@import "responsive/tablet_640_767";

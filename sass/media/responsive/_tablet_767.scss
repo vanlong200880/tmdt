@@ -137,7 +137,7 @@
 
 .user{
 	.all-content-user{
-		margin-bottom:0;
+            margin-bottom: 10px;
 		.content-user{
 			padding: 5px;
 			.form-horizontal{
@@ -145,13 +145,44 @@
 					display: none;
 				}
 			}
+                        .info-user-accout{
+                            span.left{
+                                width: 33%;
+                            }
+                        }
 		}
+                .title-form-user{
+                    h2{
+                        padding-left: 5px;
+                        font-size: 14px;
+                        .status{
+                            font-size: 12px;
+                        }
+                    }
+                }
+                .content-post{
+                    .show-article-details{
+                        margin-bottom: 5px;
+                        padding-bottom: 10px;
+                    }
+                }
 	}
 }
-
+.details{
+    margin-bottom: 0;
+}
+.categories {
+    .breadcrumb{
+        margin-bottom: 10px;
+        padding: 5px 0;
+    }
+}
 #footer{
 	.title-footer{
 		padding: 15px 0 0;
+                h3{
+                    font-size: 16px;
+                }
 	}
 	.title-footer.infomation{
 		.menu-top_menu-container{
