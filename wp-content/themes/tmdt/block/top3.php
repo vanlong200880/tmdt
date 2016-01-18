@@ -1,8 +1,12 @@
 <?php
 	wp_reset_postdata();
   $item = 3;
+	$row = '';
+	$col = '';
   if(wpmd_is_tablet()){
     $item = 6;
+		$row = 'row';
+		$col = 'col-sm-4';
   }
 	$char = 25;
 	if(wpmd_is_phone()){
@@ -24,11 +28,11 @@
 		);
 		$the_query = new WP_Query( $args ); 
 		if($the_query->have_posts()){?>
-		<div class="top-sub-adv">
+		<div class="top-sub-adv <?php echo $row; ?>">
 			<?php while ($the_query->have_posts()){ 
 				$the_query->the_post(); 
 				?>
-      <div class="show-adv">
+      <div class="show-adv <?php echo $col; ?>">
         <figure>
           <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 						<?php 
