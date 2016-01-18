@@ -14,7 +14,15 @@ get_header();
 				<div class="container">
 					<div class="col-md-12">
 						<div class="row">
+							<?php
+				// Start the Loop.
+				while ( have_posts() ) : the_post();
+				endwhile;
+			?>
+
+							
 							 <ol class="breadcrumb">
+									
 										<?php if(function_exists('bcn_display'))
 										{
 												bcn_display();

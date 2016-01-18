@@ -24,8 +24,9 @@ if(isset($_GET['filter']) && $_GET['filter'] == 'pending'){
 		<div class="col-md-12">
 			<div class="row">
 				<ol class="breadcrumb">
-					<li><a href="#">Trang chủ</a></li>
-					<li class="active">Thông tin người dùng</li>
+					<li><a href="<?php echo get_site_url() ?>">Trang chủ</a></li>
+					<li><a href="<?php echo get_site_url() ?>/account/">Thông tin tài khoản</a></li>
+					<li class="active">Danh sách bài đăng</li>
 				</ol>	
 			</div>	
 		</div>
@@ -35,7 +36,7 @@ if(isset($_GET['filter']) && $_GET['filter'] == 'pending'){
 					<div class="title-form-user">
 						<h2>
 							<span class="fa fa-file-text-o"></span>
-							Thông tin bài post
+							Danh sách bài đăng
 							<div class="status">
 								<span>Trạng thái</span>
 								<select name="user-post-user" id="user-post-filter">

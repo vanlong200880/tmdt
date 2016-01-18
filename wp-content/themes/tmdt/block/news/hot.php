@@ -45,7 +45,7 @@
                 <?php the_title(); ?>
               </a>
             </p>
-						<p class="address">
+						<p class="description">
 							<?php echo the_excerpt_max_charlength(12); ?>
 						</p> 
             <p>
@@ -93,7 +93,7 @@ wp_reset_postdata();
                 <?php the_title(); ?>
               </a>
             </p>
-            <p class="address">
+            <p class="description">
 							<?php echo the_excerpt_max_charlength(12); ?>
 						</p>
             <p>

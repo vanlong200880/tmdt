@@ -67,7 +67,9 @@ get_header(); ?>
                 <?php the_title(); ?>
               </a>
             </p>
-            <?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
+            <p class="description">
+							<?php echo the_excerpt_max_charlength(12); ?>
+						</p>
             <p>
               <span>Bình chọn:</span>
               <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>

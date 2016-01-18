@@ -237,7 +237,7 @@ function twentyfourteen_scripts() {
 	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri() );
   wp_enqueue_style( 'twentyfourteen-style-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array());
   wp_enqueue_style( 'twentyfourteen-style-font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array());
-	wp_enqueue_style( 'twentyfourteen-style-font-icon', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/dark-hive/jquery-ui.css', array());
+	wp_enqueue_style( 'twentyfourteen-style-font-js-lib', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/dark-hive/jquery-ui.css', array());
   wp_enqueue_style( 'twentyfourteen-style-font-icon', get_template_directory_uri() . '/css/font-icon.css', array());
 	wp_enqueue_style( 'twentyfourteen-style-jquery-mCustomScrollbar', get_template_directory_uri() . '/css/jquery.mCustomScrollbar.css', array() );
   wp_enqueue_style( 'twentyfourteen-style-custommenu', get_template_directory_uri() . '/css/custom-scroll-menu.css', array());
