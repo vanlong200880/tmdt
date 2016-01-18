@@ -113,6 +113,10 @@ if($cats){
 												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
 											</p>
 										</div>
+										
+										<?php if(get_field('address')): ?>
+											<p class="description"><?php echo the_excerpt_max_charlength(20); ?></p>
+										<?php endif; ?>
 									</figcaption>
 								</figure>
 							</div>
@@ -252,6 +256,9 @@ if($cats){
 											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
 										</p>
 										</div>
+										<?php if(get_field('address')): ?>
+											<p class="description"><?php echo the_excerpt_max_charlength(20); ?></p>
+										<?php endif; ?>
 		
 									</figcaption>
 								</figure>
@@ -301,9 +308,11 @@ if($cats){
 													<?php the_title(); ?>
 												</a>
 											</p>
+											<?php if(!wpmd_is_tablet()): ?>
 											<p class="address">
 												<?php echo the_excerpt_max_charlength(12); ?>
 											</p>
+											<?php endif; ?>
 											<p>
 												<span>Bình chọn:</span>
 												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
