@@ -133,6 +133,13 @@ get_header(); ?>
 								</div><!--end tab-content-->
 
 							</div><!--end tab-content-details-->
+							
+								<div class="share-post">
+									<!-- Go to www.addthis.com/dashboard to customize your tools -->
+									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50dd5241008a00cc" async="async"></script>
+									<!-- Go to www.addthis.com/dashboard to customize your tools -->
+									<div class="addthis_sharing_toolbox"></div>
+							</div>
 
 						</div><!--end content-details-->
 						<div id="sidebar" class="col-md-3">
@@ -197,6 +204,7 @@ get_header(); ?>
 
 <?php
 get_footer(); ?>
+
 <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>    
 <script type="text/javascript">
 jQuery(document).ready(function(){
