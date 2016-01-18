@@ -4,7 +4,7 @@
 	$row = '';
 	$col = '';
   if(wpmd_is_tablet()){
-    $item = 6;
+//    $item = 6;
 		$row = 'row';
 		$col = 'col-sm-4';
   }
@@ -35,7 +35,7 @@
       <div class="show-adv <?php echo $col; ?>">
         <figure>
           <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-						<?php 
+						<?php
 									$attachment_id = get_post_thumbnail_id(get_the_ID());
 									if (!empty($attachment_id)) { 
 										the_post_thumbnail('full'); ?>

@@ -237,9 +237,9 @@ if(!empty($keyword)){
           var myOptions = {
             zoom: 12,
             center: new google.maps.LatLng(10.7596132, 106.6644058),
-            mapTypeControl: true,
+            mapTypeControl: false,
             mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-            navigationControl: true,
+            navigationControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           }
           map = new google.maps.Map(document.getElementById("map"),

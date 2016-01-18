@@ -274,6 +274,7 @@ function twentyfourteen_scripts() {
 	wp_enqueue_script( 'twentyfourteen-bootstrap-script-ui','//code.jquery.com/ui/1.11.4/jquery-ui.js', array( 'jquery' ), true );
   wp_enqueue_script( 'twentyfourteen-script-jquery-mCustomScrollbar', get_template_directory_uri() . '/js/jquery.mCustomScrollbar.js', array( 'jquery' ), true );
   wp_enqueue_script( 'twentyfourteen-script-owl-carousel-min', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ), true );
+	wp_enqueue_script( 'twentyfourteen-script-scrolltofixed', get_template_directory_uri() . '/js/jquery-scrolltofixed.js', array( 'jquery' ), true );
   wp_enqueue_script( 'twentyfourteen-script-custom', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
