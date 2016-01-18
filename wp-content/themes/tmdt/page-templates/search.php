@@ -90,6 +90,19 @@ if(!empty($keyword)){
         
 		<?php } ?>
 			</ul>
+			<?php
+			$defaultLng = 10.7596132;
+			$defaultLat = 106.6644058;
+			if($jsonData){
+				foreach ($jsonData as $val){
+					if(!empty($val['lng']) || !empty($val['lat'])){
+						$defaultLng = $val['lng'];
+						$defaultLat = $val['lat'];
+						break;
+					}
+				}
+			}
+?>
 			<div class="row">
 			<div class="paging col-md-12">
 					<?php	 wp_pagenavi(array('query' => $my_the_query )) ;
@@ -170,7 +183,7 @@ if(!empty($keyword)){
                 icon: gicons[color],
                 shadow: iconShadow,
                 map: map,
-                title: name,
+//                title: name,
                 zIndex: Math.round(latlng.lat()*-100000)<<5
                 });
             var overlay = new google.maps.OverlayView();
@@ -224,7 +237,7 @@ if(!empty($keyword)){
           // create the map
           var myOptions = {
             zoom: 12,
-            center: new google.maps.LatLng(10.7596132, 106.6644058),
+            center: new google.maps.LatLng(<?php echo $defaultLng; ?>, <?php echo $defaultLat; ?>),
             mapTypeControl: true,
             mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
             navigationControl: true,
