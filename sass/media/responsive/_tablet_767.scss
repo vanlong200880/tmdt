@@ -50,7 +50,7 @@
 				width: 50%;
 				float: left;
 				p, span{
-					font-size: 11px;
+					font-size: 12px;
 					color: $color-address;
 				}
 				p{
@@ -91,11 +91,11 @@
 				a{
 					&:hover{
 						color: #000;
-						span.icon-9, .icon-5, .icon-4, .icon-8, .icon-6, .icon-7{
+						span.icon-icon-health-9, .icon-icon-health-5, .icon-icon-health-4, .icon-icon-health-8, .icon-icon-health-6, .icon-icon-health-7{
 							color: #000;
 						}
 					}
-					span.icon-9, .icon-5, .icon-4, .icon-8, .icon-6, .icon-7{
+					span.icon-icon-health-9, .icon-icon-health-5, .icon-icon-health-4, .icon-icon-health-8, .icon-icon-health-6, .icon-icon-health-7{
 						font-size: 20px;
 						color: #575756;
 						display: inline-flex;
@@ -132,6 +132,20 @@
 	}
 	.owl-theme, .owl-controls{
 		margin:5px 0 10px;
+	}
+}
+
+.user{
+	.all-content-user{
+		margin-bottom:0;
+		.content-user{
+			padding: 5px;
+			.form-horizontal{
+				p{
+					display: none;
+				}
+			}
+		}
 	}
 }
 
