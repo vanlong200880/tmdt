@@ -82,6 +82,11 @@
 			margin-bottom: 10px;
 		}
 	}
+        .show-article-details{
+            &:last-child{
+                margin-bottom: 10px;
+            }
+        }
 }
 
 .wrap-new-adv{
@@ -170,11 +175,28 @@
 }
 .details{
     margin-bottom: 0;
+    .content-details{
+        .tab-content{
+            padding: 10px;
+        }
+    }
+    .adv-details{
+        margin-bottom: 10px;
+    }
 }
 .categories {
     .breadcrumb{
         margin-bottom: 10px;
         padding: 5px 0;
+    }
+}
+.tab-vote, .tab-content-details{
+    .nav-tabs{
+        li{
+            a{
+                padding:0 15px;
+            }
+        }
     }
 }
 #footer{
