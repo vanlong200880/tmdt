@@ -119,6 +119,11 @@ global $current_user;
 				$(".menu-top").on('click', function(){
 					$(".menu-top-mobile").slideToggle();
 				});
+        
+        // mobile login 
+        $(".mobile-login .wrap-user ul li a").on('click', function(){
+          $("#side-menu-overlay").trigger('click');
+        });
 			});
 		</script> 
 		

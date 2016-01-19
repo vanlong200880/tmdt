@@ -180,7 +180,6 @@ get_header(); ?>
 											</a>
 										<figcaption>
 											<p><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
-											<?php if(get_field('address')): ?><p class="address"><?php echo get_field('address'); ?></p> <?php endif; ?>
 											<p>
 												<span>Bình chọn:</span>
 												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
