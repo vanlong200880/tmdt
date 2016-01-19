@@ -49,6 +49,8 @@
 								'menu'=> 'top_menu',
 								'menu_class' => '',
 								'container_class' => '',
+                'before' => '',
+              'link_before' => '<span class="fa fa-angle-right"></span>'
 						) );
 					?>
         </div>
