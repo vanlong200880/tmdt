@@ -156,6 +156,16 @@ get_header(); ?>
 										'posts_per_page' => 5,
                     'post__not_in'   => array(get_the_ID())
                 );
+                $col = '';
+                $row = '';
+                if(wpmd_is_phone()){
+                  $col = 'col-xs-6';
+                  $row = 'row';
+                }
+                if(wpmd_is_tablet()){
+                  $col = 'col-sm-4';
+                  $row = 'row';
+                }
                 $featured_the_query = new WP_Query( $featured ); 
                 if($featured_the_query){ ?>
 								<div class="title-details">
@@ -164,9 +174,10 @@ get_header(); ?>
 										Bài liên quan
 									</h2>
 								</div>
+              <div class="post-related <?php echo $row; ?>">
 								<?php	while ($featured_the_query->have_posts()){
                         $featured_the_query->the_post(); ?>
-								<div class="show-article-details">
+								<div class="show-article-details <?php echo $col; ?>">
 									<figure>
 										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 												<?php 
@@ -188,6 +199,7 @@ get_header(); ?>
 									</figure>
 								</div>
 									<?php } ?>
+                </div>
 								<?php }
 ?>
 							<div class="adv-details">
