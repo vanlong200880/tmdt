@@ -51,7 +51,7 @@ if(!empty($keyword)){
 		$args['s'] = $keyword;
 	}
 	
-	$args['posts_per_page'] = 4;
+	$args['posts_per_page'] = 40;
 	$args['paged'] = $paged;
 	
 	$my_the_query = new WP_Query( $args );
@@ -74,12 +74,17 @@ if(!empty($keyword)){
       // create json map
       $address = get_field('address');
       $dataLatLng = geocode($address);
-			$des = the_excerpt_max_charlength(30);
+			if(wpmd_is_notdevice()){
+				$des = '<p class="address">'.the_excerpt_max_charlength(25).'</p>';
+			}else{
+				$des = '';
+			}
+			
       $jsonData[] = array(
         'title' => get_the_title(),
         'lng' => $dataLatLng[0],
         'lat' => $dataLatLng[1],
-        'address' => '<p class="address">'.$des.'</p>',
+        'address' => $des,
         'vote' => '<p><span>Bình chọn:</span>'.do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]').'</p>',
         'comment' => '<p class="review">Bình luận: <span>23.000</span></p>',
         'img' => $img,
