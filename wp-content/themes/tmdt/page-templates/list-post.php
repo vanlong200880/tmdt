@@ -82,7 +82,7 @@ $the_query = new WP_Query( $args );
 if($the_query->have_posts()){
 	while ($the_query->have_posts()){
 		$the_query->the_post(); ?>
-							<li class="col-md-4 col-sm-6 col-xs-12">
+							<li class="col-md-4 col-sm-6 col-xs-12 list-post-item">
 								<div class="show-article-details">
 									<figure>
 										<a href="<?php echo (get_post_status(get_the_ID()) != 'pending')? get_the_permalink(): '#'; ?>" title="<?php the_title(); ?>">
