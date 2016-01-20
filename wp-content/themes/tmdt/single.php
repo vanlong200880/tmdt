@@ -21,7 +21,7 @@ get_header(); ?>
 					</div>
 
 					<div class="row">
-						<div class="col-md-9 content-details">
+						<div class="col-md-9 col-sm-8 col-xs-12 content-details">
 							<div class="info-top-details">
 								<div class="row">
 									<div class="col-md-6">
@@ -58,7 +58,12 @@ get_header(); ?>
 											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
 										</p>
 										<p class="share-social">
-											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/share-social.png" alt="">
+											<div class="share-post">
+												<!-- Go to www.addthis.com/dashboard to customize your tools -->
+												<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50dd5241008a00cc" async="async"></script>
+												<!-- Go to www.addthis.com/dashboard to customize your tools -->
+												<div class="addthis_sharing_toolbox"></div>
+										</div>
 										</p>
 										
 									</div>
@@ -133,16 +138,8 @@ get_header(); ?>
 								</div><!--end tab-content-->
 
 							</div><!--end tab-content-details-->
-							
-								<div class="share-post">
-									<!-- Go to www.addthis.com/dashboard to customize your tools -->
-									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50dd5241008a00cc" async="async"></script>
-									<!-- Go to www.addthis.com/dashboard to customize your tools -->
-									<div class="addthis_sharing_toolbox"></div>
-							</div>
-
 						</div><!--end content-details-->
-						<div id="sidebar" class="col-md-3">
+						<div id="sidebar" class="col-md-3 col-sm-4 col-xs-12">
 							<?php
 							global $post;
 
