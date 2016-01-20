@@ -40,7 +40,7 @@ if(isset($_GET['filter']) && $_GET['filter'] == 'pending'){
 			</div>	
 		</div>
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-9 col-sm-9 col-xs-12">
 				<div class="all-content-user">
 					<div class="title-form-user">
 						<h2>
@@ -82,7 +82,7 @@ $the_query = new WP_Query( $args );
 if($the_query->have_posts()){
 	while ($the_query->have_posts()){
 		$the_query->the_post(); ?>
-							<li class="col-md-4 col-sm-6 col-xs-6">
+							<li class="col-md-4 col-sm-6 col-xs-12">
 								<div class="show-article-details">
 									<figure>
 										<a href="<?php echo (get_post_status(get_the_ID()) != 'pending')? get_the_permalink(): '#'; ?>" title="<?php the_title(); ?>">
@@ -132,7 +132,7 @@ if($the_query->have_posts()){
 				</div>
 			</div><!--end left-user-->
 
-			<div id="sidebar" class="col-md-3">
+			<div id="sidebar" class="col-md-3 col-sm-3 col-xs-12">
 				<?php get_template_part('block/menu-user-profile'); ?>
 				<?php get_template_part('block/menu_right'); ?>
 
