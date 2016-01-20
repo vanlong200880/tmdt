@@ -19,7 +19,7 @@ get_header(); ?>
         </ol>
       </div>
     </div>
-		<div class="row">
+		<div class="row search-tablet">
 <?php
 wp_reset_postdata();
 $keyword = $_GET['keyword'];
@@ -59,7 +59,7 @@ if(!empty($keyword)){
 //	var_dump($my_the_query);
 	$pagename = get_query_var('pagename');
   if($my_the_query->have_posts()): ?>
-		<div class="col-md-8 show-search">
+		<div class="col-md-8 col-sm-6 col-xs-12 show-search">
       <ul class="row" id="list-map">
 		<?php 
     $jsonData = array();
@@ -111,7 +111,7 @@ if(!empty($keyword)){
 			</div>
 		</div>
 		</div>
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-6 col-xs-12 search-repend">
         <div id="map" style="width: 100%; height: 380px"></div>
 
         <div class="show-map"></div>
@@ -208,7 +208,7 @@ if(!empty($keyword)){
             gmarkers.push(marker);
             // add a line to the side_bar html
             var marker_num = gmarkers.length-1;
-            side_bar_html += '<li class="col-md-6" onmouseover="gmarkers['+marker_num+'].setIcon(gicons.yellow)" onmouseout="gmarkers['+marker_num+'].setIcon(gicons.blue)">';
+            side_bar_html += '<li class="col-md-6 col-sm-12 col-xs-12" onmouseover="gmarkers['+marker_num+'].setIcon(gicons.yellow)" onmouseout="gmarkers['+marker_num+'].setIcon(gicons.blue)">';
               side_bar_html += '<div class="show-article-details">';
                 side_bar_html += '<figure>';
                   side_bar_html += '<a href="'+baseurl+'" title="'+name+'">';
@@ -302,6 +302,12 @@ if(!empty($keyword)){
 		</div>
 	</div>
 </section>
-
+<?php if(wpmd_is_phone()): ?>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		$(".show-search").appendTo(".search-tablet");
+	});
+</script>
+<?php endif; ?>
 <?php
 get_footer(); ?>
