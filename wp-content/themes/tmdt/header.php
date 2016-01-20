@@ -84,16 +84,6 @@ global $current_user;
         <h2>Danh mục<span></span></h2>
         <ul class="menu-left">
         <?php get_template_part('block/menu_category'); ?>
-					<li>sdfsdfsdfsdfsd</li>
-					<li>sdfsdfsdfsdfsd</li>
-					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
-					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
-					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
-					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
-					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
-					
-					
-					
         </ul>
         <span class="close-menu"><i class="fa fa-times"></i></span>
       </div>
