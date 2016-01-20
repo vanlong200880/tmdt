@@ -22,6 +22,14 @@ get_header(); ?>
 		<div class="row search-tablet">
 <?php
 wp_reset_postdata();
+$width = 178;
+$height = 118;
+if(wpmd_is_phone())
+{
+	$width = 380;
+	$height = 300;
+}
+
 $keyword = $_GET['keyword'];
 if(!empty($keyword)){
 	$data = getListCategory('news');
@@ -67,7 +75,7 @@ if(!empty($keyword)){
 			$my_the_query->the_post(); 
       $attachment_id = get_post_thumbnail_id(get_the_ID());
       if (!empty($attachment_id)) { 
-        $img = get_the_post_thumbnail(get_the_ID(),array(178,118));
+        $img = get_the_post_thumbnail(get_the_ID(),array($width,$height));
       }else{
       $img = '<img src="'.get_stylesheet_directory_uri().'/images/default.jpg" alt="'.get_the_title().'" title="'.get_the_title().'">';
       }
@@ -213,7 +221,7 @@ if(!empty($keyword)){
             gmarkers.push(marker);
             // add a line to the side_bar html
             var marker_num = gmarkers.length-1;
-            side_bar_html += '<li class="col-md-6 col-sm-12 col-xs-12" onmouseover="gmarkers['+marker_num+'].setIcon(gicons.yellow)" onmouseout="gmarkers['+marker_num+'].setIcon(gicons.blue)">';
+            side_bar_html += '<li class="col-md-6 col-sm-12 col-xs-12 item-map" onmouseover="gmarkers['+marker_num+'].setIcon(gicons.yellow)" onmouseout="gmarkers['+marker_num+'].setIcon(gicons.blue)">';
               side_bar_html += '<div class="show-article-details">';
                 side_bar_html += '<figure>';
                   side_bar_html += '<a href="'+baseurl+'" title="'+name+'">';
