@@ -207,8 +207,8 @@ global $current_user;
 							<div class="col-md-12 text-right">
 								<div class="wrap-user">
                   <?php if (is_user_logged_in()) { ?>
-                    <ul>
-										<li>
+									<ul class="user_login">
+										<li class="dropdown">
 											<a class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown">
 												<span class="avarta">
                           <?php
@@ -241,7 +241,13 @@ global $current_user;
 											</ul>
 										</li>
 									</ul>
-                    
+									<script type="text/javascript">
+									$('ul.user_login li.dropdown').hover(function() {
+												$(this).find('.dropdown-menu').stop(true, true).fadeIn();
+											}, function() {
+												$(this).find('.dropdown-menu').stop(true, true).fadeOut();
+											});
+									</script>
 										<?php } else { get_template_part('ajax', 'auth'); ?>
                     <ul>
 													<li>
