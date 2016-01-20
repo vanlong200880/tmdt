@@ -164,9 +164,11 @@ if($cats){
 											<?php the_title(); ?>
 										</a>
 									</p>
+									<?php if(wpmd_is_phone()): ?>
 									<p class="address">
 										<?php echo the_excerpt_max_charlength(15); ?>
 									</p>
+									<?php endif; ?>
 										<p>
 											<span>Bình chọn:</span>
 											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
@@ -308,7 +310,7 @@ if($cats){
 													<?php the_title(); ?>
 												</a>
 											</p>
-											<?php if(!wpmd_is_tablet()): ?>
+											<?php if(wpmd_is_phone()): ?>
 											<p class="address">
 												<?php echo the_excerpt_max_charlength(12); ?>
 											</p>
