@@ -54,8 +54,9 @@ if(!is_user_logged_in())
 						</div><!--end left-user-->
 
 						<div id="sidebar" class="col-md-3">
-              <?php get_template_part('block/menu_right'); ?>
 							<?php get_template_part('block/menu-user-profile'); ?>
+              <?php get_template_part('block/menu_right'); ?>
+							
               
 						</div>
 					</div>

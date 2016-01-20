@@ -243,6 +243,7 @@ function twentyfourteen_scripts() {
   wp_enqueue_style( 'twentyfourteen-style-custommenu', get_template_directory_uri() . '/css/custom-scroll-menu.css', array());
   wp_enqueue_style( 'twentyfourteen-style-owl-carousel', get_template_directory_uri() . '/css/owl.carousel.css', array());
   wp_enqueue_style( 'twentyfourteen-style-owl-theme', get_template_directory_uri() . '/css/owl.theme.css', array());
+	wp_enqueue_style( 'twentyfourteen-style-owl-ads', get_template_directory_uri() . '/css/responsiveslides.css', array());
   wp_enqueue_style( 'twentyfourteen-style-custom', get_template_directory_uri() . '/css/main.css', array());
 
 	// Load the Internet Explorer specific stylesheet.
@@ -275,7 +276,8 @@ function twentyfourteen_scripts() {
   wp_enqueue_script( 'twentyfourteen-script-jquery-mCustomScrollbar', get_template_directory_uri() . '/js/jquery.mCustomScrollbar.js', array( 'jquery' ), true );
   wp_enqueue_script( 'twentyfourteen-script-owl-carousel-min', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ), true );
 	wp_enqueue_script( 'twentyfourteen-script-scrolltofixed', get_template_directory_uri() . '/js/jquery-scrolltofixed.js', array( 'jquery' ), true );
-  wp_enqueue_script( 'twentyfourteen-script-custom', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), true );
+  wp_enqueue_script( 'twentyfourteen-script-ads', get_template_directory_uri() . '/js/responsiveslides.min.js', array( 'jquery' ), true );
+	wp_enqueue_script( 'twentyfourteen-script-custom', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 

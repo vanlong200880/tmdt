@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
       slideSpeed : 300,
       paginationSpeed : 400,
       pagination : true,
-      paginationNumbers: true,
+      paginationNumbers: false,
           //singleItem : true,
       navigationText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
       rewindNav : true,

@@ -37,7 +37,7 @@ global $current_user;
       <div class="mobile-login">
           <div class="wrap-user">
             <?php if (is_user_logged_in()) { ?>
-              <ul>
+						<ul class="is_login">
               <li>
                 <a class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown">
                   <span class="avarta">
@@ -68,7 +68,7 @@ global $current_user;
             </ul>
 
               <?php } else { get_template_part('ajax', 'auth'); ?>
-              <ul>
+						<ul class="not_login">
                     <li>
                       <a data-toggle="modal" data-target="#register-form"><span class="fa fa-sign-in"></span>Đăng ký</a>
                     </li>
@@ -121,7 +121,7 @@ global $current_user;
 				});
         
         // mobile login 
-        $(".mobile-login .wrap-user ul li a").on('click', function(){
+        $(".mobile-login .wrap-user ul.not_login li a").on('click', function(){
           $("#side-menu-overlay").trigger('click');
         });
 			});
@@ -274,7 +274,17 @@ global $current_user;
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-								<?php echo adrotate_ad(11); ?>
+								<div class="slideshowHolder">
+									<?php echo adrotate_ad(11); ?>
+								</div>
+								<script type="text/javascript">
+									$(function () {
+									// Slideshow 1
+									$(".a-single").responsiveSlides({
+										speed: 800
+									});
+								});
+								</script>
 							</div>
 						</div>
 					</div>
