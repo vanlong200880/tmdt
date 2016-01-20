@@ -136,35 +136,13 @@
 							color: #000;
 						}
 					}
-					span.icon-icon-health-9, .icon-icon-health-5, .icon-icon-health-4, .icon-icon-health-8, .icon-icon-health-6, .icon-icon-health-7{
-						font-size: 20px;
-						color: #575756;
-						display: inline-flex;
-						position: relative;
-						top: 5px;
-						margin-right: 5px;
-					}
 				}
   			}
   			li.color-item-9, .color-item-5, .color-item-4, .color-item-8, .color-item-6, .color-item-7{
-  				a{
-  					&:after{
-  						content: " ";
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 5px;
-						height: 55px;
-						@include transition(width 0.2s);
-						z-index: -1;
-  					}
-  				}
   				&:hover{
   					a{
   						&:after{
-  							width: 100%;
-  							@include transition(width 0.2s);
-							background-color: transparent;
+  							width: 5px;
   						}
   					}
   				}
@@ -173,6 +151,16 @@
 	}
 	.owl-theme, .owl-controls{
 		margin:5px 0 10px;
+	}
+	.big-new-adv{
+		.owl-theme{
+			.owl-controls{
+				top:0;
+				margin-top: 0;
+				position: absolute;
+				right: 0;
+			}
+		}
 	}
 }
 
@@ -234,6 +222,19 @@
             }
         }
     }
+}
+.login-form{
+	.close{
+		span{
+			position: relative;
+			top: -2px;
+		}
+	}
+}
+.search{
+	.search-repend{
+		margin-bottom: 10px;
+	}
 }
 #footer{
 	.title-footer{

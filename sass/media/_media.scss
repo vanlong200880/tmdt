@@ -17,11 +17,11 @@
 @media (max-width:767px){
 	@import "responsive/tablet_767";
 }
-@media (min-width:640px) and (max-width: 767px){
+/*@media (min-width:640px) and (max-width: 767px){
 	@import "responsive/tablet_640_767";
-}
-@media (min-width:481px) and (max-width: 639px){
-	@import "responsive/mobile_481_639";
+}*/
+@media (min-width:481px) and (max-width: 767px){
+	@import "responsive/mobile_481_767";
 }
 @media (max-width:480px){
 	@import "responsive/mobile_480";

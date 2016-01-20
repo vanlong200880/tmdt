@@ -146,7 +146,7 @@
 			.owl-controls.clickable{
 				position: absolute;
 				right: 0;
-				bottom: 70px;
+				top: 5px;
 				margin-top: 0;
 				.owl-page{
 					span{
@@ -272,7 +272,7 @@
 	}
 	.viewmore{
 		text-align: center;
-		margin: 10px 0;
+		margin: 0 0 10px;
 	}
 }
 .tab-content-details{
@@ -363,6 +363,7 @@
 					max-height: 36px;
 					line-height: 18px;
 					margin-bottom: 5px;
+					overflow: hidden;
 				}
 				p, span{
 					font-size: 12px;
@@ -520,7 +521,8 @@
 					p.address{
 						margin-bottom: 0;
 						display: inline-block;
-						height: 45px;
+						max-height: 36px;
+						line-height: 18px;
 						overflow: hidden;
 					}
 				}
