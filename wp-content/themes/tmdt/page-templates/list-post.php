@@ -21,7 +21,13 @@ if(isset($_GET['filter']) && $_GET['filter'] == 'pending'){
 }else{
 	$filter = array('publish','pending');
 }
-
+$width = 269;
+$height = 179;
+if(wpmd_is_phone())
+{
+	$width = 360;
+	$height = 240;
+}
 ?>
 <section class="categories details user all-article">
 	<div class="container">
@@ -89,7 +95,7 @@ if($the_query->have_posts()){
 										<?php 
 											$attachment_id = get_post_thumbnail_id(get_the_ID());
 											if (!empty($attachment_id)) { 
-												the_post_thumbnail(array(269, 179)); ?>
+												the_post_thumbnail(array($width, $height)); ?>
 											<?php }else{ ?>
 											<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/default.jpg" alt="<?php the_title() ?>" title="<?php the_title() ?>">
 										<?php	} ?>
@@ -132,7 +138,7 @@ if($the_query->have_posts()){
 				</div>
 			</div><!--end left-user-->
 
-			<div id="sidebar" class="col-md-3 col-sm-3 col-xs-12">
+			<div id="sidebar" class="col-md-3 col-sm-3 col-xs-12 sidebar-user">
 				<?php get_template_part('block/menu-user-profile'); ?>
 				<?php get_template_part('block/menu_right'); ?>
 
