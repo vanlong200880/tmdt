@@ -116,7 +116,7 @@ if(!empty($keyword)){
 			</div>
 		</div>
 		</div>
-			<div class="col-md-4 col-sm-6 col-xs-12 search-repend">
+			<div id="sidebar" class="col-md-4 col-sm-6 col-xs-12 search-repend">
         <div id="map" style="width: 100%; height: 380px"></div>
 
         <div class="show-map"></div>
