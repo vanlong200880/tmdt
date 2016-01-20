@@ -84,6 +84,16 @@ global $current_user;
         <h2>Danh mục<span></span></h2>
         <ul class="menu-left">
         <?php get_template_part('block/menu_category'); ?>
+					<li>sdfsdfsdfsdfsd</li>
+					<li>sdfsdfsdfsdfsd</li>
+					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
+					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
+					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
+					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
+					<li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li><li>sdfsdfsdfsdfsd</li>
+					
+					
+					
         </ul>
         <span class="close-menu"><i class="fa fa-times"></i></span>
       </div>
@@ -91,7 +101,7 @@ global $current_user;
     </div>
     <script type="text/javascript">
 			jQuery(document).ready(function($){
-				$(".menu-left").css('height',$(window).height() - 40);
+				$(".menu-sp-left").css('height',$(window).height());
 				$("#header .menu-mb").on('click', function(){
 					$(".menu-mobile").addClass('site-page-frame');
 					$(".menu-showing").addClass('page-frame');
