@@ -74,17 +74,17 @@ if(!empty($keyword)){
       // create json map
       $address = get_field('address');
       $dataLatLng = geocode($address);
-			if(wpmd_is_notdevice()){
-				$des = '<p class="address">'.the_excerpt_max_charlength(25).'</p>';
-			}else{
-				$des = '';
-			}
-			
+//			if(wpmd_is_notdevice()){
+//				$des = '<p class="address">'.the_excerpt_max_charlength(25).'</p>';
+//			}else{
+//				$des = '';
+//			}
+//			
       $jsonData[] = array(
         'title' => get_the_title(),
         'lng' => $dataLatLng[0],
         'lat' => $dataLatLng[1],
-        'address' => $des,
+        'address' => '',
         'vote' => '<p><span>Bình chọn:</span>'.do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]').'</p>',
         'comment' => '<p class="review">Bình luận: <span>23.000</span></p>',
         'img' => $img,
