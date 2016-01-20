@@ -78,13 +78,24 @@
 		figure{
 			figcaption{
 				p{
-                                    span{
-                                            font-size: 10px;
-                                    }
-                                    img{
-                                            width: 10px;
-                                    }
+					span{
+							font-size: 10px;
+					}
+					img{
+							width: 10px;
+					}
 				}	
+			}
+		}
+	}
+	.show-sub{
+		figure{
+			figcaption{
+				p{
+					img{
+						width: 10px;
+					}
+				}
 			}
 		}
 	}
