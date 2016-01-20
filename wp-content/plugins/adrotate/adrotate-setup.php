@@ -507,7 +507,6 @@ function adrotate_database_install() {
 			`timer` int(15) unsigned NOT NULL default '0',
 			`bannerid` int(15) unsigned NOT NULL default '0',
 			`stat` char(1) NOT NULL default 'c',
-			`useragent` mediumtext NOT NULL,
 			`country` text NOT NULL,
 			`city` text NOT NULL,
 			PRIMARY KEY  (`id`),
@@ -804,6 +803,12 @@ function adrotate_database_upgrade() {
 			unset($advert, $bannercode);
 		}
 		adrotate_del_column("{$wpdb->prefix}adrotate", 'link');
+	}
+
+	// Database: 	56
+	// AdRotate:	3.14.2
+	if($adrotate_db_version['current'] < 56) {
+		adrotate_del_column("{$wpdb->prefix}adrotate_tracker", 'useragent');
 	}
 
 	update_option("adrotate_db_version", array('current' => ADROTATE_DB_VERSION, 'previous' => $adrotate_db_version['current']));

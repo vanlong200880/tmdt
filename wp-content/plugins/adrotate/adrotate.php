@@ -7,7 +7,7 @@ Author URI: http://ajdg.solutions/?pk_campaign=adrotatefree-pluginpage
 Description: The popular choice for monetizing your website with adverts while keeping things simple. Start making money today!
 Text Domain: adrotate
 Domain Path: /languages/
-Version: 3.14.1
+Version: 3.14.2
 License: GPLv3
 */
 
@@ -22,9 +22,9 @@ License: GPLv3
 ------------------------------------------------------------------------------------ */
 
 /*--- AdRotate values ---------------------------------------*/
-define("ADROTATE_DISPLAY", '3.14.1');
+define("ADROTATE_DISPLAY", '3.14.2');
 define("ADROTATE_VERSION", 380);
-define("ADROTATE_DB_VERSION", 55);
+define("ADROTATE_DB_VERSION", 56);
 /*-----------------------------------------------------------*/
 
 /*--- Load Files --------------------------------------------*/

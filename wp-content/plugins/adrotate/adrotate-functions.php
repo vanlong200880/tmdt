@@ -28,18 +28,27 @@ function adrotate_shortcode($atts, $content = null) {
 	if(!empty($atts['site'])) $site = 0; // Not supported in free version
 
 	$output = '';
-
-	if($adrotate_config['w3caching'] == "Y") $output .= '<!-- mfunc '.W3TC_DYNAMIC_SECURITY.' -->';
-
-	if($banner_id > 0 AND $group_ids == 0) { // Show one Ad
-		$output .= adrotate_ad($banner_id, true, 0, 0);
+	if($adrotate_config['w3caching'] == "Y") {
+		$output .= '<!-- mfunc '.W3TC_DYNAMIC_SECURITY.' -->';
+	
+		if($banner_id > 0 AND ($group_ids == 0 OR $group_ids > 0)) { // Show one Ad
+			$output .= 'echo adrotate_ad('.$banner_id.', true, 0, 0);';
+		}
+	
+		if($banner_id == 0 AND $group_ids > 0) { // Show group
+			$output .= 'echo adrotate_group('.$group_ids.', 0, 0, 0);';
+		}
+	
+		$output .= '<!-- /mfunc '.W3TC_DYNAMIC_SECURITY.' -->';
+	} else {
+		if($banner_id > 0 AND ($group_ids == 0 OR $group_ids > 0)) { // Show one Ad
+			$output .= adrotate_ad($banner_id, true, 0, 0);
+		}
+	
+		if($banner_id == 0 AND $group_ids > 0) { // Show group
+			$output .= adrotate_group($group_ids, 0, 0, 0);
+		}
 	}
-
-	if($banner_id == 0 AND $group_ids > 0) { // Show group 
-		$output .= adrotate_group($group_ids, 0, 0, 0);
-	}
-
-	if($adrotate_config['w3caching'] == "Y") $output .= '<!-- /mfunc -->';
 
 	return $output;
 }
@@ -168,7 +177,7 @@ function adrotate_count_impression($ad, $group = 0, $blog_id = 0, $impression_ti
 				$wpdb->insert($wpdb->prefix.'adrotate_stats', array('ad' => $ad, 'group' => $group, 'thetime' => $today, 'clicks' => 0, 'impressions' => 1));
 			}
 
-			$wpdb->insert($wpdb->prefix."adrotate_tracker", array('ipaddress' => $remote_ip, 'timer' => $now, 'bannerid' => $ad, 'stat' => 'i', 'useragent' => '', 'country' => '', 'city' => ''));
+			$wpdb->insert($wpdb->prefix."adrotate_tracker", array('ipaddress' => $remote_ip, 'timer' => $now, 'bannerid' => $ad, 'stat' => 'i', 'country' => '', 'city' => ''));
 		}
 	}
 } 
@@ -248,7 +257,7 @@ function adrotate_click_callback() {
 						$wpdb->insert($wpdb->prefix.'adrotate_stats', array('ad' => $ad, 'group' => $group, 'thetime' => $today, 'clicks' => 1, 'impressions' => 1));
 					}
 
-					$wpdb->insert($wpdb->prefix.'adrotate_tracker', array('ipaddress' => $remote_ip, 'timer' => $now, 'bannerid' => $ad, 'stat' => 'c', 'useragent' => $useragent, 'country' => '', 'city' => ''));
+					$wpdb->insert($wpdb->prefix.'adrotate_tracker', array('ipaddress' => $remote_ip, 'timer' => $now, 'bannerid' => $ad, 'stat' => 'c', 'country' => '', 'city' => ''));
 				}
 			}
 		}

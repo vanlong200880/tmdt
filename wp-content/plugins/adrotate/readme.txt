@@ -3,8 +3,8 @@ Contributors: adegans
 Donate link: http://meandmymac.net/donate/?pk_campaign=adrotatefree-readme
 Tags: ads, banner, commercial, admin, advertise, adrotator, plugin, random, rotator, ad, advertising, advertisement, block, blocks, advertiser, publisher, adsense, geo, geolocation, geotarget, chitika, clickbank, broadstreet, banner manager,advert manager, campaign manager, export, import, telize, maxmind, referrer, email, menu, statistics, stats, report, advert, adverts, popular, best, great, 2014, geoselect, geobytes, schedules, schedule, monetize, header, widget, javascript, jquery, tracking, clicks, impressions, rotate, zone, zones, sidebar, footer, content, posts, pages, 2015
 Requires at least: 3.8
-Tested up to: 4.4
-Stable tag: 3.14.1
+Tested up to: 4.4.1
+Stable tag: 3.14.2
 License: GPLv3
  
 The popular choice for monetizing your website with adverts while keeping things simple. Start making money today!
@@ -91,16 +91,26 @@ You can also post your questions on the [forum](https://ajdg.solutions/forums/?p
 
 Be a Pro and go Pro. With [AdRotate Pro](https://ajdg.solutions/products/adrotate-for-wordpress/?pk_campaign=adrotatefree-readme)!
 
-= 3.14.1 FREE =
-* [change] Few dashboard updates, better wording and such
-* [change] Removed obsolete 'link' column from database
-* [i18n] Updated translation strings
+= 3.14.2 FREE =
+* [change] Better W3 Total Cache support
+* [fix] Post injection not always showing with multiple groups
+* [fix] Removed obsolete useragent column from database
 
-= 3.18.2 PRO =
-* [change] Tweaks to Geo Targeting settings
+= 3.19 PRO =
+* [new] Post Injection extends to widgets
+* [new] Page Injection extends to widgets
+* [new] All new widgets for easier control and setup
+* [new] AdRotate Geo API v3
+* [new] AdRotate Update API v4
 * [change] Dashboard tweaks
-* [fix] Telize/GeoBytes not redirecting to AdRotate Geo properly
-* [i18n] Updated translation strings
+* [change] Better W3 Total Cache support
+* [fix] Post injection not always showing with multiple groups
+* [fix] Better day recognition for schedules
+* [fix] Correct schedule creation for renewing adverts
+* [fix] Correct device icons for adverts in groups and schedules
+* [fix] Removed obsolete useragent column from database
+* [fix] Better use of WP_Error for Geo Targeting
+* [fix] Better error reporting for Geo Targeting
 
 All recent changes are available on the [AdRotate website](https://ajdg.solutions/products/adrotate-for-wordpress/development/?pk_campaign=adrotatefree-readme).
 
@@ -108,10 +118,10 @@ NOTE: Unsolicited offers, parnterships, job offers, promotional emails or produc
 
 == Upgrade Notice ==
 
-= 3.14.1 FREE =
-* [change] Few dashboard updates, better wording and such
-* [change] Removed obsolete 'link' column from database
-* [i18n] Updated translation strings
+= 3.14.2 FREE =
+* [change] Better W3 Total Cache support
+* [fix] Post injection not always showing with multiple groups
+* [fix] Removed obsolete useragent column from database
 
 All recent changes are available on the [AdRotate website](https://ajdg.solutions/products/adrotate-for-wordpress/development/?pk_campaign=adrotatefree-readme).
 
