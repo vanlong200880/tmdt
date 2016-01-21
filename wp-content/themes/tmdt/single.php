@@ -63,9 +63,117 @@ get_header(); ?>
 												<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50dd5241008a00cc" async="async"></script>
 												<!-- Go to www.addthis.com/dashboard to customize your tools -->
 												<div class="addthis_sharing_toolbox"></div>
-										</div>
+											</div>
 										</p>
-										
+										<div class="vote_post">
+											<div>
+												<span>Vị trí tốt:</span>
+												<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+											</div>
+											<div>
+												<span>Giá cả:</span>
+												<input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+											</div>
+											<div>
+												<span>Chất lượng:</span>
+												<input id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+											</div>
+											<div>
+												<span>Phục vụ:</span>
+												<input id="ex4" data-slider-id='ex4Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+											</div>
+											<div>
+												<span>Không gian:</span>
+												<input id="ex5" data-slider-id='ex5Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+											</div>
+<!--											<div><input type="range" min="1" max="100" name="price" /><span></span><br></div>
+											<div><input type="range" min="1" max="10" name="quality" /><span></span><br></div>
+											<div><input type="range" min="1" max="10" name="service" /><span></span><br></div>
+											<div><input type="range" min="1" max="10" name="space" /><span></span><br></div>-->
+											
+											
+											
+											
+										</div>
+										<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-slider.css">
+										<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/bootstrap-slider.js"></script>
+										<script type="text/javascript">
+											jQuery(document).ready(function($){
+												$('#ex1').slider({
+													formatter: function(value) {
+														return 'Current value: ' + value;
+													}
+												});
+
+												// Without JQuery
+												var slider = new Slider('#ex1', {
+													formatter: function(value) {
+														return 'Current value: ' + value;
+													}
+												});
+												
+												$('#ex2').slider({
+													formatter: function(value) {
+														return 'Current value: ' + value;
+													}
+												});
+
+												// Without JQuery
+												var slider = new Slider('#ex2', {
+													formatter: function(value) {
+														return value;
+													}
+												});
+												
+												
+												$('#ex3').slider({
+													formatter: function(value) {
+														return value;
+													}
+												});
+
+												// Without JQuery
+												var slider = new Slider('#ex3', {
+													formatter: function(value) {
+														return value;
+													}
+												});
+												
+												$('#ex4').slider({
+													formatter: function(value) {
+														return 'Current value: ' + value;
+													}
+												});
+
+												// Without JQuery
+												var slider = new Slider('#ex4', {
+													formatter: function(value) {
+														return value;
+													}
+												});
+												
+												$('#ex5').slider({
+													formatter: function(value) {
+														return value;
+													}
+												});
+
+												// Without JQuery
+												var slider = new Slider('#ex5', {
+													formatter: function(value) {
+														return value;
+													}
+												});
+												
+											});
+										</script>
+										<style>
+											#ex2Slider .slider-selection,
+											#ex1Slider .slider-selection {
+	background: #BABABA;
+}
+
+										</style>
 									</div>
 								</div>
 							</div><!--end info-top-details-->
