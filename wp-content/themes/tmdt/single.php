@@ -5,8 +5,8 @@
  * @package WordPress
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
- */
-
+4 */
+global $current_user;
 get_header(); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 <section class="categories details all-article">
@@ -65,56 +65,89 @@ get_header(); ?>
 												<div class="addthis_sharing_toolbox"></div>
 											</div>
 										</p>
-										<div class="vote_post">
-											<div>
-												<span>Vị trí tốt:</span>
-												<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-											</div>
-											<div>
-												<span>Giá cả:</span>
-												<input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-											</div>
-											<div>
-												<span>Chất lượng:</span>
-												<input id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-											</div>
-											<div>
-												<span>Phục vụ:</span>
-												<input id="ex4" data-slider-id='ex4Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-											</div>
-											<div>
-												<span>Không gian:</span>
-												<input id="ex5" data-slider-id='ex5Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
-											</div>
-<!--											<div><input type="range" min="1" max="100" name="price" /><span></span><br></div>
-											<div><input type="range" min="1" max="10" name="quality" /><span></span><br></div>
-											<div><input type="range" min="1" max="10" name="service" /><span></span><br></div>
-											<div><input type="range" min="1" max="10" name="space" /><span></span><br></div>-->
-											
-											
-											
-											
-										</div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!-- Small modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-vote">Small modal</button>
+
+                    <div class="modal fade bs-example-modal-sm modal-vote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="vote_post">
+                            <form class="form-horizontal" id="voted_form" action="voted_form">
+                              <input type="hidden" id="user_id" name="user_id" value="<?php echo $current_user->ID; ?>">
+                              <input type="hidden" id="post_id" name="post_id" value="<?php echo get_the_ID(); ?>">
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label">Vị trí tốt:</label>
+                                <div class="col-sm-10">
+                                  <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label">Giá cả:</label>
+                                <div class="col-sm-10">
+                                  <input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label">Chất lượng:</label>
+                                <div class="col-sm-10">
+                                  <input id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label">Phục vụ:</label>
+                                <div class="col-sm-10">
+                                  <input id="ex4" data-slider-id='ex4Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label">Không gian:</label>
+                                <div class="col-sm-10">
+                                  <input id="ex5" data-slider-id='ex5Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                  <button type="submit" id="submit-vote" class="btn btn-default">Đánh giá</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
 										<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-slider.css">
 										<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/bootstrap-slider.js"></script>
 										<script type="text/javascript">
 											jQuery(document).ready(function($){
 												$('#ex1').slider({
 													formatter: function(value) {
-														return 'Current value: ' + value;
+														return value;
 													}
 												});
 
 												// Without JQuery
 												var slider = new Slider('#ex1', {
 													formatter: function(value) {
-														return 'Current value: ' + value;
+														return value;
 													}
 												});
 												
 												$('#ex2').slider({
 													formatter: function(value) {
-														return 'Current value: ' + value;
+														return value;
 													}
 												});
 
@@ -141,7 +174,7 @@ get_header(); ?>
 												
 												$('#ex4').slider({
 													formatter: function(value) {
-														return 'Current value: ' + value;
+														return value;
 													}
 												});
 
@@ -164,14 +197,16 @@ get_header(); ?>
 														return value;
 													}
 												});
-												
 											});
 										</script>
 										<style>
-											#ex2Slider .slider-selection,
-											#ex1Slider .slider-selection {
-	background: #BABABA;
-}
+                      #ex1Slider .slider-selection,
+                      #ex2Slider .slider-selection,
+                      #ex3Slider .slider-selection,
+											#ex4Slider .slider-selection,
+											#ex5Slider .slider-selection {
+                        background: #BABABA;
+                      }
 
 										</style>
 									</div>

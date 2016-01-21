@@ -37,3 +37,26 @@ function delete_table(){
 }
 register_activation_hook(__FILE__, "create_table");
 register_deactivation_hook(__FILE__, 'delete_table');
+
+
+
+
+add_action('init', 'voted_enqueue_script');
+function voted_enqueue_script(){
+  wp_enqueue_script( 'voted_js', plugins_url( '/js/vote.js', __FILE__ ), array('jquery'), true );
+//    wp_register_script('dvd_js', self::get_url( 'js/vote.js' ), array('jquery'), null, false);
+    wp_localize_script('voted_js', 'ajax', array('url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('voted_js');
+}
+function voted_action() {
+//  var_dump('sdfsdf');
+//    echo 'dgdfgdgdgdfg';
+//    $result = array('b' => 'sdf');
+//    $result = json_encode($result);
+//    echo $result;
+  $data = $_REQUEST['post_id'];
+    echo json_encode($data);
+    die();
+}
+add_action('wp_ajax_voted_action', 'voted_action');
+add_action('wp_ajax_nopriv_voted_action', 'voted_action');
