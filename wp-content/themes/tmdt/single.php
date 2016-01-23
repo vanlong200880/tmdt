@@ -19,7 +19,6 @@ get_header(); ?>
 							</ol>	
 						</div>	
 					</div>
-
 					<div class="row">
 						<div class="col-md-9 col-sm-8 col-xs-12 content-details">
 							<div class="info-top-details">
@@ -28,7 +27,27 @@ get_header(); ?>
                     <?php twentyfourteen_post_thumbnail(); ?>
 									</div>
 									<div class="col-md-6 show-info-dt">
-                    <h5><?php the_title(); ?></h5>
+                    <?php  $category = get_the_category(get_the_ID()); ?>
+                    <h5><?php the_title(); ?>
+                    <?php if($category[0]->slug == 'khuyen-mai' || $category[0]->slug == 'copon'): ?>
+                      <a id="btnPrint"><i class="fa fa-print" title="Print"></i></a>
+                        <script type="text/javascript">
+                          jQuery(document).ready(function($){
+                            $("#btnPrint").on("click", function () {
+                            var divContents = $("#dvContainer").html();
+                            var printWindow = window.open('', '');
+                            printWindow.document.write('<html><head><title><?php the_title(); ?></title>');
+                            printWindow.document.write('</head><body >');
+                            printWindow.document.write(divContents);
+                            printWindow.document.write('</body></html>');
+                            printWindow.document.close();
+                            printWindow.print();
+                            printWindow.close();
+                          });
+                          });
+                        </script>
+                      <?php endif; ?>
+                    </h5>
 										<p>
                       <span>Chuyên mục:</span>
                       <?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
@@ -57,6 +76,46 @@ get_header(); ?>
 											<span>Bình chọn:</span>
 											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
 										</p>
+                    <?php
+                    if($category[0]->slug == 'am-thuc-tiec'):
+                    $result = get_vote(get_the_ID());
+                    if($result):
+                    ?>
+                    <div class="share-voted">
+                      <ul>
+                        <li>
+                          <div id="view-quality" class="number-voted"><?php echo $result['quality'] ?></div>
+                          <div class="content-voted">Chất lượng</div>
+                        </li>
+                        <li>
+                          <div id="view-price" class="number-voted"><?php echo $result['price'] ?></div>
+                          <div class="content-voted">Giá cả</div>
+                        </li>
+                        <li>
+                          <div id="view-service" class="number-voted"><?php echo $result['service'] ?></div>
+                          <div class="content-voted">Phục vụ</div>
+                        </li>
+                        <li>
+                          <div id="view-position" class="number-voted"><?php echo $result['position'] ?></div>
+                          <div class="content-voted">Vị trí</div>
+                        </li>
+                        <li>
+                          <div id="view-space" class="number-voted"><?php echo $result['space'] ?></div>
+                          <div class="content-voted">Không gian</div>
+                        </li>
+                        <?php if(is_user_logged_in()): ?>
+                        <li>
+                          <a data-toggle="modal" data-target=".modal-vote">Đánh giá</a>
+                        </li>
+                        <?php else: ?>
+                        <li>
+                          <a data-toggle="modal" data-target="#login-form">Đánh giá</a>
+                        </li>
+                        <?php endif; ?>
+                      </ul>
+                    </div>
+                    <?php endif; ?>
+                    <?php endif; ?>
 										<p class="share-social">
 											<div class="share-post">
 												<!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -71,58 +130,64 @@ get_header(); ?>
                     
                     
                     
-                    
+                    <?php
+                    if($category[0]->slug == 'am-thuc-tiec'):
+                    ?>
                     <!-- Small modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-vote">Small modal</button>
-
                     <div class="modal fade bs-example-modal-sm modal-vote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                       <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                           <div class="vote_post">
-                            <form class="form-horizontal" id="voted_form" action="voted_form">
-                              <input type="hidden" id="user_id" name="user_id" value="<?php echo $current_user->ID; ?>">
-                              <input type="hidden" id="post_id" name="post_id" value="<?php echo get_the_ID(); ?>">
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Vị trí tốt:</label>
-                                <div class="col-sm-10">
-                                  <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                            <fieldset>
+                              <legend>Đánh giá</legend>
+                              <form class="form-horizontal" id="voted_form" action="voted_form">
+                                <input type="hidden" id="user_id" name="user_id" value="<?php echo $current_user->ID; ?>">
+                                <input type="hidden" id="post_id" name="post_id" value="<?php echo get_the_ID(); ?>">
+                                <div class="vote-message"></div>
+                                <div class="post-vote-item">
+                                  <div class="col-sm-12">
+                                    <label class="control-label">Vị trí tốt:</label>
+                                    <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                    <span id="ex1SliderVal">5</span>
+                                  </div>
                                 </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Giá cả:</label>
-                                <div class="col-sm-10">
-                                  <input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                <div class="post-vote-item">
+                                  <div class="col-sm-12">
+                                    <label class="ontrol-label">Giá cả:</label>
+                                    <input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                    <span id="ex2SliderVal">5</span>
+                                  </div>
                                 </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Chất lượng:</label>
-                                <div class="col-sm-10">
-                                  <input id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+
+                                <div class="post-vote-item">
+                                  <div class="col-sm-12">
+                                    <label class="control-label">Chất lượng:</label>
+                                    <input id="ex3" data-slider-id='ex3Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                    <span id="ex3SliderVal">5</span>
+                                  </div>
                                 </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Phục vụ:</label>
-                                <div class="col-sm-10">
-                                  <input id="ex4" data-slider-id='ex4Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+
+                                <div class="post-vote-item">
+                                  <div class="col-sm-12">
+                                    <label class="control-label">Phục vụ:</label>
+                                    <input id="ex4" data-slider-id='ex4Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                    <span id="ex4SliderVal">5</span>
+                                  </div>
                                 </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Không gian:</label>
-                                <div class="col-sm-10">
-                                  <input id="ex5" data-slider-id='ex5Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+
+                                <div class="post-vote-item">
+                                  <div class="col-sm-12">
+                                    <label class="control-label">Không gian:</label>
+                                    <input id="ex5" data-slider-id='ex5Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
+                                    <span id="ex5SliderVal">5</span>
+                                  </div>
                                 </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                  <button type="submit" id="submit-vote" class="btn btn-default">Đánh giá</button>
+
+                                <div class="post-vote-item">
+                                    <button type="submit" id="submit-vote" class="btn btn-default">Đánh giá</button>
                                 </div>
-                              </div>
-                            </form>
+                              </form>
+                            </fieldset>
                           </div>
                         </div>
                       </div>
@@ -132,83 +197,68 @@ get_header(); ?>
 										<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/bootstrap-slider.js"></script>
 										<script type="text/javascript">
 											jQuery(document).ready(function($){
-												$('#ex1').slider({
-													formatter: function(value) {
-														return value;
-													}
-												});
+                          var slider = new Slider("#ex1",{
+                            tooltip: 'hide',
+                            formatter: function(value) {
+                              return value;
+													}});
+                          $("#ex1").on("slide", function(slideEvt) {
+                            $("#ex1SliderVal").text(slideEvt.value);
+                          });
+                          slider.on("slide", function(slideEvt) {
+                            $("#ex1SliderVal").text(slideEvt.value);
+                          });
+                          
+                          var slider = new Slider("#ex2",{
+                            tooltip: 'hide',
+                            formatter: function(value) {
+                              return value;
+													}});
+                          $("#ex2").on("slide", function(slideEvt) {
+                            $("#ex2SliderVal").text(slideEvt.value);
+                          });
+                          slider.on("slide", function(slideEvt) {
+                            $("#ex2SliderVal").text(slideEvt.value);
+                          });
+                          
+                          var slider = new Slider("#ex3",{
+                            tooltip: 'hide',
+                            formatter: function(value) {
+                              return value;
+													}});
+                          $("#ex3").on("slide", function(slideEvt) {
+                            $("#ex3SliderVal").text(slideEvt.value);
+                          });
+                          slider.on("slide", function(slideEvt) {
+                            $("#ex3SliderVal").text(slideEvt.value);
+                          });
 
-												// Without JQuery
-												var slider = new Slider('#ex1', {
-													formatter: function(value) {
-														return value;
-													}
-												});
-												
-												$('#ex2').slider({
-													formatter: function(value) {
-														return value;
-													}
-												});
-
-												// Without JQuery
-												var slider = new Slider('#ex2', {
-													formatter: function(value) {
-														return value;
-													}
-												});
-												
-												
-												$('#ex3').slider({
-													formatter: function(value) {
-														return value;
-													}
-												});
-
-												// Without JQuery
-												var slider = new Slider('#ex3', {
-													formatter: function(value) {
-														return value;
-													}
-												});
-												
-												$('#ex4').slider({
-													formatter: function(value) {
-														return value;
-													}
-												});
-
-												// Without JQuery
-												var slider = new Slider('#ex4', {
-													formatter: function(value) {
-														return value;
-													}
-												});
-												
-												$('#ex5').slider({
-													formatter: function(value) {
-														return value;
-													}
-												});
-
-												// Without JQuery
-												var slider = new Slider('#ex5', {
-													formatter: function(value) {
-														return value;
-													}
-												});
+                          var slider = new Slider("#ex4",{
+                            tooltip: 'hide',
+                            formatter: function(value) {
+                              return value;
+													}});
+                          $("#ex4").on("slide", function(slideEvt) {
+                            $("#ex4SliderVal").text(slideEvt.value);
+                          });
+                          slider.on("slide", function(slideEvt) {
+                            $("#ex4SliderVal").text(slideEvt.value);
+                          });
+                          
+                          var slider = new Slider("#ex5",{
+                            tooltip: 'hide',
+                            formatter: function(value) {
+                              return value;
+													}});
+                          $("#ex5").on("slide", function(slideEvt) {
+                            $("#ex5SliderVal").text(slideEvt.value);
+                          });
+                          slider.on("slide", function(slideEvt) {
+                            $("#ex5SliderVal").text(slideEvt.value);
+                          });
 											});
 										</script>
-										<style>
-                      #ex1Slider .slider-selection,
-                      #ex2Slider .slider-selection,
-                      #ex3Slider .slider-selection,
-											#ex4Slider .slider-selection,
-											#ex5Slider .slider-selection {
-                        background: #BABABA;
-                      }
-
-										</style>
+                    <?php endif; ?>
 									</div>
 								</div>
 							</div><!--end info-top-details-->
@@ -226,7 +276,9 @@ get_header(); ?>
 								<div class="tab-content">
 									<div role="tabpanel" class="tab-pane active" id="info">
 										<div class="show-dt-editor">
+                      <div id="dvContainer">
                       <?php the_content(); ?>
+                      </div>
 											<p>Người đăng: 
                         <?php
                           if ( 'post' == get_post_type() )
@@ -236,27 +288,56 @@ get_header(); ?>
 										
 									</div><!--end info-->
 									<div role="tabpanel" class="tab-pane" id="map1">
-										<div class="load-map">
-                      <?php
-                          $address = get_field('address');
-                          if(!empty($address)){
-                            
+                    <?php
+                        $address = get_field('address');
+                        if(!empty($address)){
+                        $data_arr = geocode($address);
+                        if($data_arr){
 
-                          $data_arr = geocode($address);
-                          if($data_arr){
+                              $latitude = $data_arr[0];
+                              $longitude = $data_arr[1];
+                              $formatted_address = $data_arr[2];
+                        ?>
+                        <div class="load-map">
+                          <div id="gmap_canvas" style="width: 100%; height: 600px;">Loading map...</div>
+                        </div>
+                        <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>    
+                        <script type="text/javascript">
+                        jQuery(document).ready(function(){
+                          $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                            e.target
+                            e.relatedTarget
+                            init_map();
+                          })
+                          function init_map() {
+                                var myOptions = {
+                                    zoom: 14,
+                                    center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                };
+                                map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+                                marker = new google.maps.Marker({
+                                    map: map,
+                                    position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>)
+                                });
+                                infowindow = new google.maps.InfoWindow({
+                                    content: "<?php echo $formatted_address; ?>"
+                                });
+                                google.maps.event.addListener(marker, "click", function () {
+                                    infowindow.open(map, marker);
+                                });
+                                infowindow.open(map, marker);
+                            }
+                            google.maps.event.addDomListener(window, 'load', init_map);
+                        });
 
-                                $latitude = $data_arr[0];
-                                $longitude = $data_arr[1];
-                                $formatted_address = $data_arr[2];
-                          ?>
-                      <div id="gmap_canvas" style="width: 100%; height: 600px;">Loading map...</div>
-                      <?php } else{
-                              echo "No map found.";
-                          }
+                        </script>
+                    
+                    <?php } else{
+                            echo "No map found.";
                         }
-                      ?>
-											<!--<img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/map-1.jpg" alt="">-->
-										</div>
+                      }
+                    ?>
 									</div><!--end info-->
 									<div role="tabpanel" class="tab-pane" id="comment">
 										<div class="vote-top">
@@ -355,35 +436,3 @@ get_header(); ?>
 
 <?php
 get_footer(); ?>
-
-<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>    
-<script type="text/javascript">
-jQuery(document).ready(function(){
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-		e.target
-		e.relatedTarget
-		init_map();
-	})
-	function init_map() {
-        var myOptions = {
-            zoom: 14,
-            center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-        marker = new google.maps.Marker({
-            map: map,
-            position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>)
-        });
-        infowindow = new google.maps.InfoWindow({
-            content: "<?php echo $formatted_address; ?>"
-        });
-        google.maps.event.addListener(marker, "click", function () {
-            infowindow.open(map, marker);
-        });
-        infowindow.open(map, marker);
-    }
-    google.maps.event.addDomListener(window, 'load', init_map);
-});
-    
-</script>

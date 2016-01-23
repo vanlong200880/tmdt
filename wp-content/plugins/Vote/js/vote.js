@@ -7,10 +7,9 @@ jQuery(document).ready(function($) {
     var quality = $("#ex3").val();
     var service = $("#ex4").val();
     var space = $("#ex5").val();
-//    alert(space);
     var data = {
-      'post_id': user_id,
-      'user_id': post_id,
+      'user_id': user_id,
+      'post_id': post_id,
       'position': position,
       'price': price,
       'quality': quality,
@@ -24,10 +23,21 @@ jQuery(document).ready(function($) {
         dataType : "json",
         data: data,
         success : function (data){
-            console.log(data);
+          $(".vote-message").empty().append(data.message);
+          console.log(data);
+          if(data.result.length != 0){
+            $("#view-quality").empty().append(data.result.quality);
+            $("#view-price").empty().append(data.result.price);
+            $("#view-service").empty().append(data.result.service);
+            $("#view-space").empty().append(data.result.space);
+            $("#view-position").empty().append(data.result.position);
+          }
+          
+          setTimeout(function(){
+              $('.modal-vote').modal('hide');
+          }, 500);
         }
     });
-//    console.log(data);
     e.preventDefault();
   });
     

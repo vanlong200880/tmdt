@@ -1,0 +1,33 @@
+.share-voted{
+  display: inline-block;
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.share-voted ul li{
+  display: inline-block;
+  float: left;
+  padding-right: 20px;
+  text-align: center;
+}
+.share-voted ul li:last-child{
+  padding-right: 0;
+}
+.share-voted ul li .number-voted{
+  font-weight: bold;
+  color: #FF0000;
+  font-size: 16px;
+}
+.content-voted{
+  font-size: 12px;
+}
+#ex1Slider .slider-selection,
+#ex2Slider .slider-selection,
+#ex3Slider .slider-selection,
+#ex4Slider .slider-selection,
+#ex5Slider .slider-selection {
+  background: #BABABA;
+}
