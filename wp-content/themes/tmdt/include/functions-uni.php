@@ -1,5 +1,27 @@
 <?php
-
+  function check_user_init(){
+    global $current_user;
+    $url = $_SERVER['PHP_SELF'];
+    $url = explode('/', $url);
+    $arr = array('wp-login.php', 'wp-admin');
+    if(!empty($current_user->roles)){
+      $roleName = $current_user->roles;
+      if(strtolower($roleName[0]) == 'author' && (in_array($url[1], $arr) || in_array($url[2], $arr))){
+        wp_redirect( home_url());
+      }
+    }else{
+//      if (is_user_logged_in()) {
+//        if(in_array($url[1], $arr) || in_array($url[2], $arr)){
+//          wp_redirect( home_url());
+//        }
+//      }
+      
+    }
+    
+  }
+  add_action('init', 'check_user_init');
+        
+        
 function uni_special_nav_class($classes, $item){
      if( in_array('current-menu-item', $classes) ){
              $classes[] = 'active ';

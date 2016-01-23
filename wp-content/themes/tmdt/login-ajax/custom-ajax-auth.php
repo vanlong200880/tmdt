@@ -35,7 +35,7 @@ function ajax_login(){
 
     // Nonce is checked, get the POST data and sign user on
   	// Call auth_user_login
-	auth_user_login($_POST['username'], $_POST['password'], 'Login');
+	auth_user_login($_POST['username'], $_POST['password'], '');
 	
     die();
 }
@@ -77,13 +77,13 @@ function auth_user_login($user_login, $password, $login)
     $info['user_login'] = $user_login;
     $info['user_password'] = $password;
     $info['remember'] = true;
-	
+    
 	$user_signon = wp_signon( $info, false );
     if ( is_wp_error($user_signon) ){
       $data = array('loggedin'=>false, 'message'=> 'Tên đăng nhập or mật khẩu không đúng.');
 		echo json_encode($data);
     } else {
-		wp_set_current_user($user_signon->ID); 
+        wp_set_current_user($user_signon->ID);
         echo json_encode(array('loggedin'=>true, 'message'=>__($login.'')));
     }
 	

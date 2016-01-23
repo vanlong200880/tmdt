@@ -252,7 +252,7 @@ if(!empty($keyword)){
             zoom: 12,
             center: new google.maps.LatLng(<?php echo $defaultLng; ?>, <?php echo $defaultLat; ?>),
             mapTypeControl: true,
-            mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+//            mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
             navigationControl: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP
           }

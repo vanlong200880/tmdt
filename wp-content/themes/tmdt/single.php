@@ -13,10 +13,12 @@ get_header(); ?>
 				<div class="container">
 					<div class="col-md-12">
 						<div class="row">
-							<ol class="breadcrumb">
-								<li><a href="#">Trang chủ</a></li>
-								<li class="active">Ẩm thực & Tiệc</li>
-							</ol>	
+							 <ol class="breadcrumb">
+										<?php if(function_exists('bcn_display'))
+										{
+												bcn_display();
+										}?>
+								</ol>
 						</div>	
 					</div>
 					<div class="row">
@@ -349,14 +351,14 @@ get_header(); ?>
 										</div>
 										<div class="ipicomments">
                       <div id="fb-root"></div>
-                        <script>(function(d, s, id) {
-                          var js, fjs = d.getElementsByTagName(s)[0];
-                          if (d.getElementById(id)) return;
-                          js = d.createElement(s); js.id = id;
-                          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
-                          fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));</script>
-                        <div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-width="100%" data-numposts="5"></div>
+                      <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=1624371511157699";
+                        fjs.parentNode.insertBefore(js, fjs);
+                      }(document, 'script', 'facebook-jssdk'));</script>
+                      <div class="fb-comments" data-href="<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5"></div>
 										</div>
 									</div><!--end info-->
 								</div><!--end tab-content-->
