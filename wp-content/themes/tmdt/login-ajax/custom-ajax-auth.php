@@ -95,7 +95,7 @@ function ajax_forgotPassword(){
 	// First check the nonce, if it fails the function will break
     check_ajax_referer( 'ajax-forgot-nonce', 'security' );
 	
-	global $wpdb;
+	 global $wpdb, $wp_hasher;
 	
 	$account = $_POST['user_login'];
 	
@@ -121,46 +121,102 @@ function ajax_forgotPassword(){
 	if(empty ($error)) {
 		// lets generate our new password
 		//$random_password = wp_generate_password( 12, false );
-		$random_password = wp_generate_password();
- 
-			
-		// Get user data by field and data, fields are id, slug, email and login
-		$user = get_user_by( $get_by, $account );
-			
-		$update_user = wp_update_user( array ( 'ID' => $user->ID, 'user_pass' => $random_password ) );
-			
-		// if  update user return true then lets send user an email containing the new password
-		if( $update_user ) {
-			
-			$from = 'WRITE SENDER EMAIL ADDRESS HERE'; // Set whatever you want like mail@yourdomain.com
-			
-			if(!(isset($from) && is_email($from))) {		
-				$sitename = strtolower( $_SERVER['SERVER_NAME'] );
-				if ( substr( $sitename, 0, 4 ) == 'www.' ) {
-					$sitename = substr( $sitename, 4 );					
-				}
-				$from = 'admin@'.$sitename; 
-			}
-			
-			$to = $user->user_email;
-			$subject = 'Your new password';
-			$sender = 'From: '.get_option('name').' <'.$from.'>' . "\r\n";
-			
-			$message = 'Your new password is: '.$random_password;
-				
-			$headers[] = 'MIME-Version: 1.0' . "\r\n";
-			$headers[] = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-			$headers[] = "X-Mailer: PHP \r\n";
-			$headers[] = $sender;
-				
-			$mail = wp_mail( $to, $subject, $message, $headers );
-			if( $mail ) 
-				$success = 'Check your email address for you new password.';
-			else
-				$error = 'System is unable to send you mail containg your new password.';						
-		} else {
-			$error = 'Oops! Something went wrong while updaing your account.';
-		}
+//		$random_password = wp_generate_password();
+// 
+//			
+//		// Get user data by field and data, fields are id, slug, email and login
+//		$user = get_user_by( $get_by, $account );
+//			
+//		$update_user = wp_update_user( array ( 'ID' => $user->ID, 'user_pass' => $random_password ) );
+//			
+//		// if  update user return true then lets send user an email containing the new password
+//		if( $update_user ) {
+//			
+//			$from = 'WRITE SENDER EMAIL ADDRESS HERE'; // Set whatever you want like mail@yourdomain.com
+//			
+//			if(!(isset($from) && is_email($from))) {		
+//				$sitename = strtolower( $_SERVER['SERVER_NAME'] );
+//				if ( substr( $sitename, 0, 4 ) == 'www.' ) {
+//					$sitename = substr( $sitename, 4 );					
+//				}
+//				$from = 'admin@'.$sitename;
+//			}
+//			
+//			$to = $user->user_email;
+//			$subject = 'Mật khẩu mới';
+//			$sender = 'From: '.get_option('name').' <'.$from.'>' . "\r\n";
+//			
+//			$message = 'Mật khẩu mới của bạn là: '.$random_password;
+//				
+//			$headers[] = 'MIME-Version: 1.0' . "\r\n";
+//			$headers[] = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+//			$headers[] = "X-Mailer: PHP \r\n";
+//			$headers[] = $sender;
+//				
+//			$mail = wp_mail( $to, $subject, $message, $headers );
+//			if( $mail ) 
+//				$success = 'Bạn kiểm tra email. Chúng tôi đã gửi mật khẩu mới về email của bạn.';
+//			else
+//				$error = 'Hệ thống không thể gửi mật khẩu mới về email của bạn.';						
+//		} else {
+//			$error = 'Lỗi không thể gửi mail.';
+//		}
+    //change_retrieve_password($account);
+    $user_login = $account;
+    $user_login = sanitize_text_field($user_login);
+    if ( empty( $user_login) ) {
+        return false;
+    } else if ( strpos( $user_login, '@' ) ) {
+        $user_data = get_user_by( 'email', trim( $user_login ) );
+        if ( empty( $user_data ) )
+           return false;
+    } else {
+        $login = trim($user_login);
+        $user_data = get_user_by('login', $login);
+    }
+
+    do_action('lostpassword_post');
+    if ( !$user_data ) return false;
+    // redefining user_login ensures we return the right case in the email
+    $user_login = $user_data->user_login;
+    $user_email = $user_data->user_email;
+    do_action('retreive_password', $user_login);  // Misspelled and deprecated
+    do_action('retrieve_password', $user_login);
+    $allow = apply_filters('allow_password_reset', true, $user_data->ID);
+    if ( ! $allow )
+        return false;
+    else if ( is_wp_error($allow) )
+        return false;
+    $key = wp_generate_password( 20, false );
+    do_action( 'retrieve_password_key', $user_login, $key );
+
+    if ( empty( $wp_hasher ) ) {
+        require_once ABSPATH . 'wp-includes/class-phpass.php';
+        $wp_hasher = new PasswordHash( 8, true );
+    }
+    $hashed = $wp_hasher->HashPassword( $key );    
+    $wpdb->update( $wpdb->users, array( 'user_activation_key' => time().":".$hashed ), array( 'user_login' => $user_login ) );
+    $message = __('Chúng tôi đã nhận được yêu cầu cấp lại mật khẩu của bạn:') . "\r\n\r\n";
+    $message .= network_home_url( '/' ) . "\r\n\r\n";
+    $message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
+    $message .= __('Nếu đây không phải là email của bạn. Xin vui lòng bỏ qua email này. Xin cảm ơn.') . "\r\n\r\n";
+    $message .= __('Bạn hãy bấm vào link bên dưới để đổi mật khẩu:') . "\r\n\r\n";
+    $message .= '<' . network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . ">\r\n";
+
+    if ( is_multisite() )
+        $blogname = $GLOBALS['current_site']->site_name;
+    else
+        $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+
+    $title = sprintf( __('[%s] đổi mật khẩu'), $blogname );
+
+    $title = apply_filters('retrieve_password_title', $title);
+    $message = apply_filters('retrieve_password_message', $message, $key);
+
+    if ( $message && !wp_mail($user_email, $title, $message) )
+        wp_die( __('Không thể gửi email.') . "<br />\n" . __('Lỗi không thể gửi email...') );
+
+    $success = 'Link đổi mật khẩu đã được gửi về email của bạn. Vui lòng kiểm tra email.';
 	}
 	
 	if( ! empty( $error ) )
@@ -170,4 +226,62 @@ function ajax_forgotPassword(){
 		echo json_encode(array('loggedin'=>false, 'message'=>__($success)));
 				
 	die();
+}
+
+function change_retrieve_password($user_login){
+    global $wpdb, $wp_hasher;
+    $user_login = sanitize_text_field($user_login);
+    if ( empty( $user_login) ) {
+        return false;
+    } else if ( strpos( $user_login, '@' ) ) {
+        $user_data = get_user_by( 'email', trim( $user_login ) );
+        if ( empty( $user_data ) )
+           return false;
+    } else {
+        $login = trim($user_login);
+        $user_data = get_user_by('login', $login);
+    }
+
+    do_action('lostpassword_post');
+    if ( !$user_data ) return false;
+    // redefining user_login ensures we return the right case in the email
+    $user_login = $user_data->user_login;
+    $user_email = $user_data->user_email;
+    do_action('retreive_password', $user_login);  // Misspelled and deprecated
+    do_action('retrieve_password', $user_login);
+    $allow = apply_filters('allow_password_reset', true, $user_data->ID);
+    if ( ! $allow )
+        return false;
+    else if ( is_wp_error($allow) )
+        return false;
+    $key = wp_generate_password( 20, false );
+    do_action( 'retrieve_password_key', $user_login, $key );
+
+    if ( empty( $wp_hasher ) ) {
+        require_once ABSPATH . 'wp-includes/class-phpass.php';
+        $wp_hasher = new PasswordHash( 8, true );
+    }
+    $hashed = $wp_hasher->HashPassword( $key );    
+    $wpdb->update( $wpdb->users, array( 'user_activation_key' => time().":".$hashed ), array( 'user_login' => $user_login ) );
+    $message = __('Someone requested that the password be reset for the following account:') . "\r\n\r\n";
+    $message .= network_home_url( '/' ) . "\r\n\r\n";
+    $message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
+    $message .= __('If this was a mistake, just ignore this email and nothing will happen.') . "\r\n\r\n";
+    $message .= __('To reset your password, visit the following address:') . "\r\n\r\n";
+    $message .= '<' . network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . ">\r\n";
+
+    if ( is_multisite() )
+        $blogname = $GLOBALS['current_site']->site_name;
+    else
+        $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+
+    $title = sprintf( __('[%s] Password Reset'), $blogname );
+
+    $title = apply_filters('retrieve_password_title', $title);
+    $message = apply_filters('retrieve_password_message', $message, $key);
+
+    if ( $message && !wp_mail($user_email, $title, $message) )
+        wp_die( __('The e-mail could not be sent.') . "<br />\n" . __('Possible reason: your host may have disabled the mail() function...') );
+
+    echo '<p>Link for password reset has been emailed to you. Please check your email.</p>';
 }
