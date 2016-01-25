@@ -31,3 +31,9 @@
 #ex5Slider .slider-selection {
   background: #BABABA;
 }
+
+.vote_post fieldset legend{
+	padding: 5px;
+	background-color: #f6aa2d;
+	color: #fff;
+}

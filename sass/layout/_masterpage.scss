@@ -3,7 +3,7 @@
 	.category-menu-left{
 		h2{
 			background: $color-title-categories;
-			font-size: 18px;
+			font-size: 14px;
 			width: 100%;
 			height: 40px;
 			line-height: 40px;
@@ -15,10 +15,28 @@
 		ul{
 			background: $color-bg-categories;
   			height: 341px;
+			li.color-item-sale{
+				background-color: $color-promotion;
+				a{
+					color: #fff;
+					&:hover{
+						color:#000;
+					}
+				}
+			}
+			li.color-item-copon{
+				background-color: $color-copon;
+				a{
+					color: #fff;
+					&:hover{
+						color: #000;
+					}
+				}
+			}
   			li{
   				border-bottom: 1px solid #d5d5d5;
-				height: 55px;
-				line-height: 55px;
+				height: 41px;
+				line-height: 41px;
 				a{
 					padding-left: 15px;
 					color: #000;
@@ -50,7 +68,7 @@
 						top: 0;
 						left: 0;
 						width: 5px;
-						height: 55px;
+						height: 41px;
 						@include transition(width 0.2s);
 						z-index: -1;
   					}
