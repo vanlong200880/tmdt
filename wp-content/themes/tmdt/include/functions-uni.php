@@ -161,3 +161,16 @@ function hide_admin_bar_from_front_end(){
   return false;
 }
 add_filter( 'show_admin_bar', 'hide_admin_bar_from_front_end' );
+
+
+function getFacebookDetails($url){
+    $rest_url = "http://api.facebook.com/restserver.php?format=json&method=links.getStats&urls=".urlencode($url);
+    $json = json_decode(file_get_contents($rest_url),true);
+    $total_comment = 0;
+    if($json){
+    	foreach ($json as $key => $value) {
+    		$total_comment = $value['commentsbox_count'];
+    	}
+    }
+return $total_comment;
+}

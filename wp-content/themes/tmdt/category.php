@@ -48,7 +48,7 @@ get_header(); ?>
                   <?php the_title(); ?>
                 </a>
               </p>
-              <p class="address"><?php echo the_excerpt_max_charlength(12); ?></p>
+              <p class="address"><?php echo the_excerpt_max_charlength(20); ?></p>
             </figcaption>
         </figure>
         </li>
@@ -77,11 +77,6 @@ get_header(); ?>
 
       <?php endwhile; ?>
       </ul>
-      <script type="text/javascript">
-    $(document).ready(function(){
-        $('.lightbox').lightBox();       
-    });
-</script>
     <?php } else{ ?>
       <ul class="row">
         <?php while ( have_posts() ) : the_post();

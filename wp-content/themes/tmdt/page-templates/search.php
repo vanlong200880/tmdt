@@ -87,14 +87,15 @@ if(!empty($keyword)){
 //			}else{
 //				$des = '';
 //			}
-//			
+			$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+			$total_comment = getFacebookDetails($url);	
       $jsonData[] = array(
         'title' => get_the_title(),
         'lng' => $dataLatLng[0],
         'lat' => $dataLatLng[1],
         'address' => '',
         'vote' => '<p><span>Bình chọn:</span>'.do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]').'</p>',
-        'comment' => '<p class="review">Bình luận: <span>23.000</span></p>',
+        'comment' => '<p class="review">Bình luận: <span>'.$total_comment.'</span></p>',
         'img' => $img,
         'baseurl' => get_the_permalink()
         
