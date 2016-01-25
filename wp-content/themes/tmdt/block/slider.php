@@ -3,7 +3,7 @@
   $slug = 'news';
   $adv_category = 'advertisement_slider';
   $category = get_queried_object();
-  if($category){
+  if(!empty($category->slug)){
     $slug= $category->slug;
     $adv_category = 'advertisement_top_category';
   }

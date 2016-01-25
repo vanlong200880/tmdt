@@ -17,10 +17,11 @@
   $slug = 'news';
   $top_category = 'advertisement_top';
   $category = get_queried_object();
-  if($category){
+  if(!empty($category->slug)){
     $slug= $category->slug;
     $top_category = 'top_category';
   }
+
 	$args = array (					 
 			'post_status'    => 'publish',		
 			'order'          => 'DESC',
