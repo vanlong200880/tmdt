@@ -14,15 +14,22 @@
 		$row = 'row';
 		$col = 'col-sm-12';
 	}
+  $slug = 'news';
+  $top_category = 'advertisement_top';
+  $category = get_queried_object();
+  if($category){
+    $slug= $category->slug;
+    $top_category = 'top_category';
+  }
 	$args = array (					 
 			'post_status'    => 'publish',		
 			'order'          => 'DESC',
 			'orderby'        => 'menu_order',
 			'post_type'      => 'post',
-			'category_name'  => 'news',
+			'category_name'  => $slug,
 			'meta_query'     => array(
             array(
-                'key'		 => 'advertisement_top',
+                'key'		 => $top_category,
                 'value'      => true,
             ),
         ),

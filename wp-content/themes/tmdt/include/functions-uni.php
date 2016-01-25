@@ -174,3 +174,50 @@ function getFacebookDetails($url){
     }
 return $total_comment;
 }
+
+function custom_loginlogo() {
+echo '<style type="text/css">
+h1 a {
+  background-image: url('.get_bloginfo('template_directory').'/images/logo.png) !important; 
+  width: 140px !important;
+  height: 55px !important;
+  background-size: auto auto !important;
+  margin: 0px auto 0px !important;
+  }
+.login form{
+  margin-top: 10px !important;
+}
+.login #backtoblog, .login #nav{
+  padding: 0px 0px !important;
+}
+</style>';
+}
+add_action('login_head', 'custom_loginlogo');
+function my_loginURL() {
+    return home_url();
+}
+add_filter('login_headerurl', 'my_loginURL');
+
+function my_loginURLtext() {
+    return 'Trang chủ';
+}
+add_filter('login_headertitle', 'my_loginURLtext');
+
+
+
+function my_loginredrect( $redirect_to, $request, $user ) {
+  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    if( in_array('administrator', $user->roles)) {
+      return admin_url();
+    } else {
+      return site_url().'/account/';
+    }
+  } else {
+      return site_url().'/account/';
+  }
+}
+ 
+add_filter('login_redirect', 'my_loginredrect', 10, 3);
+
+
+

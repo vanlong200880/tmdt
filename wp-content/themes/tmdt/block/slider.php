@@ -1,14 +1,21 @@
 <?php
 	wp_reset_postdata();
+  $slug = 'news';
+  $adv_category = 'advertisement_slider';
+  $category = get_queried_object();
+  if($category){
+    $slug= $category->slug;
+    $adv_category = 'advertisement_top_category';
+  }
 	$args = array (					 
 			'post_status'    => 'publish',		
 			'order'          => 'DESC',
 			'orderby'        => 'menu_order',
 			'post_type'      => 'post',
-			'category_name'  => 'news',
+			'category_name'  => $slug,
 			'meta_query'     => array(
             array(
-                'key'		 => 'advertisement_slider',
+                'key'		 => $adv_category,
                 'value'      => true,
             ),
         ),
