@@ -2,14 +2,14 @@
 	font-size:13px;
 	background: $color-bg-footer;
 	.title-footer{
-		padding: 30px 0 10px;
+		padding: 10px 0 10px;
 		h3{
 			font-size: 16px;
 			font-weight: normal;
 			color: #fff;
 			position: relative;
 			padding-bottom: 10px;
-			margin-bottom: 20px;
+			margin-bottom: 10px;
 			border-bottom: 1px solid $color-line-bottom;
 			&:before{
 				position: absolute;
@@ -90,10 +90,10 @@
 	}
 	.coppyright{
 		border-top: 1px solid $color-line-bottom;
-		padding-bottom: 10px;
+		padding-bottom: 5px;
 		.text-left{
 			color: $color-text-footer;
-			padding-top:20px;
+			padding-top:10px;
 		}
 		.text-right{
 			a.backtop{
@@ -103,24 +103,24 @@
 				float: right;
 			    width: 0px;
 			    height: 0px;
-			    border-right: 25px solid $color-text-footer;
-			    border-top: 35px solid $color-text-footer;
-			    border-left: 25px solid $color-text-footer;
-			    border-bottom: 15px solid transparent;
+			    border-right: 15px solid $color-text-footer;
+			    border-top: 25px solid $color-text-footer;
+			    border-left: 15px solid $color-text-footer;
+			    border-bottom: 5px solid transparent;
 			    span.fa{
 			    	color:#fff;
-			    	font-size: 18px;
+			    	font-size: 14px;
 			    	position: absolute;
-			    	top: -28px;
-			    	right: -8px;
+			    	top: -20px;
+			    	right: -6px;
 			    	z-index: 999;
 			    }
 			    &:hover{
 			    	@include transition(all ease-out .3s);
-			    	border-right: 25px solid $color-hover;
-				    border-top: 35px solid $color-hover;
-				    border-left: 25px solid $color-hover;
-				    border-bottom: 15px solid transparent;
+            border-right: 15px solid $color-hover;
+            border-top: 25px solid $color-hover;
+            border-left: 15px solid $color-hover;
+            border-bottom: 5px solid transparent;
 			    }
 			}
 		}
