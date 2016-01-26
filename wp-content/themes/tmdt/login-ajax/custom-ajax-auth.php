@@ -11,7 +11,7 @@ function ajax_auth_init(){
 
     wp_localize_script( 'ajax-auth-script', 'ajax_auth_object', array(
         'ajaxurl' => admin_url( 'admin-ajax.php' ),
-        'redirecturl' => home_url().'/account/',
+        'redirecturl' => $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],
         'loadingmessage' => __('')
     ));
 

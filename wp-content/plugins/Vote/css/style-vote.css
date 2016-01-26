@@ -54,6 +54,7 @@
 }
 .vote_post .post-vote-item .slider.slider-horizontal{
     width: 60%;
+		margin-right: 10px;
 }
 .vote_post .post-vote-item button[type=submit]{
     margin: 20px 0 20px 7px;

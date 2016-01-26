@@ -204,16 +204,17 @@ function my_loginURLtext() {
 add_filter('login_headertitle', 'my_loginURLtext');
 
 
-
 function my_loginredrect( $redirect_to, $request, $user ) {
-  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
-    if( in_array('administrator', $user->roles)) {
+	
+	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+		$current_link = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    if( in_array('administrator', $user->roles) || in_array('contributor', $user->roles) || in_array('editor', $user->roles)) {
       return admin_url();
     } else {
-      return site_url().'/account/';
+      return $current_link;
     }
   } else {
-      return site_url().'/account/';
+      return $current_link;
   }
 }
  
