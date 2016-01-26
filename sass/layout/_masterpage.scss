@@ -15,23 +15,38 @@
 		ul{
 			background: $color-bg-categories;
   			height: 341px;
-			li.color-item-sale{
-				background-color: $color-promotion;
+			li.color-item-sale, li.color-item-copon{
 				a{
 					color: #fff;
 					&:hover{
 						color:#000;
 					}
+                                        &:after{
+                                            content: " ";
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 5px;
+                                            height: 41px;
+                                            z-index: -1;
+                                        }
 				}
 			}
+                        li.color-item-sale{
+                            background-color: $color-promotion;
+                            a{
+                                &:after{
+                                    background-color: $color-promotion-after;
+                                }
+                            }
+                        }
 			li.color-item-copon{
-				background-color: $color-copon;
-				a{
-					color: #fff;
-					&:hover{
-						color: #000;
-					}
-				}
+                            background-color: $color-copon;
+                            a{
+                                &:after{
+                                    background-color: $color-copon-after;
+                                }
+                            }
 			}
   			li{
   				border-bottom: 1px solid #d5d5d5;
@@ -196,6 +211,7 @@
 		.show-adv{
 			display: inline-block;
 			margin-bottom: 8px;
+                        width: 100%;
 			figure{
 				a{
 					float: left;
@@ -221,13 +237,14 @@
 							width: 100%;
 							margin-bottom: 5px;
 							&:hover{
-								color: $color-base;
+                                                            color: $color-base;
 							}
 						}
 					}
 					p.address{
 						margin-bottom: 5px;
 						display: inline-block;
+                                                
 					}
 				}
 			}

@@ -10,15 +10,20 @@
 .share-voted ul li{
   display: inline-block;
   float: left;
-  padding-right: 20px;
+  padding:0 9px;
   text-align: center;
+  border-right: 1px solid #d5d5d5;
+}
+.share-voted ul li:first-child{
+    padding-left: 0;
 }
 .share-voted ul li:last-child{
   padding-right: 0;
+  border-right: none;
 }
 .share-voted ul li .number-voted{
   font-weight: bold;
-  color: #FF0000;
+  color: #e30513;
   font-size: 16px;
 }
 .content-voted{
@@ -31,9 +36,99 @@
 #ex5Slider .slider-selection {
   background: #BABABA;
 }
-
+.details .modal-sm{
+    width:380px;
+}
 .vote_post fieldset legend{
-	padding: 5px;
+	padding: 5px 5px 5px 10px;
 	background-color: #f6aa2d;
 	color: #fff;
+        font-size: 18px;
+        margin-bottom: 10px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+}
+.vote_post .post-vote-item label{
+    width: 25%;
+    margin-right: 10px;
+}
+.vote_post .post-vote-item .slider.slider-horizontal{
+    width: 60%;
+}
+.vote_post .post-vote-item button[type=submit]{
+    margin: 20px 0 20px 7px;
+    background-color: #e30513;
+    color: #fff;
+    cursor:pointer;
+    padding: 5px 6px;
+    border-radius:4px;
+    font-size: 12px;
+    border:none;
+}
+.vote_post .post-vote-item button[type=submit]:hover{
+    background-color: #2A255C;
+    -wekit-transition:all ease-out .3s;
+    -moz-transition:all ease-out .3s;
+    -o-transition:all ease-out .3s;
+    transition:all ease-out .3s;
+}
+@media (max-width: 767px){
+    .details .modal-sm{
+        width:100%;
+        padding: 5px;
+        margin: 0;
+    }
+}
+@media (min-width: 481px) and (max-width: 767px){
+    .vote_post .post-vote-item label {
+        width: 17%;
+    }
+    .vote_post .post-vote-item .slider.slider-horizontal {
+        width: 75%;
+    }
+}
+@media (max-width: 480px){
+    .vote_post .post-vote-item label{
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    .vote_post .post-vote-item button[type=submit]{
+        margin: 10px 0 15px 5px;
+    }
+    .share-voted ul li .number-voted {
+        font-size: 14px;
+    } 
+    .share-voted ul li{
+         padding:0 5px;
+    }
+    .share-voted ul li:last-child{
+        float: left;
+        text-align: left;
+        padding: 5px 0 6px;
+    }
+    .details .content-details .info-top-details .show-info-dt .share-voted ul li:last-child a{
+        font-size: 11px;
+        margin-left: 10px;
+    }
+    .content-voted{
+        font-size: 11px;
+    }
+}
+@media (max-width: 320px){
+    .share-voted ul li{
+         padding:0 5px;
+    }
+    .share-voted ul li:nth-child(5){
+        border-right: none;
+    }
+    .share-voted ul li:last-child{
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 5px 0 10px;
+        margin-bottom: 5px;
+    }
+    .details .content-details .info-top-details .show-info-dt .share-voted ul li:last-child a{
+        font-size: 12px;
+    }
 }

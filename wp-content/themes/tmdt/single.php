@@ -155,7 +155,7 @@ get_header(); ?>
                                 </div>
                                 <div class="post-vote-item">
                                   <div class="col-sm-12">
-                                    <label class="ontrol-label">Giá cả:</label>
+                                    <label class="control-label">Giá cả:</label>
                                     <input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5"/>
                                     <span id="ex2SliderVal">5</span>
                                   </div>
@@ -186,6 +186,7 @@ get_header(); ?>
                                 </div>
 
                                 <div class="post-vote-item">
+                                    <label class="control-label">&nbsp;</label>
                                     <button type="submit" id="submit-vote" class="btn btn-default">Đánh giá</button>
                                 </div>
                               </form>
