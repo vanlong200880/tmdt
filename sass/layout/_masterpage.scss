@@ -427,6 +427,8 @@
 	}
 	.show-big{
 		figure{
+          min-height: 180px;
+          max-height: 180px;
 			figcaption{
 				.wrapp-info{
 					border-bottom: none;
@@ -489,6 +491,7 @@
 				.wrapp-info, p.description{
 					display: block;
 					float:left;
+                    width: 100%;
 				}
 			}
 		}
