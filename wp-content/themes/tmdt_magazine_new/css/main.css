@@ -288,8 +288,49 @@ body {
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
+.voucher-view .modal-lg .form-voucher .description{
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 5px;
+}
+.voucher-view .modal-lg .form-voucher .total{
+  padding: 5px 0;
+  border-bottom: 1px solid #DDD;
+  font-size: 16px;
+}
+.voucher-view .modal-lg .form-voucher .total span{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #DDD;
+  text-align: center;
+  line-height: 30px;
+  display: inline-block;
+}
 
-
+.voucher-view .modal-lg .form-voucher .total strong{
+  color: red;
+}
+.voucher-view .modal-lg .form-voucher .send-voucher a{
+  background: #f99e1e;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  color: #FFF;
+  text-align: center;
+  display: inline-block;
+  margin-top: 15px;
+}
+.detail-voucher h2.title-detail-voucher{
+  display: inline-block;
+  width: 100%;
+  margin-top: 15px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
 .wrap-new-adv.menu-scroll {
   height: 40px;
   width: 100%;

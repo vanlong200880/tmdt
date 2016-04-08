@@ -96,5 +96,48 @@ jQuery(document).ready(function($) {
       });
       e.preventDefault();
   });
+  
+  // view voucher popup
+  
+  $("ul.list-voucher-free > li .img").on('click', function(){
+    var id = $(this).attr('data-id');
+//    alert($code);
+//    $('.voucher-modal').modal('show');
+//    $("#voucher-code").val($code);
+//    $('form#voucher_form').on('submit', function(e){
+//      var fullname = $("#voucher-fullname").val();
+//      var email = $("#voucher-email").val();
+//      var phone = $("#voucher-phone").val();
+//      var note = $("#voucher-note").val();
+//      var code = $("#voucher-code").val();
+//      var total = $("#voucher-total").val();
+      var data = {
+        'id': id,
+        'action': 'voucher_detail_action'
+      };
+      $.ajax({
+        url : ajax.url,
+        type : 'POST',
+        dataType : "json",
+        data: data,
+        beforeSend: function(){
+         // $(".image-loading").css('display', 'inline-block');
+        },
+        success : function (data){
+          console.log(data);
+//          $(".image-loading").css('display', 'none');
+//          if(data.status == true){
+//            $(".voucher-error").empty();
+//            var templateUrl = 'http://coupon.unimedia.vn/wp-content/themes/tmdt_magazine';
+//            $(".form-voucher").empty().append('<h4>'+data.message+'</h4><div class="form-group"><label for="voucher-name">Nhập mã kích hoạt</label><input type="hidden" id="post-voucher-id" name="post-voucher-id" value="'+data.post_id+'"><input type="text" class="form-control active-code" id="voucher-code" name="voucher-code"></div><div class="form-group submit-voucher"><button type="submit" class="btn btn-primary send vald-code">Kích hoạt</button> <img class="image-loading" src="'+templateUrl+'/images/Floating rays-32.gif" width="20px" style="display: none;"></div>');
+//          }else{
+//            $(".voucher-error").empty().append(data.error);
+//          }
+        }
+      });
+//      e.preventDefault();
+
+//    });
+  });
     
 });

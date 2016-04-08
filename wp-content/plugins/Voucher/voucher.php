@@ -395,3 +395,33 @@ function gen_code_action(){
 }
 add_action('wp_ajax_gen_code_action', 'gen_code_action');
 add_action('wp_ajax_nopriv_gen_code_action', 'gen_code_action');
+
+
+
+
+
+function voucher_detail_action(){
+  global $wpdb;
+  $result = array(
+    'message' => '',
+    'result' => array(),
+    'status' => false,
+    'post_id' => '',
+    'error' => ''
+  );
+  
+  $id = (int) $_REQUEST['id'];
+  if($id){
+    $result['status'] = $id;
+    $post = get_post($id);
+    query_posts( array('post__in' => array($id), 'post_type' => 'post'));
+    while (have_posts()): the_post();
+      $result['title'] = get_the_ID();
+   endwhile;
+  }
+  echo json_encode($result);
+  die();
+}
+add_action('wp_ajax_voucher_detail_action', 'voucher_detail_action');
+add_action('wp_ajax_nopriv_voucher_detail_action', 'voucher_detail_action');
+
