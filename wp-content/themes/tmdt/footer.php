@@ -16,9 +16,9 @@
         <div class="linkweb title-footer">
           <h3>Liên kết website</h3>
           <ul>
-            <li><a href=""><span class="fa fa-link"></span>Liên kết website 1</a></li>
-            <li><a href=""><span class="fa fa-link"></span>Liên kết website 2</a></li>
-            <li><a href=""><span class="fa fa-link"></span>Liên kết website 3</a></li>
+            <li><a href="http://unimedia.com.vn"><span class="fa fa-link"></span>Unimedia</a></li>
+            <li><a href="http://unimedia.com.vn"><span class="fa fa-link"></span>Unimedia</a></li>
+            <li><a href="http://unimedia.com.vn"><span class="fa fa-link"></span>Unimedia</a></li>
           </ul>
         </div>
       </div>
@@ -29,8 +29,8 @@
           <div class="sub-about">
             <h5>Công ty TNHH UNIMEDIA</h5>
             <p>Tầng 11, Bảo Minh Tower <br>217 Nam Kỳ Khởi Nghĩa, P.7, Q.3</p>
-            <p>Tel: (08) 3932 9777</p>
-            <p>Fax: (08) 3932 9333</p>
+            <p>Tel: (08) 3932 9777 - (08) 3932 9333</p>
+            <p>Fax: (08) 3932 9222</p>
             <div class="plugin-social">
               <a href="">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/share-facebook.png" alt="">
@@ -62,7 +62,7 @@
           <div class="wrap-chat">
             <p>
               <span class="fa fa-envelope"></span>
-              <a href="">nhansu@unimedia.vn</a>	
+              <a href="mail:contact@unimedia.vn">contact@unimedia.vn</a>	
             </p>
             <p>
               <span class="fa fa-mobile"></span>
@@ -71,15 +71,11 @@
 
             <p>
               <span class="fa fa-skype"></span> 
-              <a href="">Skype chat 2</a>		
+              <a href="skype:sale.unimedia?chat">Sale Unimedia</a>		
             </p>
             <p>
               <span class="fa fa-skype"></span> 
-              <a href="">Skype chat 2</a>	
-            </p>
-            <p>
-              <span class="fa fa-skype"></span> 
-              <a href="">Skype chat 2</a>		
+              <a href="skype:sale.vinarealtor?chat">Sale Vina Realtor</a>	
             </p>
           </div>
         </div>

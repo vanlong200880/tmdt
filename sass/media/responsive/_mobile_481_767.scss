@@ -165,4 +165,17 @@
 			}
 		}
 	}	
-}    
+}
+.item-magazine {
+  ul#owl-magazine{
+    li {
+      figure {
+        figcaption {
+          a{
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  } 
+}

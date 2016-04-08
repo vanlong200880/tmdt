@@ -22,7 +22,7 @@ if($sorted_cats){ ?>
     <a href="<?php echo get_site_url() ?>/khuyen-mai/" title="Khuyến mãi"><span class="icon-sale icon-icon-health-sale"></span>Khuyến mãi</a>
   </li>
   <li class="color-item-copon">
-    <a href="<?php echo get_site_url() ?>/copon/" title="Copon"><span class="icon-copon icon-icon-health-copon"></span>Copon</a>
+    <a href="<?php echo get_site_url() ?>/copon/" title="Copon"><span class="icon-copon icon-icon-health-copon"></span>Coupon</a>
   </li>
 	<?php 
 	 foreach ( $sorted_cats as $category ) { ?>

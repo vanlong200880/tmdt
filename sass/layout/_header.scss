@@ -68,6 +68,7 @@
 						right: 0;
 						width: 200px;
 						left: inherit;
+                        margin: 0px 0 0;
 						li{
 							display: block;
 							border-bottom: 1px solid #d5d5d5;
@@ -158,7 +159,7 @@
 					}
 					input.form-control{
 						border-radius: 0;
-						width: 400px;
+						width: 300px;
 					}
 					ul.dropdown-menu{
 						min-width: 364px;
@@ -179,4 +180,7 @@
 			}
 		}
 	} 
+}
+#menu-top_menu > li > a{
+  padding: 15px 10px;
 }

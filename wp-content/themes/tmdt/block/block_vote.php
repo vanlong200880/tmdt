@@ -17,7 +17,7 @@
                         <a class="btn-base" href="<?php echo get_site_url() ?>/bai-viet-moi-nhat/">Xem thêm <span class="fa fa-angle-double-right"></span></a>
                      </div>
 						      </div>
-						      <div role="tabpanel" class="tab-pane" id="profile">
+						      <div role="tabpanel" class="tab-pane home-vote" id="profile">
 						      		<?php get_template_part('block/news/vote'); ?>
                       <div class="viewmore">
                         <a class="btn-base" href="<?php echo get_site_url() ?>/binh-chon-nhieu-nhat/">Xem thêm <span class="fa fa-angle-double-right"></span></a>

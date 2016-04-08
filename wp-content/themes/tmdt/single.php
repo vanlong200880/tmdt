@@ -282,12 +282,18 @@ get_header(); ?>
                       <div id="dvContainer">
                       <?php the_content(); ?>
                       </div>
-											<p>Người đăng: 
+<!--											<p>Người đăng: 
                         <?php
-                          if ( 'post' == get_post_type() )
-                            echo get_the_author(); ?>
-											</p>
+                          //if ( 'post' == get_post_type() )
+                            //echo get_the_author(); ?>
+											</p>-->
 										</div>
+                                      
+                                      <div class="ipicomments">
+                                        <div id="fb-root"></div>
+                                        
+                                        <div class="fb-comments" data-href="<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5"></div>
+                                      </div>
 										
 									</div><!--end info-->
 									<div role="tabpanel" class="tab-pane" id="map1">
@@ -356,7 +362,7 @@ get_header(); ?>
                         var js, fjs = d.getElementsByTagName(s)[0];
                         if (d.getElementById(id)) return;
                         js = d.createElement(s); js.id = id;
-                        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=1624371511157699";
+                        js.src = "//connect.facebook.net/vi-VN/sdk.js#xfbml=1&version=v2.5&appId=1624371511157699";
                         fjs.parentNode.insertBefore(js, fjs);
                       }(document, 'script', 'facebook-jssdk'));</script>
                       <div class="fb-comments" data-href="<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5"></div>

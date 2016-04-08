@@ -1,0 +1,52 @@
+.breadcrumb-coupon 
+{
+  ul{
+    li {
+      .item-coupon {
+        .item-content {
+          .price {
+            p {
+              a{
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  } 
+}
+.all-article {
+  .fill {
+    .show-sub{
+      height: 97px;
+    }
+  }
+}
+.all-article {
+  .show-sub {
+    figure {
+      a{
+        width: 43%;
+        font-size: 12px;
+        margin-right: 0;
+      }
+      figcaption{
+        width: 57%;
+      }
+    }
+  }
+}
+.all-article {
+  .show-sub {
+    figure {
+      figcaption {
+        p {
+          a{
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

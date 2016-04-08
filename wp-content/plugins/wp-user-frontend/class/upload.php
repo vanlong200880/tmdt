@@ -28,7 +28,10 @@ class WPUF_Upload {
             'error' => $_FILES['wpuf_file']['error'],
             'size' => $_FILES['wpuf_file']['size']
         );
-
+        $filetemp =  $_FILES['wpuf_file']['tmp_name'];
+        $filesize = getimagesize($filetemp);
+        var_dump($filesize);
+       
         header('Content-Type: text/html; charset=' . get_option('blog_charset'));
 
         $attach = $this->handle_upload( $upload );

@@ -117,6 +117,7 @@ class WPUF_Admin_Template_Post extends WPUF_Admin_Template {
                 </div> <!-- .wpuf-form-rows -->
                 <?php self::conditional_field( $field_id, $values ); ?>
             </div> <!-- .wpuf-form-holder -->
+            
         </li>
         <?php
     }

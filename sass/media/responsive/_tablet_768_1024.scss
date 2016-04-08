@@ -47,8 +47,8 @@
 		ul{
 			height: 285px;
 			li{
-				height: 45px;
-				line-height: 45px;
+				height: 32px;
+				line-height: 32px;
 				a{
 					&:hover{
 						color: #000;
@@ -56,6 +56,9 @@
 							color: #000;
 						}
 					}
+                    &:after{
+                      height: 32px !important;
+                    }
 				}
 			}
 			li.color-item-9, .color-item-5, .color-item-4, .color-item-8, .color-item-6, .color-item-7{
@@ -69,6 +72,7 @@
 			}
 		}
 	}
+    
 	.big-new-adv{
 		.owl-theme{
 			.owl-controls{
@@ -122,4 +126,31 @@
 
 .user .all-content-user .content-user {
     padding: 10px;
+}
+#menu-top_menu > li > a{
+  padding: 15px 5px;
+}
+.wrap-new-adv {
+  ul.menu-left {
+    li {
+      ul{
+        left: 238px;
+      }
+    }
+  }
+}
+.list-category-voucher{
+  ul{
+    li{
+      width: 33.3333333333%;
+      float: left;
+    }
+  }
+}
+.wrap-new-adv {
+  .top-sub-adv{
+    .show-adv{
+      height: 243px;
+    }
+  }
 }

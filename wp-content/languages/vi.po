@@ -1109,63 +1109,63 @@ msgid "<strong>ERROR</strong>: Invalid username or incorrect password."
 msgstr "<strong>LỖI</strong>: Tên đăng nhập hoặc mật khẩu không đúng."
 
 #. translators: 1: blog name, 2: post title
-#: wp-includes/pluggable.php:1470
+#: wp-includes/pluggable.php:1479
 msgid "[%1$s] Comment: \"%2$s\""
 msgstr "[%1$s] Phản hồi: \"%2$s\""
 
 #. translators: 1: blog name, 2: post title
-#: wp-includes/pluggable.php:1449
+#: wp-includes/pluggable.php:1458
 msgid "[%1$s] Trackback: \"%2$s\""
 msgstr "[%1$s] Trackback: \"%2$s\""
 
 #. translators: 1: blog name, 2: post title
-#: wp-includes/pluggable.php:1459
+#: wp-includes/pluggable.php:1468
 msgid "[%1$s] Pingback: \"%2$s\""
 msgstr "[%1$s] Pingback: \"%2$s\""
 
-#: wp-includes/pluggable.php:1478 wp-includes/pluggable.php:1603
+#: wp-includes/pluggable.php:1487 wp-includes/pluggable.php:1612
 msgid "Trash it: %s"
 msgstr "Bỏ vào thùng rác: %s"
 
-#: wp-includes/pluggable.php:1480 wp-includes/pluggable.php:1605
+#: wp-includes/pluggable.php:1489 wp-includes/pluggable.php:1614
 msgid "Delete it: %s"
 msgstr "Xóa: %s"
 
-#: wp-includes/pluggable.php:1481 wp-includes/pluggable.php:1606
+#: wp-includes/pluggable.php:1490 wp-includes/pluggable.php:1615
 msgid "Spam it: %s"
 msgstr "Spam: %s"
 
-#: wp-includes/pluggable.php:1581
+#: wp-includes/pluggable.php:1590
 msgid "Trackback excerpt: "
 msgstr "Trackback trích dẫn:"
 
-#: wp-includes/pluggable.php:1589
+#: wp-includes/pluggable.php:1598
 msgid "Pingback excerpt: "
 msgstr "Pingback trích dẫn:"
 
-#: wp-includes/pluggable.php:1608
+#: wp-includes/pluggable.php:1617
 msgid "Currently %s comment is waiting for approval. Please visit the moderation panel:"
 msgid_plural "Currently %s comments are waiting for approval. Please visit the moderation panel:"
 msgstr[0] "Hiện có %s đang chờ được thông qua. Hãy vào trang xét duyệt:"
 
-#: wp-includes/pluggable.php:1612
+#: wp-includes/pluggable.php:1621
 msgid "[%1$s] Please moderate: \"%2$s\""
 msgstr "[%1$s] Hãy xét duyệt: \"%2$s\""
 
-#: wp-includes/pluggable.php:1675
+#: wp-includes/pluggable.php:1684
 msgid "Password Lost and Changed for user: %s"
 msgstr "Mật khẩu mất và thay đổi cho thành viên: %s"
 
-#: wp-includes/pluggable.php:1679
+#: wp-includes/pluggable.php:1688
 msgid "[%s] Password Lost/Changed"
 msgstr "[%s] Mật khẩu thay đổi"
 
-#: wp-includes/pluggable.php:1716 wp-includes/pluggable.php:1739
+#: wp-includes/pluggable.php:1725 wp-includes/pluggable.php:1748
 #: wp-login.php:371
 msgid "Username: %s"
 msgstr "Tên đăng nhập: %s"
 
-#: wp-includes/pluggable.php:1745
+#: wp-includes/pluggable.php:1754
 msgid "[%s] Your username and password info"
 msgstr "[%s] Tên đăng nhập và mật khẩu của bạn"
 
@@ -1551,7 +1551,7 @@ msgstr "Xem chuyên mục"
 msgid "Approve and Reply"
 msgstr "Chấp thuận và phản hồi"
 
-#: wp-includes/pluggable.php:1474
+#: wp-includes/pluggable.php:1483
 msgid "Permalink: %s"
 msgstr "Đường dẫn tĩnh: %s"
 
@@ -1866,7 +1866,7 @@ msgstr "[%1$s] Kích hoạt %2$s"
 msgid "New %1$s Site: %2$s"
 msgstr "Trang %1$s mới: %2$s"
 
-#: wp-includes/pluggable.php:1715
+#: wp-includes/pluggable.php:1724
 msgid "New user registration on your site %s:"
 msgstr "Có người dùng mới đăng ký trên website của bạn %s:"
 
@@ -2129,7 +2129,7 @@ msgstr "Đóng thẻ văn bản đã chèn"
 msgid "Inserted text"
 msgstr "Văn bản đã chèn"
 
-#: wp-includes/pluggable.php:1740
+#: wp-includes/pluggable.php:1749
 msgid "To set your password, visit the following address:"
 msgstr "Để đặt mật khẩu của bạn, truy cập địa chỉ sau:"
 
@@ -2261,13 +2261,13 @@ msgid "<strong>Could not find site %1$s.</strong> Searched for table %2$s in dat
 msgstr "<strong>Không thể tìm thấy website %1$s.</strong> Đã tìm kiếm ở bảng %2$s trong database %3$s. Điều này là chính xác?"
 
 #. translators: 1: website name, 2: website IP, 3: website hostname
-#: wp-includes/pluggable.php:1444 wp-includes/pluggable.php:1454
-#: wp-includes/pluggable.php:1579 wp-includes/pluggable.php:1587
+#: wp-includes/pluggable.php:1453 wp-includes/pluggable.php:1463
+#: wp-includes/pluggable.php:1588 wp-includes/pluggable.php:1596
 msgid "Website: %1$s (IP: %2$s, %3$s)"
 msgstr "Website: %1$s (IP: %2$s, %3$s)"
 
 #. translators: 1: comment author, 2: author IP, 3: author domain
-#: wp-includes/pluggable.php:1464 wp-includes/pluggable.php:1594
+#: wp-includes/pluggable.php:1473 wp-includes/pluggable.php:1603
 msgid "Author: %1$s (IP: %2$s, %3$s)"
 msgstr "Tác giả: %1$s (IP: %2$s, %3$s)"
 
@@ -2340,11 +2340,11 @@ msgstr "Việc cập nhật plugin có thể không hoàn tất nếu bạn rờ
 msgid "Dismiss this notice."
 msgstr "Bỏ qua thông báo này "
 
-#: wp-includes/pluggable.php:1462
+#: wp-includes/pluggable.php:1471
 msgid "New comment on your post \"%s\""
 msgstr "Có một bình luận mới về bài viết của bạn \"%s\""
 
-#: wp-includes/pluggable.php:1584
+#: wp-includes/pluggable.php:1593
 msgid "A new pingback on the post \"%s\" is waiting for your approval"
 msgstr "Một pingback mới về bài \"%s\" đang chờ phê duyệt của bạn"
 
@@ -2352,19 +2352,19 @@ msgstr "Một pingback mới về bài \"%s\" đang chờ phê duyệt của b�
 msgid "What do I do now?"
 msgstr "Tôi cần phải làm gì bây giờ?"
 
-#: wp-includes/pluggable.php:1576
+#: wp-includes/pluggable.php:1585
 msgid "A new trackback on the post \"%s\" is waiting for your approval"
 msgstr "Có một trackback mới về bài \"%s\" đang chờ phê duyệt của bạn"
 
-#: wp-includes/pluggable.php:1592
+#: wp-includes/pluggable.php:1601
 msgid "A new comment on the post \"%s\" is waiting for your approval"
 msgstr "Có một bình luận mới trong bài \"%s\" đang chờ phê duyệt của bạn"
 
-#: wp-includes/pluggable.php:1452
+#: wp-includes/pluggable.php:1461
 msgid "New pingback on your post \"%s\""
 msgstr "Có pingback mới về bài đăng của bạn \"%s\""
 
-#: wp-includes/pluggable.php:1442
+#: wp-includes/pluggable.php:1451
 msgid "New trackback on your post \"%s\""
 msgstr "Có trackback mới về bài đăng của bạn \"%s\""
 
@@ -2376,15 +2376,15 @@ msgstr "Nếu bạn là chủ sở hữu của mạng lưới này xin vui lòng
 msgid "If your site does not display, please contact the owner of this network."
 msgstr "Nếu trang của bạn không hiển thị, vui lòng liên hệ với chủ sở hữu của mạng lưới này."
 
-#: wp-includes/pluggable.php:1447
+#: wp-includes/pluggable.php:1456
 msgid "You can see all trackbacks on this post here:"
 msgstr "Bạn có thể thấy tất cả pingbacks của bài viết này tại đây:"
 
-#: wp-includes/pluggable.php:1457
+#: wp-includes/pluggable.php:1466
 msgid "You can see all pingbacks on this post here:"
 msgstr "Bạn có thể thấy tất cả pingbacks của bài viết này tại đây:"
 
-#: wp-includes/pluggable.php:1468
+#: wp-includes/pluggable.php:1477
 msgid "You can see all comments on this post here:"
 msgstr "Bạn có thể thấy tất cả bình luận tại đây:"
 
@@ -2400,8 +2400,8 @@ msgstr "Hình ảnh"
 msgid "View Page"
 msgstr "Xem trang"
 
-#: wp-includes/pluggable.php:1465 wp-includes/pluggable.php:1595
-#: wp-includes/pluggable.php:1717
+#: wp-includes/pluggable.php:1474 wp-includes/pluggable.php:1604
+#: wp-includes/pluggable.php:1726
 msgid "E-mail: %s"
 msgstr "Thư điện tử: %s"
 
@@ -2466,14 +2466,14 @@ msgctxt "add new on admin bar"
 msgid "Page"
 msgstr "Trang"
 
-#: wp-includes/pluggable.php:1446 wp-includes/pluggable.php:1456
-#: wp-includes/pluggable.php:1467 wp-includes/pluggable.php:1597
+#: wp-includes/pluggable.php:1455 wp-includes/pluggable.php:1465
+#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1606
 msgid "Comment: %s"
 msgstr "Bình luận: %s"
 
-#: wp-includes/pluggable.php:1445 wp-includes/pluggable.php:1455
-#: wp-includes/pluggable.php:1466 wp-includes/pluggable.php:1580
-#: wp-includes/pluggable.php:1588 wp-includes/pluggable.php:1596
+#: wp-includes/pluggable.php:1454 wp-includes/pluggable.php:1464
+#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1589
+#: wp-includes/pluggable.php:1597 wp-includes/pluggable.php:1605
 msgid "URL: %s"
 msgstr "Đường dẫn: %s"
 
@@ -2519,7 +2519,7 @@ msgstr "Tên menu <strong>%s</strong> trùng lặp với một menu khác. Vui l
 msgid "Unmute"
 msgstr "Bật tiếng"
 
-#: wp-includes/pluggable.php:1601
+#: wp-includes/pluggable.php:1610
 msgid "Approve it: %s"
 msgstr "Duyệt nó: %s"
 
@@ -2527,7 +2527,7 @@ msgstr "Duyệt nó: %s"
 msgid "Collapse Sidebar"
 msgstr "Đóng sidebar"
 
-#: wp-includes/pluggable.php:1719
+#: wp-includes/pluggable.php:1728
 msgid "[%s] New User Registration"
 msgstr "[%s] Thành viên mới đăng ký"
 

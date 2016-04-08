@@ -258,3 +258,114 @@
 		}
 	}
 }
+.wrap-new-adv {
+  ul.menu-left {
+   li{
+     &:hover,
+     &:visited,
+     &:active{
+       ul{
+         left:auto;
+         right: 0;
+         width: 140px;
+         top: -78px;
+       }
+     }
+    }
+  }
+}
+.show-post-online-magezine{
+  li{
+    img{
+      max-height: 100%;
+    }
+  }
+  li.magazine-1-2{
+    max-height: 100%;
+  }
+  li.magazine-single,
+  li.magazine-couple{
+    min-height: auto;
+    max-height: auto;
+  }
+}
+.title-magazine-new {
+  h2{
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+.wrap-new-adv{
+  .top-sub-adv{
+    .show-adv.top-4-slider{
+      height: auto;
+    }
+    .show-adv{
+      height: auto;
+      figure{
+        a{
+          padding-right: 0;
+        }
+      }
+    }
+    .show-adv:nth-child(2n+2){
+      figure{
+        a{
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+ul.voucher{
+  .grid-sizer{
+    width: 50%;
+  }
+  li{
+    width: 50%;
+    float: left;
+  }
+}
+.list-category-voucher{
+  ul{
+    li{
+      width: 33.3333333333%;
+      float: left;
+      padding: 5px;
+      a{
+        font-size: 8px;
+      }
+    }
+  }
+}
+.coupon-title{
+  .col-md-12 {
+    h1{
+      font-size: 12px;
+    }
+  }
+}
+.breadcrumb-coupon {
+  ul {
+    li {
+      .item-coupon {
+        .item-content {
+          .price {
+            p{
+              a{
+                  font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.voucher-modal {
+  .modal-content{
+    width: 100%;
+    padding: 30px 15px 15px 15px;
+  }
+}
