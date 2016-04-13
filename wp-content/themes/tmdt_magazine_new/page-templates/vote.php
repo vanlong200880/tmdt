@@ -96,10 +96,11 @@ get_header(); ?>
             </div>
             <?php endif; ?>
                         
-                        <p class="comment">
+                        <div class="fs-comment comment">
               <span>Bình chọn:</span>
-              <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-            </p>
+              <?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+              <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+            </điv>
           </figcaption>
       </figure>
       </li>

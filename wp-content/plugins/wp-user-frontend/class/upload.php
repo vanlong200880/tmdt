@@ -30,7 +30,7 @@ class WPUF_Upload {
         );
         $filetemp =  $_FILES['wpuf_file']['tmp_name'];
         $filesize = getimagesize($filetemp);
-        var_dump($filesize);
+//        var_dump($filesize);
        
         header('Content-Type: text/html; charset=' . get_option('blog_charset'));
 
@@ -110,13 +110,13 @@ class WPUF_Upload {
         }
 
         if (wp_attachment_is_image( $attach_id)) {
-            $image = wp_get_attachment_image_src( $attach_id, 'thumbnail' );
+            $image = wp_get_attachment_image_src( $attach_id, 'full' );
             $image = $image[0];
         } else {
             $image = wp_mime_type_icon( $attach_id );
         }
 
-        $html = '<li class="wpuf-image-wrap thumbnail">';
+        $html = '<li class="wpuf-image-wrap thumbnail" style="width: 100%;">';
         $html .= sprintf( '<div class="attachment-name"><img src="%s" alt="%s" /></div>', $image, esc_attr( $attachment->post_title ) );
 
         if ( wpuf_get_option( 'image_caption', 'wpuf_general', 'off' ) == 'on' ) {

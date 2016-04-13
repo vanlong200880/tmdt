@@ -96,7 +96,7 @@ if(!empty($keyword)){
         'lng' => $dataLatLng[0],
         'lat' => $dataLatLng[1],
         'address' => '',
-        'vote' => '<p><span>Bình chọn:</span>'.do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]').'</p>',
+        'vote' => '<p><span>Bình chọn:</span>'.the_ratings().'</p>',
         'comment' => '<p class="review">Bình luận: <span>'.$total_comment.'</span></p>',
         'img' => $img,
         'baseurl' => get_the_permalink()

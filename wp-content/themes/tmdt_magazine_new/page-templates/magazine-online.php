@@ -30,7 +30,7 @@ get_template_part('block/block_category');  ?>
       <div class="col-md-12">
 
 <?php 
-        $parent_obj = get_category_by_slug('tap-chi-online');
+        $parent_obj = get_category_by_slug('online-magazine');
 //        var_dump($parent_obj);
         if($parent_obj):
         $args = array(

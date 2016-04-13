@@ -238,7 +238,47 @@ global $language;
 	
     <div class="menu-sp-2-search">
       <div class="container">
-        <?php	get_search_form() ?>
+        <?php	//get_search_form() ?>
+        <div class="form input-group form-search-pc">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle show-all-button" data-toggle="dropdown" aria-expanded="false">
+              <span class="filter_box_pc" data-category="all">Tất cả</span><span class="caret"></span>
+            </button>
+            <?php get_template_part('block/menu-search'); ?>
+          </div>
+          <input type="text"  class="form-control" id="search-pc" name="search" placeholder="Tìm kiếm sản phẩm, danh mục hay thương hiệu mong muốn...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <span class="hidden-sm hidden-xs">Tìm</span>
+              <i class="fa fa-search hidden-lg hidden-md"></i>
+            </button>
+          </span>
+
+        </div>
+
+        <script type="text/javascript">
+          jQuery(document).ready(function($){
+            $(".form-search-pc ul.dropdown-menu > li").on('click', function(){
+              $value = $(this).text();
+              $data = $(this).attr('data-category');
+              $('.filter_box_pc').empty().append($value);
+              $('.filter_box_pc').attr('data-category', $data);
+            });
+
+             $('#search-pc').keypress(function(event){
+               var keycode = (event.keyCode ? event.keyCode : event.which);
+               if (keycode == '13') {
+                 $("button[type='submit']").trigger('click');
+               }
+             });
+
+            $(".form-search-pc").on('click',"button[type='submit']" ,function(){
+              $key = $(".filter_box_pc").attr('data-category');
+              $val = $("#search-pc").val();
+              window.location.href = "<?php echo home_url(); ?>/tim-kiem/?type="+$key+'&keyword='+$val;
+            });
+          });
+         </script>
       </div>
     </div>
     
@@ -278,7 +318,7 @@ global $language;
 							<div class="col-md-12">
 								<nav class="navbar navbar-default" role="navigation">
                                   <div class="row">
-                                    <div class="col-md-2 col-sm-4">
+                                    <div class="col-md-2 col-sm-3">
                                       <!-- Brand and toggle get grouped for better mobile display -->
                                       <div class="navbar-header">
                                           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -292,7 +332,7 @@ global $language;
                                           </a>
                                       </div>
                                     </div>
-                                    <div id="header" class="col-md-4 col-sm-8 search-page">
+                                    <div id="header" class="col-md-4 col-sm-9 search-page">
                                       <div class="row">
                                         <div class="col-sm-6">
                                           <div class="topbar">
@@ -319,7 +359,49 @@ global $language;
                                         </div>
                                       </div>
                                       <div class="row">
-                                        <div class="col-sm-8"><?php	get_search_form() ?></div>
+                                        <div class="col-sm-8">
+                                          <div class="form input-group form-search-pc">
+                                            <div class="input-group-btn">
+                                              <button type="button" class="btn btn-default dropdown-toggle show-all-button" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="filter_box_pc" data-category="all">Tất cả</span><span class="caret"></span>
+                                              </button>
+                                              <?php get_template_part('block/menu-search'); ?>
+                                            </div>
+                                            <input type="text"  class="form-control" id="search-pc" name="search" placeholder="Tìm kiếm sản phẩm, danh mục hay thương hiệu mong muốn...">
+                                            <span class="input-group-btn">
+                                              <button class="btn btn-default" type="submit">
+                                                <span class="hidden-sm hidden-xs">Tìm</span>
+                                                <i class="fa fa-search hidden-lg hidden-md"></i>
+                                              </button>
+                                            </span>
+
+                                          </div>
+
+                                          <script type="text/javascript">
+                                            jQuery(document).ready(function($){
+                                              $(".form-search-pc ul.dropdown-menu > li").on('click', function(){
+                                                $value = $(this).text();
+                                                $data = $(this).attr('data-category');
+                                                $('.filter_box_pc').empty().append($value);
+                                                $('.filter_box_pc').attr('data-category', $data);
+                                              });
+
+                                               $('#search-pc').keypress(function(event){
+                                                 var keycode = (event.keyCode ? event.keyCode : event.which);
+                                                 if (keycode == '13') {
+                                                   $("button[type='submit']").trigger('click');
+                                                 }
+                                               });
+
+                                              $(".form-search-pc").on('click',"button[type='submit']" ,function(){
+                                                $key = $(".filter_box_pc").attr('data-category');
+                                                $val = $("#search-pc").val();
+                                                window.location.href = "<?php echo home_url(); ?>/tim-kiem/?type="+$key+'&keyword='+$val;
+                                              });
+                                            });
+                                           </script>
+                                          
+                                        </div>
                                         <div class="col-sm-4">
                                           <div class="collapse navbar-collapse navbar-ex1-collapse">
 										
@@ -391,10 +473,52 @@ global $language;
                                           </a>
                                       </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-8 search-page">
-                                    <?php	get_search_form() ?>
+                                    <div class="col-md-5 col-sm-8 search-page">
+                                    <?php	//get_search_form() ?>
+                                      <div class="form input-group form-search-pc">
+                                        <div class="input-group-btn hidden-xs">
+                                          <button type="button" class="btn btn-default dropdown-toggle show-all-button" data-toggle="dropdown" aria-expanded="false">
+                                            <span class="filter_box_pc" data-category="all">Tất cả</span><span class="caret"></span>
+                                          </button>
+                                          <?php get_template_part('block/menu-search'); ?>
+                                        </div>
+                                        <input type="text"  class="form-control" id="search-pc" name="search" placeholder="Tìm kiếm sản phẩm, danh mục hay thương hiệu mong muốn...">
+                                        <span class="input-group-btn">
+                                          <button class="btn btn-default" type="submit">
+                                            <span class="hidden-sm hidden-xs">Tìm</span>
+                                            <i class="fa fa-search hidden-lg hidden-md"></i>
+                                          </button>
+                                        </span>
+
+                                      </div>
+                                      
+                                      <script type="text/javascript">
+                                        jQuery(document).ready(function($){
+                                          $(".form-search-pc ul.dropdown-menu > li").on('click', function(){
+                                            $value = $(this).text();
+                                            $data = $(this).attr('data-category');
+                                            $('.filter_box_pc').empty().append($value);
+                                            $('.filter_box_pc').attr('data-category', $data);
+                                          });
+
+                                           $('#search-pc').keypress(function(event){
+                                             var keycode = (event.keyCode ? event.keyCode : event.which);
+                                             if (keycode == '13') {
+                                               $("button[type='submit']").trigger('click');
+                                             }
+                                           });
+
+                                          $(".form-search-pc").on('click',"button[type='submit']" ,function(){
+                                            $key = $(".filter_box_pc").attr('data-category');
+                                            $val = $("#search-pc").val();
+                                            window.location.href = "<?php echo home_url(); ?>/tim-kiem/?type="+$key+'&keyword='+$val;
+                                          });
+                                        });
+                                       </script>
+                                      
+                                      
                                     </div>
-                                    <div class="col-md-4 col-sm-4" id="header">
+                                    <div class="col-md-3 col-sm-4" id="header">
                                       <div class="topbar">
                                         <div class="hotline">
                                           <span class="fa fa-phone-square"></span>

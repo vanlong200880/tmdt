@@ -113,10 +113,11 @@ if($cats){
 											<p class="address">
 												<?php echo the_excerpt_max_charlength(20); ?>
 											</p>
-										<p>
-											<span>Bình chọn:</span>
-											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-										</p>
+                                            <div class="fs-comment">
+											<span>Bình chọn:</span> 
+											<?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                            <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+										</div>
 										</div>
 		
 									</figcaption>
@@ -170,10 +171,11 @@ if($cats){
 											<p class="address">
 												<?php echo the_excerpt_max_charlength(12); ?>
 											</p>
-											<p>
+                                            <div class="fs-comment">
 												<span>Bình chọn:</span>
-												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-											</p>
+												<?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                                <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+											</div>
 										</figcaption>
 									</figure>
 								</div>
@@ -260,10 +262,11 @@ if($cats){
 											<p class="address">
 												<?php echo the_excerpt_max_charlength(30); ?>
 											</p>
-											<p>
+                                            <div class="fs-comment">
 												<span>Bình chọn:</span>
-												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-											</p>
+												<?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                                <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+											</div>
 										</div>
 										
 									</figcaption>
@@ -319,10 +322,11 @@ if($cats){
 										<?php echo the_excerpt_max_charlength(15); ?>
 									</p>
 									<?php endif; ?>
-										<p>
+                                    <div class="fs-comment">
                                           <span>Bình chọn:</span><br>
-											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-										</p>
+											<?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                            <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+										</div>
                 </figcaption>
               </figure>
             </div>
@@ -434,10 +438,11 @@ if($cats){
 												<?php echo the_excerpt_max_charlength($char); ?>
 											</p>
                                             
-										<p>
+                                            <div class="fs-comment">
 											<span>Bình chọn:</span>
-											<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-										</p>
+											<?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                            <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+										</div>
 										</div>
 <!--										--><?php //if(get_field('address')): ?>
 <!--											<p class="description">--><?php //echo the_excerpt_max_charlength(20); ?><!--</p>-->
@@ -514,10 +519,11 @@ if($cats){
 												<?php echo the_excerpt_max_charlength(12); ?>
 											</p>
 											<?php endif; ?>
-											<p>
+                                            <div class="fs-comment">
 												<span>Bình chọn:</span>
-												<?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-											</p>
+												<?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                                <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+											</div>
 										</figcaption>
 									</figure>
 								</div>

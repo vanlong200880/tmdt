@@ -317,11 +317,12 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
               
               
               
-              <p>
+              <div class="fs-comment">
                 
                 <span>Bình chọn:</span>
-                <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-              </p>
+                <?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+              </div>
             </figcaption>
         </figure>
         </li>
@@ -366,7 +367,26 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
     <?php } else{ ?>
       <ul class="row">
         <?php
-        while ( have_posts() ) : the_post();
+//     var_dump($category->slug);
+        $arg_category = array (					 
+			'post_status'    => 'publish',		
+//			'order'          => 'DESC',
+//			'orderby'        => 'date',
+            'order'				=> 'DESC',
+            'meta_key'			=> 'order_by_list_category',
+            'orderby'			=> 'meta_value post_date',
+//        
+			'post_type'      => 'post',
+			'category_name'  => $category->slug,
+//			'posts_per_page' => 12,
+		);
+  $category_the_post_query = new WP_Query( $arg_category ); 
+  if($category_the_post_query->have_posts()){
+    while ($category_the_post_query->have_posts()){
+				$category_the_post_query->the_post();
+//    }
+//  }
+//        while ( have_posts() ) : the_post();
         $adv = get_field('top_category', get_the_ID());
         $advslider = get_field('advertisement_top_category', get_the_ID());
         $temp = false;
@@ -422,15 +442,16 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
               <?php endif; ?>
               
               
-              <p class="fs-comment">
+              <div class="fs-comment">
                 <span>Bình chọn:</span>
-                <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-              </p>
+                <?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+              </div>
             </figcaption>
         </figure>
         </li>
         <?php //endif; ?>
-      <?php endwhile; ?>
+  <?php }}; ?>
       </ul>
       
    <?php }

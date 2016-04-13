@@ -94,19 +94,16 @@ $cats = array();
       ?>
       <li class="col-md-4 col-sm-6 col-xs-12">
         <div class="item-coupon">
-          <div class="img" data-id ="<?php echo get_the_ID(); ?>" data-toggle="modal" data-target="#voucher-view">
+          <div class="img" data-id ="<?php echo get_the_ID(); ?>">
             
               <?php
               $attachment_id = get_post_thumbnail_id(get_the_ID());
               if (!empty($attachment_id))
                   the_post_thumbnail(array(376,251));
-//                $attachment_id = get_post_thumbnail_id(get_the_ID());
-//                $link = wp_get_attachment_link($attachment_id, 'full');
-//                echo $link;
               ?>
           </div>
           <div class="item-content">
-            <h2 data-toggle="modal" data-target="#voucher-view"><?php the_title(); ?></h2>
+            <h2><?php the_title(); ?></h2>
             <div class="price">
               <?php //echo get_field('url', get_the_ID()); ?>
               
@@ -132,50 +129,18 @@ $cats = array();
 <!-- view voucher -->
 
 <div class="modal fade voucher-view" id="voucher-view" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-sm">
     <div class="modal-content">
-      <div class="form-voucher">
-        <div class="row">
-          <div class="col-md-8">
-            <img src="http://unimedia.vn/wp-content/uploads/2016/04/SofaDA.jpg">
-          </div>
-          <div class="col-md-4">
-            <h2>Demo voucher Demo voucher Demo voucher Demo voucher Demo voucher Demo voucher Demo voucher Demo voucher </h2>
-            <div class="share"></div>
-            <div class="description">
-              Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!
-            </div>
-            <div class="sale"></div>
-            <div class="total"><span><i class="fa fa-user"></i></span> <strong>100</strong> người đã nhận</div>
-            <div class="send-voucher">
-              <a href="#">Nhận voucher</a>
-            </div>
-          </div>
-          
-          <div class="col-md-12 detail-voucher">
-            <h2 class="title-detail-voucher">Thông tin chi tiết</h2>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            <p>Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!Cân Sức Khỏe Điện Tử Hình Tròn Bảo Vệ Sức Khỏe – Độ Chính Xác Cao, Tải Trọng Tối Đa 180kg – Giúp Bạn Dễ Dàng Theo Dõi Sức Khỏe Bản Thân Và Gia Đình. Giá 300,000 VNĐ, Còn 159,000 VNĐ, Giảm 47%. Chỉ Có Tại Hotdeal.vn!</p>
-            
-          </div>
-        </div>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="form-voucher-detail">
+        
       </div>
     </div>
   </div>
+</div>
+
+<div class="loading">
+  <img src="<?php echo get_template_directory_uri(); ?>/images/Floating rays-32.gif">
 </div>
 
 <!-- Small modal -->

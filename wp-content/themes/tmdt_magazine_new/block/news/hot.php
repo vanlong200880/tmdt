@@ -11,10 +11,15 @@
 	}
 	$args = array (
 			'post_status'    => 'publish',
-			'order'          => 'DESC',
-			'orderby'        => 'menu_order',
-			'post_type'      => 'post',
+//			'order'          => 'DESC',
+//			'orderby'        => 'menu_order',
+            'post_type'      => 'post',
 			'category_name'  => 'news',
+            'order'				=> 'DESC',
+            'meta_key'			=> 'sort_by',
+            'orderby'			=> 'meta_value post_date',
+            
+			
 			'meta_query'     => array(
             array(
                 'key'		 => 'hot',
@@ -62,7 +67,7 @@
 
           <figcaption>
             <p class="title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                <?php the_title(); ?>
+                <?php the_title(); ?> <?php echo get_field('sort_by'); ?>
               </a>
             </p>
             
@@ -79,10 +84,11 @@
             </div>
             <?php endif; ?>
                         
-                        <p class="fs-comment">
+                        <div class="fs-comment">
               <span>Bình chọn:</span>
-              <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-            </p>
+              <?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+              <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+            </div>
           </figcaption>
       </figure>
       </li>
@@ -94,8 +100,12 @@
 wp_reset_postdata();
 	$arg = array (					 
 			'post_status'    => 'publish',		
-			'order'          => 'DESC',
-			'orderby'        => 'date',
+//			'order'          => 'DESC',
+//			'orderby'        => 'date',
+            'order'				=> 'DESC',
+            'meta_key'			=> 'sort_by',
+            'orderby'			=> 'meta_value',
+        
 			'post_type'      => 'post',
 			'category_name'  => 'news',
 			'posts_per_page' => 12,
@@ -155,10 +165,11 @@ wp_reset_postdata();
               <p class="fs-pr fs-dt">Diện tích: <?php echo get_field('dien_tich'); ?></p>
             </div>
             <?php endif; ?>
-                        <p class="fs-comment">
+                        <div class="fs-comment">
               <span>Bình chọn:</span>
-              <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-            </p>
+              <?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+              <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+            </div>
           </figcaption>
       </figure>
       </li>

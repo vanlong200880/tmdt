@@ -105,7 +105,8 @@ function voucher_action(){
       if($insert == true){
         // send email
         $title = 'Nhận mã kích hoạt Voucher - unimedia.vn';
-        $message = 'Mã kích hoạt là:'. $code;
+        $message = 'Chào bạn '.$fullname.',<br><br> Cám ơn bạn đã đăng ký voucher của chúng tôi.<br><br>';
+        $message .= 'Mã kích hoạt là:'. $code;
         if ( $message && !wp_mail($email, $title, $message) ){
           wp_die( __('Không thể gửi email.') . "<br />\n" . __('Lỗi không thể gửi email...') );
         }else{
@@ -406,18 +407,32 @@ function voucher_detail_action(){
     'message' => '',
     'result' => array(),
     'status' => false,
-    'post_id' => '',
-    'error' => ''
+    'content' => '',
+    'description' => '',
+    'image' => '',
+    'total' => 0,
+    'id' => '',
+    'error' => '',
+    'sale' => ''
   );
   
   $id = (int) $_REQUEST['id'];
   if($id){
-    $result['status'] = $id;
+    $result['status'] = true;
+    $result['id'] = $id;
     $post = get_post($id);
     query_posts( array('post__in' => array($id), 'post_type' => 'post'));
     while (have_posts()): the_post();
-      $result['title'] = get_the_ID();
+      $result['title'] = get_the_title();
+      $result['content'] = get_the_content();
+      $result['description'] = get_the_excerpt();
+      $result['sale'] = get_field('sale', $id);
+      $result['image'] = get_the_post_thumbnail(get_the_ID(), 'full');
    endwhile;
+   $row = $wpdb->get_var("select count('post_id') from wp_voucher_post where post_id = $id");
+   $result['total'] = $row;
+  }else{
+    $result['message'] = 'Không tải được dữ liệu. Vui lòng thử lại.';
   }
   echo json_encode($result);
   die();

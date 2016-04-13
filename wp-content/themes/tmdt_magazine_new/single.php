@@ -10,7 +10,7 @@ global $post;
 $category = get_the_category($post->ID);
 $parent = get_category($category[0]->category_parent);
 global $current_user;
-if($parent->slug == 'tap-chi-online'): ?>
+if($parent->slug == 'online-magazine' || $category[0]->slug == 'khuyen-mai-trong-tuan'): ?>
 <?php while ( have_posts() ) : the_post(); 
         $listGalery = getGaleryFromPost($post);
         if($listGalery[0]){ ?>
@@ -38,7 +38,10 @@ if($parent->slug == 'tap-chi-online'): ?>
     <script src="<?php echo get_template_directory_uri() ?>/slipbook/js/jquery.address-1.6.min.js"></script>
     <script src="<?php echo get_template_directory_uri() ?>/slipbook/js/wait.js"></script>
 	<script src="<?php echo get_template_directory_uri() ?>/slipbook/js/onload.js"></script>
-
+    <script type="application/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.6.0/jszip.js"></script>
+    <script type="application/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
 
     <!-- style css  -->
 	<style>	
@@ -51,10 +54,108 @@ if($parent->slug == 'tap-chi-online'): ?>
 	</head>
  
 <body>
+  <a id="make-zip-file" style="position: absolute;z-index: 999;right: 0;right: 85px;top: 20px;height: 30px; cursor: pointer;height: 30px;background: red;color: #FFF;line-height: 30px;padding: 0 15px;border-radius: 3px;">Download</a>
 
+  
+  <?php 
+  $arrLink = array();
+  foreach ($listGalery[0]['ids'] as $k => $galery) {
+      $arrLink[] = wp_get_attachment_url($galery);
+    }
+  ?>
+  <input type="hidden" value="<?php echo json_encode($arrLink); ?>" name="download-magazine">
+  <script>
+    var pagesLink = <?php  echo json_encode($arrLink) ?>;
+    var zip = new JSZip();
+    var content;
+    var count = 0;
+    var pagesCount = pagesLink.length;
+    $("#make-zip-file").on("click", function(){
+      $linkdownload = "<?php echo get_template_directory_uri();?>/download/offline.zip";
+        loadXHR($linkdownload, "zip");
+        for(var i = 0; i < pagesCount; i++){
+            loadXHR(pagesLink[i], "file");
+        }
+        var internal = setInterval(function(){
+            if(count == pagesCount + 1){
+                zip.file("offline-reading.html", buildOfflineReadingHtml());
+                content = zip.generate({type: "blob"});
+                clearInterval(internal);
+                saveAs(content, "offline-reading.zip")
+            }
+        }, 500);
+    });
 
+    /**
+     * @var url string
+     * @var type string
+     */
+    function loadXHR(url, type){
+        var oReq = new XMLHttpRequest();
+        oReq.onload = function(){
+            var arraybuffer = oReq.response; // not responseText
+            if(type === "zip"){
+                zip = zip.load(arraybuffer);
+                count++;
+                return
+            }
+            var name = url.substring(url.lastIndexOf('/') + 1);
+            if(type === "file"){
+                zip.file("images/" + name, arraybuffer);
+                count++;
+                return
+            }
+        };
+        oReq.open("GET", url);
+        oReq.responseType = "arraybuffer";
+        oReq.send();
+    }
+    function buildOfflineReadingHtml(){
+        var begin = '<!doctype html>\n<html>\n<head>\n <meta content="text/html; charset=utf-8" http-equiv="Content-Type">\n <!-- viewport -->\n <meta content="width=device-width,initial-scale=1" name="viewport">\n <!-- title -->\n <title>offline reading<\/title>\n <!-- add css and js for flipbook -->\n <link type="text/css" href="css/style.css" rel="stylesheet">\n <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Play:400,700">\n <script src="js/jquery.js"><\/script>\n <script src="js/turn.js"><\/script>\n <script src="js/jquery.fullscreen.js"><\/script>\n <script src="js/jquery.address-1.6.min.js"><\/script>\n <script src="js/wait.js"><\/script>\n <script src="js/onload.js"><\/script>\n <!-- style css -->\n <style>\n html, body {\n margin: 0;\n padding: 0;\n overflow: auto !important;\n }\n <\/style>\n<\/head>\n<body>\n<!-- DIV YOUR WEBSITE -->\n<div style="width:100%;margin:0 auto">\n <!-- BEGIN FLIPBOOK STRUCTURE -->\n <div id="fb5-ajax">\n <!-- BEGIN HTML BOOK -->\n <div data-current="book5" class="fb5" id="fb5">\n <!-- BACKGROUND FOR BOOK -->\n <div class="fb5-bcg-book"><\/div>\n <!-- BEGIN CONTAINER BOOK -->\n <div id="fb5-container-book">';
+        var end = '<!-- CONFIGURATION FLIPBOOK -->\n <script>\n jQuery("#fb5").data("config",\n {\n "page_width": "550",\n "page_height": "715",\n "email_form": "office@somedomain.com",\n "zoom_double_click": "1",\n "zoom_step": "0.06",\n "double_click_enabled": "true",\n "tooltip_visible": "true",\n "toolbar_visible": "true",\n "gotopage_width": "30",\n "deeplinking_enabled": "true",\n "rtl": "false",\n "full_area": "false",\n "lazy_loading_thumbs": "false",\n "lazy_loading_pages": "false"\n })\n <\/script>\n <\/div>\n <!-- END FLIPBOOK STRUCTURE -->\n<\/div>\n<!-- END DIV YOUR WEBSITE -->\n<\/body>\n<\/html>';
+        var customSection = buildeSection(pagesLink);
+        var customDivPage = buildDivPage(pagesLink);
+        var customThumbnail = buildThumbnail(pagesLink);
+        var offlineReadingHtml = begin + customSection + customDivPage + customThumbnail + end;
+        return offlineReadingHtml;
+    }
+    /**
+     *
+     * @param pagesLink
+     */
+    function buildeSection(pagesLink){
+        var customSection = '<!-- BEGIN deep linking -->\n <section id="fb5-deeplinking">\n <ul>';
+        var pagesLength = pagesLink.length;
+        for(var i = 0; i < pagesLength; i++){
+            customSection += '<li data-address="page' + (i + 1) + '"data-page="' + (i + 1) + '"><\/li>';
+        }
+        customSection += '<\/ul>\n<\/section>\n';
+        return customSection;
+    }
+    /**
+     *
+     * @param pagesLink
+     */
+    function buildDivPage(pagesLink){
+        var customDivPage = '<!-- BEGIN BOOK --><div id="fb5-book">\n';
+        for(var i = 0; i < pagesLink.length; i++){
+            var fileName = pagesLink[i].substring(pagesLink[i].lastIndexOf('/') + 1);
+            customDivPage += '<div data-background-image="' + 'images/' + fileName + '"\nclass=""></div>';
+        }
+        customDivPage += '<\/div>\n <!-- END BOOK -->\n <!-- arrows -->\n <a class="fb5-nav-arrow prev"><\/a>\n <a class="fb5-nav-arrow next"><\/a>\n <\/div>\n <!-- END CONTAINER BOOK -->\n <!-- BEGIN FOOTER -->\n <div id="fb5-footer">\n <div class="fb5-bcg-tools"><\/div>\n <a id="fb5-logo" target="_blank" href="http://codecanyon.net/user/flashmaniac?ref=flashmaniac">\n <img alt="" src="images/logo.png">\n <\/a>\n <div class="fb5-menu" id="fb5-center">\n <ul>\n <!-- icon_zoom_in -->\n <li>\n <a title="ZOOM IN" class="fb5-zoom-in"><\/a>\n <\/li>\n <!-- icon_zoom_out -->\n <li>\n <a title="ZOOM OUT " class="fb5-zoom-out"><\/a>\n <\/li>\n <!-- icon_allpages -->\n <li>\n <a title="SHOW ALL PAGES " class="fb5-show-all"><\/a>\n <\/li>\n <!-- icon_home -->\n <li>\n <a title="SHOW HOME PAGE " class="fb5-home"><\/a>\n <\/li>\n <\/ul>\n <\/div>\n\n <\/div>\n <!-- END FOOTER -->\n';
+        return customDivPage;
+    }
+    function buildThumbnail(pagesLink){
+        var customThumnail = '<!-- BEGIN ALL PAGES -->\n <div id="fb5-all-pages" class="fb5-overlay">\n <section class="fb5-container-pages">\n <div id="fb5-menu-holder">\n <ul id="fb5-slider">';
+        for(var i = 0; i < pagesLink.length; i++){
+            var fileName = pagesLink[i].substring(pagesLink[i].lastIndexOf('/') + 1);
+            customThumnail += '<li class="' + (i + 1) + '"><img alt="" data-src="images/' + fileName + '"><\/li>';
+        }
+        customThumnail += '<\/ul>\n <\/div>\n <\/section>\n <\/div>\n <!-- END ALL PAGES -->\n <\/div>\n <!-- END HTML BOOK -->';
+        return customThumnail;
+    }
+</script>
 
- 
 <!-- DIV YOUR WEBSITE --> 
 <div style="width:100%;margin:0 auto">
 <!-- BEGIN FLIPBOOK STRUCTURE -->  
@@ -90,22 +191,19 @@ if($parent->slug == 'tap-chi-online'): ?>
 			
 			
             <!-- BACKGROUND FOR BOOK -->  
-            <div class="fb5-bcg-book"></div>                      
+            <div class="fb5-bcg-book"></div>
             <!-- BEGIN CONTAINER BOOK -->
             <div id="fb5-container-book">
                 <!-- BEGIN deep linking -->  
                 <section id="fb5-deeplinking">
                      <ul>
                         <?php 
-                            foreach ($listGalery[0]['ids'] as $k => $galery) { 
-                                $k++;
-                                //if($k > 0){
-?>
+                            foreach ($listGalery[0]['ids'] as $k => $galery) { ?>
                           <li data-address="page<?php echo $k ?>" data-page="<?php echo $k; ?>"></li>
-                                <?php } //} ?>
-                          <?php if(count($listGalery[0]['ids'])%2 != 0): ?>
-                          <li data-address="page<?php echo count($listGalery[0]['ids'])+1 ?>" data-page="<?php echo count($listGalery[0]['ids'])+1; ?>"></li>
-                          <?php endif; ?>
+                          <?php } //} ?>
+                          <?php //if(count($listGalery[0]['ids'])%2 != 0): ?>
+                          <!--<li data-address="page<?php //echo count($listGalery[0]['ids'])+1 ?>" data-page="<?php //echo count($listGalery[0]['ids'])+1; ?>"></li>-->
+                          <?php //endif; ?>
                      </ul>
                  </section>
                 <!-- END deep linking -->  
@@ -124,6 +222,7 @@ if($parent->slug == 'tap-chi-online'): ?>
                 <div id="fb5-book">
                 <!-- BEGIN PAGE 1 -->
                 <?php 
+//                                            var_dump($listGalery); die;
                         foreach ($listGalery[0]['ids'] as $k => $galery) {
                             //if($k > 0){ ?>
                         <div data-background-image="<?php echo wp_get_attachment_url($galery); ?>" class="">
@@ -199,14 +298,15 @@ if($parent->slug == 'tap-chi-online'): ?>
           <section class="fb5-container-pages">
             <div id="fb5-menu-holder">
                 <ul id="fb5-slider">
-                        <?php 
+                        <?php
+                        $holder = 1;
                         foreach ($listGalery[0]['ids'] as $k => $galery) {
                             //if($k > 0){ ?>
                     
                             <li class="<?php echo $k; ?>">
                                 <img alt="" data-src="<?php echo wp_get_attachment_url($galery, array(120,170)); ?>">
                             </li>
-                            <?php } //} ?>
+                            <?php $holder++; } //} ?>
                             
                   </ul>
               </div>
@@ -231,9 +331,9 @@ if($parent->slug == 'tap-chi-online'): ?>
     "gotopage_width":"30",
     "deeplinking_enabled":"true",
     "rtl":"false",
-    'full_area':'true',
-	'lazy_loading_thumbs':'true',
-	'lazy_loading_pages':'true'
+    'full_area':'false',
+	'lazy_loading_thumbs':'false',
+	'lazy_loading_pages':'false'
     })
 	
 	jQuery(document).ready(function($){
@@ -427,10 +527,11 @@ get_template_part('block/block_category');
 										</p>
                     <?php endif; ?>
                                         <div class="task-vot">
-                                          <p class="vote-details">
+                                          <div class="vote-details">
                                             <span>Bình chọn:</span><br>
-                                              <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-                                          </p>
+                                              <?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                              <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+                                          </div>
                                           <p class="share-social">
 											<div class="share-post">
 												<!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -732,13 +833,7 @@ get_template_part('block/block_category');
                     ?>
 									</div><!--end info-->
 									<div role="tabpanel" class="tab-pane" id="comment">
-										<div class="vote-top">
-											<h5>Bình chọn của bạn</h5>
-											<div class="ct-vote">
-                        <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
-												<!--<img src="<?php //echo get_stylesheet_directory_uri(); ?>/images/vote-dt.png" alt="">-->
-											</div>
-										</div>
+										
 										<div class="ipicomments">
                       <div id="fb-root"></div>
                       <script>(function(d, s, id) {
@@ -828,11 +923,12 @@ get_template_part('block/block_category');
                                             <?php if(get_field('page_sale')): ?>
                                             <p class="page_sale"> <?php echo get_field('page_sale'); ?></p>
                                             <?php endif; ?>
-                                            <p>
+                                            <div class="fs-comment">
                 
                                               <span>Bình chọn:</span>
-                                              <?php echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
-                                            </p>
+                                              <?php //echo do_shortcode('[ratings id="'.  get_the_ID().'" results="true"]'); ?>
+                                              <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+                                            </div>
                                             
                                             
                                             

@@ -21,18 +21,15 @@ $sorted_cats = array();
 if($sorted_cats){ ?>
   <li class="color-item-magazine">
     <a href="<?php echo get_site_url() ?>/page-tap-chi-online/" target="_blank" title="Copon">
-      <!--<span class="icon-copon icon-icon-health-copon"></span>-->
         <?php echo ($language =='en')?'Newest magazine':'Tạp chí online'; ?></a>
   </li>
   <li class="color-item-sale">
     <a href="<?php echo get_site_url() ?>/khuyen-mai/" title="Khuyến mãi">
-      <!--<span class="icon-sale icon-icon-health-sale"></span>-->
         <?php echo ($language =='en')?'Promotion':'Doanh nghiệp khuyến mãi'; ?></a>
   </li>
   <li class="color-item-copon">
-    <a href="<?php echo get_site_url() ?>" title="Copon">
-      <!--<span class="icon-copon icon-icon-health-copon"></span>-->
-       Voucher <!--<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon_new.gif" width="36"> --></a>
+    <a href="<?php echo get_site_url() ?>/khuyen-mai-trong-tuan/" title="Copon">
+      <?php echo ($language =='en')?'Sale weekly':'Khuyến mãi trong tuần'; ?></a>   
   </li>
   <li class="color-item-9">
     <a href="javascript:void(0)" title="Copon">

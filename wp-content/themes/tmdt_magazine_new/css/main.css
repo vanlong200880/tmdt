@@ -248,14 +248,14 @@ body {
             border-bottom: none; }
 
 #menu-top_menu > li > a {
-  padding: 7px 40px 7px 0;
+  padding: 7px 25px 7px 0;
   color: #FFF; }
   #menu-top_menu > li > a:hover {
     color: #000;
     background: transparent; }
 
 .search-page {
-  padding-top: 5px; }
+  padding-top: 10px; }
 
 .navigation {
   padding-top: 5px;
@@ -275,29 +275,31 @@ body {
   -ms-transition: top 0.5s ease;
   transition: top 0.5s ease; }
 
-.voucher-view .modal-lg{
-  width: 1140px;
+@media (min-width: 1025px){
+  .voucher-view .modal-lg{
+    width: 1140px;
+  }
 }
-.voucher-view .modal-lg .form-voucher{
+.voucher-view .modal-lg .form-voucher-detail{
   padding: 10px;
 }
-.voucher-view .modal-lg .form-voucher h2{
+.voucher-view .modal-lg .form-voucher-detail h2{
   font-size: 14px;
   font-weight: bold;
   border-bottom: 1px solid #DDD;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
-.voucher-view .modal-lg .form-voucher .description{
+.voucher-view .modal-lg .form-voucher-detail .description{
   border-bottom: 1px solid #DDD;
   padding-bottom: 5px;
 }
-.voucher-view .modal-lg .form-voucher .total{
+.voucher-view .modal-lg .form-voucher-detail .total{
   padding: 5px 0;
   border-bottom: 1px solid #DDD;
   font-size: 16px;
 }
-.voucher-view .modal-lg .form-voucher .total span{
+.voucher-view .modal-lg .form-voucher-detail .total span{
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -306,11 +308,24 @@ body {
   line-height: 30px;
   display: inline-block;
 }
-
-.voucher-view .modal-lg .form-voucher .total strong{
+.voucher-view .modal-lg .form-voucher-detail .sale{
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+  border-bottom: 1px solid #DDD;
+  padding: 5px 0;
+}
+.voucher-view .modal-lg .form-voucher-detail .total strong{
   color: red;
 }
-.voucher-view .modal-lg .form-voucher .send-voucher a{
+.voucher-view .modal-lg .close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    opacity: 0.5;
+}
+.voucher-view .modal-lg .form-voucher-detail .send-voucher a{
   background: #f99e1e;
   padding: 10px 15px;
   text-transform: uppercase;
@@ -323,6 +338,7 @@ body {
   text-align: center;
   display: inline-block;
   margin-top: 15px;
+  cursor: pointer;
 }
 .detail-voucher h2.title-detail-voucher{
   display: inline-block;
@@ -330,6 +346,17 @@ body {
   margin-top: 15px;
   text-transform: uppercase;
   margin-bottom: 15px;
+}
+.loading{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  padding-top: 50px;
+  display: none;
 }
 .wrap-new-adv.menu-scroll {
   height: 40px;
@@ -797,6 +824,7 @@ body {
   .all-article .show-article figure a, .all-article .show-large figure a {
     position: relative;
     overflow: hidden;
+    max-height: 274px;
     display: block; }
     .all-article .show-article figure a .blur, .all-article .show-large figure a .blur {
       width: 100%;
@@ -855,7 +883,7 @@ body {
     .all-article .show-article figure figcaption p.description.not-real, .all-article .show-large figure figcaption p.description.not-real {
       height: 70px;
       max-height: 70px; }
-    .all-article .show-article figure figcaption p.fs-comment, .all-article .show-large figure figcaption p.fs-comment {
+    .all-article .show-article figure figcaption .fs-comment, .all-article .show-large figure figcaption .fs-comment {
       height: 18px; }
     .all-article .show-article figure figcaption p, .all-article .show-article figure figcaption span, .all-article .show-large figure figcaption p, .all-article .show-large figure figcaption span {
       font-size: 12px; }
@@ -964,12 +992,11 @@ body {
   border: 1px solid #DDD; }
   .all-article .show-sub figure a, .all-article .show-article-details figure a {
     float: left;
-    width: 40%;
-    margin-right: 3%;
+    width: 100%;
     position: relative;
     overflow: hidden;
     display: block;
-    padding: 3px; }
+     }
     .all-article .show-sub figure a img, .all-article .show-article-details figure a img {
       /*border: 1px solid #DDD;*/ }
     .all-article .show-sub figure a .blur, .all-article .show-article-details figure a .blur {
@@ -996,14 +1023,24 @@ body {
       -ms-transition: all 0.2s ease-in-out;
       -o-transition: all 0.2s ease-in-out; }
   .all-article .show-sub figure figcaption, .all-article .show-article-details figure figcaption {
-    width: 57%;
+    width: 100%;
     float: left;
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 5px; }
-    .all-article .show-sub figure figcaption p, .all-article .show-sub figure figcaption span, .all-article .show-article-details figure figcaption p, .all-article .show-article-details figure figcaption span {
-      font-size: 11px;
-      color: #6f6f6e; }
+    .all-article .show-sub figure figcaption p, 
+    .all-article .show-sub figure figcaption span, 
+    .all-article .show-article-details figure figcaption p, 
+    .all-article .show-article-details figure figcaption span {
+      font-size: 13px;
+      color: #6f6f6e; 
+    }
+    .all-article .show-article-details figure figcaption p{
+      display: inline-block;
+      height: 36px;
+      line-height: 18px;
+      overflow: hidden;
+    }
     .all-article .show-sub figure figcaption span, .all-article .show-article-details figure figcaption span {
       position: relative;
       top: 2px; }
@@ -1290,6 +1327,9 @@ ul.voucher {
       border: 1px solid #a7a9ab;
       background: #FFF;
       margin-bottom: 13px; }
+    .breadcrumb-coupon ul li .item-coupon .img{
+      cursor: pointer;
+    }
       .breadcrumb-coupon ul li .item-coupon .item-content {
         padding: 5px; }
         .breadcrumb-coupon ul li .item-coupon .item-content h2 {
@@ -1330,6 +1370,7 @@ ul.voucher {
               color: #FFF;
               font-weight: bold;
               display: block;
+              cursor: pointer;
               text-align: center; }
           .breadcrumb-coupon ul li .item-coupon .item-content .price p.sale {
             color: red;
@@ -1589,6 +1630,7 @@ body.single-product {
   border-radius: 0;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
+  margin-top: 150px;
   padding: 30px; }
   .voucher-modal .modal-content .icon-voucher {
     position: absolute;
@@ -1975,6 +2017,7 @@ body.category #categories .show-post-online-magezine .show-article figure a img 
 .all-article .post-related .show-article-details figure figcaption p.fs-pr {
   display: inline-block;
   font-size: 12px;
+  width: 100%;
   color: #000; }
   .all-article .post-related .show-article-details figure figcaption p.fs-pr var {
     color: red;
@@ -2105,7 +2148,7 @@ body.category #categories .show-article:hover figure {
           font-size: 18px;
           font-weight: bold;
           color: red; }
-      .details .content-details .info-top-details .show-info-dt p.vote-details {
+      .details .content-details .info-top-details .show-info-dt .vote-details {
         padding: 5px 0;
         margin: 5px 0 10px;
         /*					border-top:1px solid #d5d5d5;
@@ -2526,6 +2569,12 @@ body.category #categories .show-article:hover figure {
         .list-category-voucher ul#list-home-voucher li{
           width: 25%;
         }
+        .voucher-view .modal-lg{
+          width: auto;
+        }
+        .voucher-view .modal-lg .form-voucher-detail h2{
+          margin-top: 10px;
+        }
 }
 .search {
   margin-bottom: 10px; }
@@ -2772,6 +2821,12 @@ ul.ui-widget-content {
     background-color: #000; }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+  #header .topbar .hotline{
+    left: 0;
+  }
+  .input-group.form-search-pc{
+    padding-top: 5px;
+  }
   .wrap-new-adv .top-sub-adv .show-adv {
     margin-bottom: 8px; }
     .wrap-new-adv .top-sub-adv .show-adv figure a {
@@ -2898,6 +2953,7 @@ ul.ui-widget-content {
     width: 33.33333333%;
     height: auto; }
   .wrap-new-adv .top-sub-adv .show-adv:nth-child(2n+2) figure a {
+    cursor: pointer;
     padding-left: 0; }
 
   body.category #categories .sale-category .show-article figure figcaption p.page_sale {
@@ -3344,3 +3400,62 @@ ul.ui-widget-content {
     font-size: 8px; } }
 
 /*# sourceMappingURL=main.css.map */
+
+/* rating */
+.post-ratings{
+  position: relative;
+  display: inline-block;
+  width: auto;
+}
+.post-ratings-text{
+  position: absolute !important;
+  top: -25px !important;
+  left: 0 !important;
+  padding-top: -5px !important;
+  background: #F00 !important;
+  color: #FFF !important;
+  padding: 2px 5px !important;
+  border-radius: 3px !important;
+  display: none;
+}
+.post-ratings-text:before{
+  content: " ";
+  border-top:  5px solid #F00;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  bottom: -5px;
+  left: 5px;
+  position: absolute;
+}
+.fs-comment{
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.post-ratings-loading{
+  font-size: 12px;
+  position: absolute;
+}
+
+body.category #categories .show-post-online-magezine .show-article figure{
+  padding-bottom: 0;
+}
+.all-article .show-post-online-magezine .show-article figure a{
+  max-height: 100%;
+}
+.all-article .show-post-online-magezine .show-article figure a img{
+  border: none;
+}
+
+.all-article.page-weekend .show-article figure{
+  border: 1px solid #DDD;
+}
+.all-article.page-weekend .show-article figure figcaption{
+  padding: 0 5px;
+  min-height: 110px;
+  max-height: 110px;
+}
+.all-article.page-weekend .show-article figure figcaption p.description{
+  height: 54px;
+  max-height: 54px;
+}
