@@ -290,7 +290,7 @@ add_action('wp_ajax_nopriv_voucher_active_code_action', 'voucher_active_code_act
 
 add_action('admin_menu', 'voucher_settings');
 function voucher_settings() {
-    add_menu_page('List voucher', 'List voucher', 'administrator', 'voucher_vn_currency_settings', 'voucher_display_settings');
+    add_menu_page('List voucher', 'List voucher', 'manager', 'voucher_vn_currency_settings', 'voucher_display_settings');
 }
 function voucher_display_settings () {
 $html ='<div class="gencode"><h2>Tạo mã code Voucher</h2>

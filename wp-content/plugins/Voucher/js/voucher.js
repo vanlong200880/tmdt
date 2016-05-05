@@ -99,59 +99,59 @@ jQuery(document).ready(function($) {
   
   // view voucher popup
   
-  $("ul.list-voucher-free > li .img").on('click', function(){
-    var id = $(this).attr('data-id');
-      var data = {
-        'id': id,
-        'action': 'voucher_detail_action'
-      };
-      $.ajax({
-        url : ajax.url,
-        type : 'POST',
-        dataType : "json",
-        data: data,
-        beforeSend: function(){
-          $(".loading").css('display', 'block');
-        },
-        success : function (data){
-          console.log(data);
-          $html = '';
-          $html += '<div class="row">';
-          $html += '<div class="col-md-8 col-sm-7">';
-            $html += data.image;
-          $html += '</div>';
-          $html += '<div class="col-md-4 col-sm-5">';
-            $html += '<h2>'+data.title+'</h2>';
-            $html += '<div class="share"></div>';
-            if(data.description){
-            $html += '<div class="description">';
-              $html += data.description;
-            $html += '</div>';
-            }
-            if(data.sale){
-            $html += '<div class="sale">'+data.sale+'</div>';
-            }
-            $html += '<div class="total"><span><i class="fa fa-user"></i></span> <strong>'+data.total+'</strong> người đã nhận</div>';
-            $html += '<div class="send-voucher">';
-              $html += '<a data-code="'+data.id+'">Nhận voucher</a>';
-            $html += '</div>';
-          $html += '</div>';
-          
-          $html += '<div class="col-md-12 detail-voucher">';
-            $html += '<h2 class="title-detail-voucher">Thông tin chi tiết</h2>';
-            $html += data.content;
-            
-          $html += '</div>';
-        $html += '</div>';
-        $(".form-voucher-detail").empty().append($html);
-        $(".loading").css('display', 'none');
-        $('#voucher-view').modal('show');
-        }
-      });
+//  $("ul.list-voucher-free > li .img").on('click', function(){
+//    var id = $(this).attr('data-id');
+//      var data = {
+//        'id': id,
+//        'action': 'voucher_detail_action'
+//      };
+//      $.ajax({
+//        url : ajax.url,
+//        type : 'POST',
+//        dataType : "json",
+//        data: data,
+//        beforeSend: function(){
+//          $(".loading").css('display', 'block');
+//        },
+//        success : function (data){
+//          console.log(data);
+//          $html = '';
+//          $html += '<div class="row">';
+//          $html += '<div class="col-md-8 col-sm-7">';
+//            $html += data.image;
+//          $html += '</div>';
+//          $html += '<div class="col-md-4 col-sm-5">';
+//            $html += '<h2>'+data.title+'</h2>';
+//            $html += '<div class="share"></div>';
+//            if(data.description){
+//            $html += '<div class="description">';
+//              $html += data.description;
+//            $html += '</div>';
+//            }
+//            if(data.sale){
+//            $html += '<div class="sale">'+data.sale+'</div>';
+//            }
+//            $html += '<div class="total"><span><i class="fa fa-user"></i></span> <strong>'+data.total+'</strong> người đã nhận</div>';
+//            $html += '<div class="send-voucher">';
+//              $html += '<a data-code="'+data.id+'">Nhận voucher</a>';
+//            $html += '</div>';
+//          $html += '</div>';
+//          
+//          $html += '<div class="col-md-12 detail-voucher">';
+//            $html += '<h2 class="title-detail-voucher">Thông tin chi tiết</h2>';
+//            $html += data.content;
+//            
+//          $html += '</div>';
+//        $html += '</div>';
+//        $(".form-voucher-detail").empty().append($html);
+//        $(".loading").css('display', 'none');
+//        $('#voucher-view').modal('show');
+//        }
+//      });
 //      e.preventDefault();
 
 //    });
-  });
+//  });
   
   
   

@@ -990,12 +990,19 @@ body {
   background: #FFF;
   /*padding: 5px;*/
   border: 1px solid #DDD; }
-  .all-article .show-sub figure a, .all-article .show-article-details figure a {
+  .all-article .show-sub figure a,
+  .all-article .show-article-details figure a
+  {
     float: left;
-    width: 100%;
+    width: 39%;
+    margin-right: 3%;
     position: relative;
     overflow: hidden;
     display: block;
+     }
+     .search.all-article .show-article-details figure a {
+       width: 100%;
+      margin-right: 0;
      }
     .all-article .show-sub figure a img, .all-article .show-article-details figure a img {
       /*border: 1px solid #DDD;*/ }
@@ -1023,11 +1030,18 @@ body {
       -ms-transition: all 0.2s ease-in-out;
       -o-transition: all 0.2s ease-in-out; }
   .all-article .show-sub figure figcaption, .all-article .show-article-details figure figcaption {
-    width: 100%;
+    width: 57%;
     float: left;
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 5px; }
+  .search.all-article .show-article-details figure figcaption {
+    width: 100%;
+  }
+  .search.all-article .show-article-details figure a{
+    min-height: 242px;
+    max-height: 242px;
+  }
     .all-article .show-sub figure figcaption p, 
     .all-article .show-sub figure figcaption span, 
     .all-article .show-article-details figure figcaption p, 
@@ -3458,4 +3472,15 @@ body.category #categories .show-post-online-magezine .show-article figure{
 .all-article.page-weekend .show-article figure figcaption p.description{
   height: 54px;
   max-height: 54px;
+}
+.form-search-pc .btn{
+  border-radius: 0;
+}
+.form-search-pc .btn[type="submit"]{
+  background: #292663;
+  color: #FFF;
+  border: 1px solid #292663;
+}
+.form-search-scroll{
+  padding-top: 2px;
 }

@@ -21,6 +21,8 @@ class WPUF_Upload {
     }
 
     function upload_file( $image_only = false ) {
+//        var_dump("upload_file");
+//        var_dump($_FILES);
         $upload = array(
             'name' => $_FILES['wpuf_file']['name'],
             'type' => $_FILES['wpuf_file']['type'],
@@ -28,10 +30,13 @@ class WPUF_Upload {
             'error' => $_FILES['wpuf_file']['error'],
             'size' => $_FILES['wpuf_file']['size']
         );
-        $filetemp =  $_FILES['wpuf_file']['tmp_name'];
-        $filesize = getimagesize($filetemp);
+//        var_dump("\$upload");
+//        var_dump($upload);
+
+//        $filetemp =  $_FILES['wpuf_file']['tmp_name'];
+//        $filesize = getimagesize($filetemp);
 //        var_dump($filesize);
-       
+
         header('Content-Type: text/html; charset=' . get_option('blog_charset'));
 
         $attach = $this->handle_upload( $upload );
@@ -72,11 +77,14 @@ class WPUF_Upload {
      * @return bool|int attachment id on success, bool false instead
      */
     function handle_upload( $upload_data ) {
-
-        $uploaded_file = wp_handle_upload( $upload_data, array('test_form' => false) );
-
+//        var_dump("handle upload");
+//        var_dump("wp_handle_upload: define('ALLOW_UNFILTERED_UPLOADS', true) in wpuf.php");
+        $uploaded_file = wp_handle_upload( $upload_data, array('test_form' => false, 'unfiltered_upload' => true) );
+//        var_dump($uploaded_file);
         // If the wp_handle_upload call returned a local path for the image
         if ( isset( $uploaded_file['file'] ) ) {
+//            var_dump("isSet uploadFile");
+//            var_dump("uploadFile exist ^^ :+1:");
             $file_loc = $uploaded_file['file'];
             $file_name = basename( $upload_data['name'] );
             $file_type = wp_check_filetype( $file_name );
@@ -110,27 +118,26 @@ class WPUF_Upload {
         }
 
         if (wp_attachment_is_image( $attach_id)) {
-            $image = wp_get_attachment_image_src( $attach_id, 'full' );
+            $image = wp_get_attachment_image_src( $attach_id, 'thumbnail' );
             $image = $image[0];
         } else {
             $image = wp_mime_type_icon( $attach_id );
         }
+//        $html = '<li class="wpuf-image-wrap thumbnail">';
+//        $html .= sprintf( '<div class="attachment-name"><img src="%s" alt="%s" /></div>', $image, esc_attr( $attachment->post_title ) );
 
-        $html = '<li class="wpuf-image-wrap thumbnail" style="width: 100%;">';
-        $html .= sprintf( '<div class="attachment-name"><img src="%s" alt="%s" /></div>', $image, esc_attr( $attachment->post_title ) );
+//        if ( wpuf_get_option( 'image_caption', 'wpuf_general', 'off' ) == 'on' ) {
+//            $html .= '<div class="wpuf-file-input-wrap">';
+//            $html .= sprintf( '<input type="text" name="wpuf_files_data[%d][title]" value="%s" placeholder="%s">', $attach_id, esc_attr( $attachment->post_title ), __( 'Title', 'wpuf' ) );
+//            $html .= sprintf( '<textarea name="wpuf_files_data[%d][caption]" placeholder="%s">%s</textarea>', $attach_id, __( 'Caption', 'wpuf' ), esc_textarea( $attachment->post_excerpt ) );
+//            $html .= sprintf( '<textarea name="wpuf_files_data[%d][desc]" placeholder="%s">%s</textarea>', $attach_id, __( 'Description', 'wpuf' ), esc_textarea( $attachment->post_content ) );
+//            $html .= '</div>';
+//        }
 
-        if ( wpuf_get_option( 'image_caption', 'wpuf_general', 'off' ) == 'on' ) {
-            $html .= '<div class="wpuf-file-input-wrap">';
-            $html .= sprintf( '<input type="text" name="wpuf_files_data[%d][title]" value="%s" placeholder="%s">', $attach_id, esc_attr( $attachment->post_title ), __( 'Title', 'wpuf' ) );
-            $html .= sprintf( '<textarea name="wpuf_files_data[%d][caption]" placeholder="%s">%s</textarea>', $attach_id, __( 'Caption', 'wpuf' ), esc_textarea( $attachment->post_excerpt ) );
-            $html .= sprintf( '<textarea name="wpuf_files_data[%d][desc]" placeholder="%s">%s</textarea>', $attach_id, __( 'Description', 'wpuf' ), esc_textarea( $attachment->post_content ) );
-            $html .= '</div>';
-        }
-
-        $html .= sprintf( '<input type="hidden" name="wpuf_files[%s][]" value="%d">', $type, $attach_id );
-        $html .= sprintf( '<div class="caption"><a href="#" class="btn btn-danger btn-small attachment-delete" data-attach_id="%d">%s</a></div>', $attach_id, __( 'Delete', 'wpuf' ) );
-        $html .= '</li>';
-
+//        $html .= sprintf( '<input type="hidden" name="wpuf_files[%s][]" value="%d">', $type, $attach_id );
+//        $html .= sprintf( '<div class="caption"><a href="#" class="btn btn-danger btn-small attachment-delete" data-attach_id="%d">%s</a></div>', $attach_id, __( 'Delete', 'wpuf' ) );
+//        $html .= '</li>';
+        $html = sprintf( '<input type="hidden" id="imageIdServer" value="%d">', $attach_id );
         return $html;
     }
 

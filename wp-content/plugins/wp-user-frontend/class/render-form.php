@@ -50,10 +50,10 @@ class WPUF_Render_Form {
 
         if ( is_array( $array ) ) {
             if ( isset( $array[$key] ) && $array[$key] == $value )
-                $results[] = $array;
+                {$results[] = $array;}
 
             foreach ($array as $subarray)
-                $results = array_merge( $results, $this->search( $subarray, $key, $value ) );
+                {$results = array_merge( $results, $this->search( $subarray, $key, $value ) );}
         }
 
         return $results;
@@ -1393,32 +1393,42 @@ class WPUF_Render_Form {
             }
         }
         ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/js/jquery.Jcrop.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css">
 
         <div class="wpuf-fields">
             <div id="wpuf-<?php echo $attr['name']; ?>-upload-container">
                 <div class="wpuf-attachment-upload-filelist" data-type="file" data-required="<?php echo $attr['required']; ?>">
                     <a id="wpuf-<?php echo $attr['name']; ?>-pickfiles" class="button file-selector <?php echo ' wpuf_' . $attr['name'] . '_' . $form_id; ?>" href="#"><?php _e( 'Select Image', 'wpuf' ); ?></a>
+                    <canvas id="uniCanvas" width="0" height="0"></canvas>
 
+                    <!--modal allow resize-->
+                    <div class="modal fade" tabindex="-1" role="dialog" id="resizeImageModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">resize image</h4>
+                                </div>
+                                <div class="modal-body">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="btnResize">Save changes</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                     <ul class="wpuf-attachment-list thumbnails">
-                        <?php
-                        if ( $has_featured_image ) {
-                            echo $featured_image;
-                        }
-
-                        if ( $has_avatar ) {
-                            $avatar = get_user_meta( $post_id, 'user_avatar', true );
-                            if ( $avatar ) {
-                                echo $featured_image;
-                                printf( '<br><a href="#" data-confirm="%s" class="wpuf-button button wpuf-delete-avatar">%s</a>', __( 'Are you sure?', 'wpuf' ), __( 'Delete', 'wpuf' ) );
-                            }
-                        }
-
-                        if ( $has_images ) {
-                            foreach ($images as $attach_id) {
-                                echo WPUF_Upload::attach_html( $attach_id, $attr['name'] );
-                            }
-                        }
-                        ?>
+                        <li id="imageInfo" style="display: none;" class="wpuf-image-wrap thumbnail">
+                            <div class="wpuf-file-input-wrap">
+                                <input id="imageTitle" type="text" placeholder="Title">
+                                <textarea id="imageCaption" placeholder="Caption"></textarea>
+                                <textarea id="imageDecription" placeholder="Description"></textarea>
+                            </div>
+                            <input id="imageId" type="hidden" name="wpuf_files[image][]">
+                        </li>
                     </ul>
                 </div>
             </div><!-- .container -->
@@ -1426,11 +1436,13 @@ class WPUF_Render_Form {
             <span class="wpuf-help"><?php echo stripslashes( $attr['help'] ); ?></span>
 
         </div> <!-- .wpuf-fields -->
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css">
         <script type="text/javascript">
             jQuery(function($) {
-                new WPUF_Uploader('wpuf-<?php echo $attr['name']; ?>-pickfiles', 'wpuf-<?php echo $attr['name']; ?>-upload-container', <?php echo $attr['count']; ?>, '<?php echo $attr['name']; ?>', 'jpg,jpeg,gif,png,bmp', <?php echo $attr['max_size'] ?>);
+                new WPUF_Uploader('wpuf-<?php echo $attr['name']; ?>-pickfiles', '<?php echo $attr['name']; ?>', 'jpg,jpeg,gif,png,bmp', <?php echo $attr['max_size'] ?>);
             });
+
         </script>
     <?php
 

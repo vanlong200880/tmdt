@@ -1169,3 +1169,10 @@ function wpuf_get_subscription_page_url() {
 function wpuf_clear_buffer() {
     ob_clean();
 }
+
+function vklmay(){
+//    $hehe = new WPUF_Upload();
+//    $hehe->upload_file();
+    echo json_encode($_FILES);
+}
+add_action('wp_ajax_vklmay', 'vklmay');

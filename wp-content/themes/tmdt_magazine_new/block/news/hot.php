@@ -1,3 +1,5 @@
+<?php get_template_part('block/top4sale'); ?>
+
 <?php
 	wp_reset_postdata();
 	$width = 320;
@@ -67,7 +69,7 @@
 
           <figcaption>
             <p class="title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                <?php the_title(); ?> <?php echo get_field('sort_by'); ?>
+                <?php the_title(); ?>
               </a>
             </p>
             

@@ -41,15 +41,19 @@ $args = array(
   'post_type'      => 'post'
 );
   if(!empty($type) && !empty($keyword)){
-      $args['category_name'] = $type;
+      if($type == 'all'){
+        $args['category_name'] = '4-mua-khuyen-mai,am-thuc-tiec,dien-gia-dung,nguon-dia-oc,thoi-trang-suc-khoe,xe-cong-nghe,khuyen-mai-trong-tuan,khuyen-mai';
+      }else{
+        $args['category_name'] = $type;
+      }
+      
       $args['s'] = $keyword;
       $args['posts_per_page'] = 40;
       $args['paged'] = $paged;
       $my_the_query = new WP_Query( $args );
-      $pagename = get_query_var('pagename'); 
       if($my_the_query->have_posts()):
       ?>
-          <div class="col-md-6 col-sm-6 col-xs-12 show-search">
+          <div class="col-md-8 col-sm-8 col-xs-12 show-search">
             <ul class="row" id="list-map">
               <?php 
                 $jsonData = array();
@@ -113,7 +117,7 @@ $args = array(
             </div>
           </div>
           
-          <div <?php echo (!wpmd_is_iphone()) ? 'id="sidebar"': ''; ?> class="col-md-6 col-sm-6 col-xs-12 search-repend">
+          <div <?php echo (!wpmd_is_iphone()) ? 'id="sidebar"': ''; ?> class="col-md-4 col-sm-4 col-xs-12 search-repend">
             <div id="map" style="width: 100%; height: 480px"></div>
             <div class="show-map"></div>
               <table border="1"> 
@@ -207,7 +211,7 @@ $args = array(
                   gmarkers.push(marker);
                   // add a line to the side_bar html
                   var marker_num = gmarkers.length-1;
-                  side_bar_html += '<li class="col-md-6 col-sm-12 col-xs-12 item-map" onmouseover="gmarkers['+marker_num+'].setIcon(gicons.yellow)" onmouseout="gmarkers['+marker_num+'].setIcon(gicons.blue)">';
+                  side_bar_html += '<li class="col-md-4 col-sm-6 col-xs-12 item-map" onmouseover="gmarkers['+marker_num+'].setIcon(gicons.yellow)" onmouseout="gmarkers['+marker_num+'].setIcon(gicons.blue)">';
                     side_bar_html += '<div class="show-article-details">';
                       side_bar_html += '<figure>';
                       side_bar_html += hot;
@@ -301,14 +305,6 @@ $args = array(
   <?php }
 
  ?>
-<?php 
-//var_dump($args); die; ?>
-
-
-
-
-
-
 
 
 

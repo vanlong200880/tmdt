@@ -57,14 +57,22 @@ global $language;
         
       </div>
         <div class="col-md-8 col-sm-8">
-          <form action="<?php echo home_url( '/search-post' ); ?>" class="search-scroll">
-            <div class="page-search-scroll">
-              <input type="text" value="" name="keyword">
-                <button type="submit" id="searchsubmit" value="<?php echo esc_attr__( 'Search' ); ?>" class="btn btn-default">
-                    <i class="fa fa-search"></i>
-                </button>
+          <div class="form input-group form-search-scroll">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle show-all-button" data-toggle="dropdown" aria-expanded="false">
+                <span class="filter_box_scroll" data-category="all">Tất cả</span><span class="caret"></span>
+              </button>
+              <?php get_template_part('block/menu-search'); ?>
             </div>
-          </form>
+            <input type="text"  class="form-control" id="search-scroll" name="search" placeholder="Tìm kiếm sản phẩm, danh mục hay thương hiệu mong muốn...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <span class="hidden-sm hidden-xs">Tìm</span>
+                <i class="fa fa-search hidden-lg hidden-md"></i>
+              </button>
+            </span>
+          </div>
+          
         </div>
       <div class="col-md-2 col-sm-2">
         <a class="post pull-right" <?php echo (!is_user_logged_in())?'data-toggle="modal" data-target="#login-form"':'href="'.esc_url( home_url() ).'/dang-tin"'; ?>>
@@ -398,6 +406,28 @@ global $language;
                                                 $val = $("#search-pc").val();
                                                 window.location.href = "<?php echo home_url(); ?>/tim-kiem/?type="+$key+'&keyword='+$val;
                                               });
+                                              
+                                              // sroll bar
+                                              $(".menu-scroll").on('click','.form-search-scroll ul.dropdown-menu > li',  function(){
+                                                $value = $(this).text();
+                                                $data = $(this).attr('data-category');
+                                                $('.filter_box_scroll').empty().append($value);
+                                                $('.filter_box_scroll').attr('data-category', $data);
+                                              });
+
+                                               $('#search-scroll').keypress(function(event){
+                                                 var keycode = (event.keyCode ? event.keyCode : event.which);
+                                                 if (keycode == '13') {
+                                                   $(".form-search-scroll button[type='submit']").trigger('click');
+                                                 }
+                                               });
+
+                                              $(".form-search-scroll").on('click',"button[type='submit']" ,function(){
+                                                $key = $(".filter_box_scroll").attr('data-category');
+                                                $val = $("#search-scroll").val();
+                                                window.location.href = "<?php echo home_url(); ?>/tim-kiem/?type="+$key+'&keyword='+$val;
+                                              });
+
                                             });
                                            </script>
                                           
@@ -511,6 +541,27 @@ global $language;
                                           $(".form-search-pc").on('click',"button[type='submit']" ,function(){
                                             $key = $(".filter_box_pc").attr('data-category');
                                             $val = $("#search-pc").val();
+                                            window.location.href = "<?php echo home_url(); ?>/tim-kiem/?type="+$key+'&keyword='+$val;
+                                          });
+                                          
+                                          // sroll bar
+                                          $(".menu-scroll").on('click','.form-search-scroll ul.dropdown-menu > li',  function(){
+                                            $value = $(this).text();
+                                            $data = $(this).attr('data-category');
+                                            $('.filter_box_scroll').empty().append($value);
+                                            $('.filter_box_scroll').attr('data-category', $data);
+                                          });
+
+                                           $('#search-scroll').keypress(function(event){
+                                             var keycode = (event.keyCode ? event.keyCode : event.which);
+                                             if (keycode == '13') {
+                                               $(".form-search-scroll button[type='submit']").trigger('click');
+                                             }
+                                           });
+
+                                          $(".form-search-scroll").on('click',"button[type='submit']" ,function(){
+                                            $key = $(".filter_box_scroll").attr('data-category');
+                                            $val = $("#search-scroll").val();
                                             window.location.href = "<?php echo home_url(); ?>/tim-kiem/?type="+$key+'&keyword='+$val;
                                           });
                                         });
