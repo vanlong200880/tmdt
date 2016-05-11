@@ -38,7 +38,7 @@ License: Plugin comes under GPL Licence.
 
 
 
-
+include('includes/pagination.class.php');
 add_action('init', 'voucher_enqueue_script');
 function voucher_enqueue_script(){
   wp_register_style( 'ajax-voucher-style',  plugins_url( '/css/style-voucher.css', __FILE__ ), array(), true );
@@ -290,8 +290,168 @@ add_action('wp_ajax_nopriv_voucher_active_code_action', 'voucher_active_code_act
 
 add_action('admin_menu', 'voucher_settings');
 function voucher_settings() {
-    add_menu_page('List voucher', 'List voucher', 'manager', 'voucher_vn_currency_settings', 'voucher_display_settings');
+    add_menu_page('Create code', 'Create code', 'manage_options', 'voucher_vn_currency_settings', 'voucher_display_settings');
+    add_menu_page('List voucher', 'List voucher', 'manage_options', 'list_voucher_settings', 'list_voucher_display_settings');
 }
+
+
+function list_voucher_display_settings () {
+  global $wpdb;
+  $sql = 'SELECT COUNT(*) FROM wp_voucher_post';
+  $items  = $wpdb->get_var( $sql );
+
+//  $items = mysql_num_rows(mysql_query("SELECT * FROM wp_voucher_post")); // number of total rows in the database
+  if($items > 0) {
+	$p = new pagination;
+	$p->items($items);
+	$p->limit(500); // Limit entries per page
+	$p->target("admin.php?page=list_voucher_settings");
+	$p->currentPage($_GET[$p->paging]); // Gets and validates the current page
+	$p->calculate(); // Calculates what to show
+	$p->parameterName('paging');
+	$p->adjacents(1); //No. of page away from the current page
+ 
+	if(!isset($_GET['paging'])) {
+		$p->page = 1;
+	} else {
+		$p->page = $_GET['paging'];
+	}
+ 
+	//Query for limit paging
+	$limit = "LIMIT " . ($p->page - 1) * $p->limit . ", " . $p->limit;
+ 
+} else {
+	echo "No Record Found";
+}
+
+ 
+ 
+echo '<div class="wrap">
+	<h2>List of Records</h2>
+ 
+	<div class="tablenav">
+		<div class="tablenav-pages">';
+			 echo $p->show();
+		echo '</div>
+	</div>
+ 
+	<table class="widefat">
+		<thead>
+			 <tr>
+				 <th><strong>ID</strong></th>
+				 <th><strong>Người nhận</strong></th>
+				 <th><strong>Email</strong></th>
+                 <th><strong>Điện thoại</strong></th>
+                 <th><strong>Tên voucher</strong></th>
+                 <th><strong>Số lượng</strong></th>
+			 </tr>
+		</thead>
+		<tbody>';
+		$sql = "SELECT * FROM wp_voucher_post, wp_posts where wp_voucher_post.post_id = wp_posts.id ORDER BY wp_voucher_post.id DESC $limit";
+		$result = $wpdb->get_results($sql) or die ('Error, query failed');
+        foreach ($result as $value){
+          echo '<tr>
+				<td>'.$value->post_id.'</td>
+				<td>'.$value->fullname.'</td>
+				<td>'.$value->email.'</td>
+                <td>'.$value->phone.'</td>
+                <td>'.$value->post_title.'</td>
+                <td>'.$value->total.'</td>
+			</tr>';
+        }
+        
+		echo '</tbody>
+	</table>
+</div>';
+
+}
+function findStart($limit) {
+  if ((!isset($_GET['page'])) || ($_GET['page'] == "1")) {
+    $start = 0;
+    $_GET['page'] = 1;
+  } else {
+    $start = ($_GET['page']-1) * $limit;
+  }
+  return $start;
+}
+
+function findPages($count, $limit) {
+  $pages = (($count % $limit) == 0) ? $count / $limit : floor($count / $limit) + 1; 
+  return $pages;
+} 
+
+function pageList($curpage, $pages)
+{
+	$page_list = ""; 
+ 
+	/* Print the first and previous page links if necessary */
+	if (($curpage != 1) && ($curpage)) {
+		$page_list .= ' <a href=" '.$_SERVER['PHP_SELF'].'?page=1" title="First Page">«</a> ';
+	} 
+ 
+	if (($curpage-1) > 0) {
+		$page_list .= '<a href=" '.$_SERVER['PHP_SELF']."?page=".($curpage-1).'" title="Previous Page">&lt;</a> ';
+	} 
+ 
+	/* Print the numeric page list; make the current page unlinked and bold */
+	for ($i=1; $i<=$pages; $i++) {
+		if ($i == $curpage) {
+			$page_list .= "<b>".$i."</b>";
+		} else {
+			$page_list .= '<a href=" '.$_SERVER['PHP_SELF'].'?page='.$i.'" title="Page'.$i.'">'.$i.'</a>';
+		}
+		$page_list .= " ";
+	} 
+ 
+	/* Print the Next and Last page links if necessary */
+	if (($curpage+1) <= $pages) {
+		$page_list .= '<a href="'.$_SERVER['PHP_SELF']."?page=".($curpage+1).'" title="Next Page">></a> ';
+	} 
+ 
+	if (($curpage != $pages) && ($pages != 0)) {
+		$page_list .= '<a href="'.$_SERVER['PHP_SELF']."?page=".$pages.'" title="Last Page">»</a> ';
+	}
+	$page_list .= "</td>\n"; 
+	return $page_list;
+}
+
+function nextPrev($curpage, $pages) {
+	$next_prev = ""; 
+ 
+	if (($curpage-1) <= 0) {
+		$next_prev .= "Previous";
+	} else {
+		$next_prev .= '<a href="'.$_SERVER['PHP_SELF']."?page=".($curpage-1).'">Previous</a>';
+	} 
+ 
+	$next_prev .= " | "; 
+ 
+	if (($curpage+1) > $pages) {
+		$next_prev .= "Next";
+	} else {
+		$next_prev .= '<a href="'.$_SERVER['PHP_SELF']."?page=".($curpage+1).'">Next</a>';
+	}
+	return $next_prev;
+}
+
+function getListVoucher(){
+  $p = new Pager; 
+  /* Show many results per page? */
+  $limit = 100; 
+  /* Find the start depending on $_GET['page'] (declared if it's null) */
+  $start = $p->findStart($limit); 
+  /* Find the number of rows returned from a query; Note: Do NOT use a LIMIT clause in this query */
+  $count = mysql_num_rows(mysql_query("SELECT * FROM wp_voucher_post")); 
+  /* Find the number of pages based on $count and $limit */
+  $pages = $p->findPages($count, $limit); 
+  /* Now we use the LIMIT clause to grab a range of rows */
+  $result = mysql_query("SELECT * FROM wp_voucher_post LIMIT ".$start.", ".$limit); 
+  /* Now get the page list and echo it */
+  $pagelist = $p->pageList($_GET['page'], $pages);
+  echo $pagelist;
+}
+
+
 function voucher_display_settings () {
 $html ='<div class="gencode"><h2>Tạo mã code Voucher</h2>
           <div class="control-gencode">

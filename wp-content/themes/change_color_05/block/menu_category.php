@@ -20,12 +20,12 @@ global $language;
 //});
 //if($sorted_cats){ ?>
   <li class="color-item-magazine">
-    <a href="<?php echo get_site_url() ?>/tap-chi-online/" target="_blank" title="Copon">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/tap-chi-online/" target="_blank" title="Copon">
       <span class="fonts fonts-magazine"></span> 
         <?php echo ($language =='en')?'Magazine':'Tạp chí online'; ?></a>
   </li>
   <li class="color-item-6">
-    <a href="<?php echo get_site_url() ?>/tap-chi-moi/">
+    <a href="<?php echo get_site_url() ?><?php echo $language; ?>//tap-chi-moi/">
       <span class="fonts fonts-new-document"></span> 
       <strong><?php echo ($language =='en')?'New Advertising':'Mới cập nhật'; ?></strong></a>
 <!--    <ul class="menu-level color-item-6">
@@ -38,50 +38,50 @@ global $language;
     </ul>-->
   </li>
   <li class="color-item-4">
-    <a href="<?php echo get_site_url() ?>/nguon-dia-oc/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/nguon-dia-oc/">
       <span class="icon-4 icon-icon-health-4"></span>
         <?php echo ($language =='en')?'Real Estate Source':'Nguồn địa ốc'; ?></a>
   </li>
   <li class="color-item-5">
-    <a href="<?php echo get_site_url() ?>/thoi-trang-suc-khoe/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/thoi-trang-suc-khoe/">
         <span class="icon-5 icon-icon-health-5"></span>
         <?php echo ($language =='en')?'Fashion & Health':'Thời trang & Sức khỏe'; ?></a>
   </li>
   <li class="color-item-8">
-    <a href="<?php echo get_site_url() ?>/dien-gia-dung/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/dien-gia-dung/">
       <span class="icon-8 icon-icon-health-8"></span>
         <?php echo ($language =='en')?'Home & Electronics':'Điện máy & Gia dụng'; ?></a>
   </li>
   <li class="color-item-6">
-    <a href="<?php echo get_site_url() ?>/am-thuc-tiec/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/am-thuc-tiec/">
       <span class="icon-6 icon-icon-health-6"></span>
         <?php echo ($language =='en')?'Taste & Event':'Ẩm thực & Tiệc'; ?></a>
   </li>
   
   <li class="color-item-7">
-    <a href="<?php echo get_site_url() ?>/du-lich/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/du-lich/">
       <span class="fonts fonts-airplane-around-earth"></span> 
       <?php echo ($language =='en')?'Travel & Services':'Du lịch & Dịch vụ'; ?></a>
   </li>
   <li class="color-item-9">
-    <a href="<?php echo get_site_url() ?>/xe-cong-nghe/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/xe-cong-nghe/">
       <span class="icon-9 icon-icon-health-9"></span>
         <?php echo ($language =='en')?'Vehicle & Technology':'Xe & Công nghệ'; ?></a>
   </li>
   <li class="color-item-7">
-    <a href="<?php echo get_site_url() ?>/4-mua-khuyen-mai/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/4-mua-khuyen-mai/">
       <span class="icon-7 icon-icon-health-7"></span>
         <?php echo ($language =='en')?'4 Seasons & Promotion':'4 Mùa & Khuyến mãi'; ?></a>
   </li>
 
   <li class="color-item-7">
-    <a href="<?php echo get_site_url() ?>/khuyen-mai/" title="UNI - DEAL">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/khuyen-mai/" title="UNI - DEAL">
       <span class="fonts fonts-refresh-button"></span>
       <strong><?php echo ($language =='en')?'UNI - DEAL':'UNI - DEAL'; ?></strong></a>
   </li>
   
   <li class="color-item-copon">
-    <a href="<?php echo get_site_url() ?>/voucher/" title="Copon">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/voucher/" title="Copon">
       <span class="fonts fonts-clothes-tag"></span>
       <?php echo ($language =='en')?'Voucher & Coupon':'Voucher & Coupon'; ?></a>   
   </li>

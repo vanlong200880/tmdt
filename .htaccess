@@ -10,3 +10,4 @@ RewriteRule . /tmdt/index.php [L]
 </IfModule>
 
 # END WordPress
+

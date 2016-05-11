@@ -10,17 +10,99 @@
  */
 global $language;
 ?>
+<div class="list-icon">
+  <div class="container">
+    <ul class="row">
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.google.com" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/google-12.png"></p>
+          <p>Google</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.facebook.com" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/facebook.com-1381205514.png"></p>
+          <p>facebook</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.youtube.com" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/youtube.com-1381205141.png"></p>
+          <p>Youtube</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.vnexpress.net" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/vnexpress.net-1381205280.png"></p>
+          <p>Vnexpress</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.news.zing.vn" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/news.zing.vn-1381205130.png"></p>
+          <p>Zing news</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.dantri.com.vn" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/dantri.com.vn-1381205614.png"></p>
+          <p>Dân trí</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.kenh14.vn" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/kenh14.vn-1354607660.png"></p>
+          <p>Kenh14</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.dict.laban.vn" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/dict.laban.vn-1431338802.jpg"></p>
+          <p>Từ điển</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.baomoi.com" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/baomoi.com-1441858497.jpg"></p>
+          <p>Báo mới</p>
+        </a>
+      </li>
+      
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.lazada.vn" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/www.lazada.vn-1407750861.png"></p>
+          <p>Lazada</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.bongda.com.vn" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/www.bongda.com.vn-1354611194.png"></p>
+          <p>Bóng đá</p>
+        </a>
+      </li>
+      <li class="col-md-1 col-sm-2 col-xs-3">
+        <a href="http://www.24h.com.vn" target="_blank">
+          <p class="img"><img src="<?php echo get_template_directory_uri() ;?>/images/24h.com.vn-1381204839.png"></p>
+          <p>24h</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
 <footer id="footer">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-12">
         <div class="linkweb title-footer">
-          <h3><?php echo ($language == 'vi'? 'Liên kết website': 'Link'); ?></h3>
+          <h3><?php echo ($language == 'vi'? 'Tìm chúng tôi trên': 'Link'); ?></h3>
           <ul>
-            <li><a href="http://unimedia.com.vn"><span class="fa fa-link"></span>Unimedia</a></li>
-            <li><a href="http://unimedia.com.vn"><span class="fa fa-link"></span>Unimedia</a></li>
-            <li><a href="http://unimedia.com.vn"><span class="fa fa-link"></span>Unimedia</a></li>
+            <li><a href="www.facebook.com/unimediavietnam"><img src="<?php echo get_template_directory_uri() ;?>/images/facebook-logo-button.png"></a></li>
+            <li><a href="http://www.unimedia.vn"><img src="<?php echo get_template_directory_uri() ;?>/images/googleplus-logo.png"></a></li>
+            <li><a href="http://www.unimedia.vn"><img src="<?php echo get_template_directory_uri() ;?>/images/youtube-logotype.png"></a></li>
+            <li><a href="http://www.unimedia.vn"><img src="<?php echo get_template_directory_uri() ;?>/images/twitter-logo-button.png"></a></li>
+            <li><a href="http://www.unimedia.vn"><img src="<?php echo get_template_directory_uri() ;?>/images/pinterest.png"></a></li>
           </ul>
+          
         </div>
       </div>
 
@@ -28,15 +110,10 @@ global $language;
         <div class="about-footer title-footer">
           <h3><?php echo ($language == 'vi'? 'Địa chỉ': 'Address'); ?></h3>
           <div class="sub-about">
-            <h5>Công ty TNHH UNIMEDIA</h5>
+            <h5><?php echo ($language == 'vi'? 'Công ty TNHH UNIMEDIA': 'UNIMEDIA Co., Ltd'); ?></h5>
             <p><?php echo ($language == 'vi'? 'Tầng 11, Bảo Minh Tower <br>217 Nam Kỳ Khởi Nghĩa, P.7, Q.3': 'Floor 11, Bao Minh Tower<br>217 Nam Ky Khoi Nghia Street, Ward 7, District 3'); ?></p>
             <p>Tel: (08) 3932 9777 - (08) 3932 9333</p>
             <p>Fax: (08) 3932 9222</p>
-            <div class="plugin-social">
-              <a href="">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/share-facebook.png" alt="">
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -47,7 +124,7 @@ global $language;
 					<?php
 						wp_nav_menu( array(
 								'theme_location' => 'primary',
-								'menu'=> 'top_menu',
+								'menu'=> 'menu_footer',
 								'menu_class' => '',
 								'container_class' => '',
                 'before' => '',

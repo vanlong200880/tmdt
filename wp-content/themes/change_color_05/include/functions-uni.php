@@ -292,6 +292,114 @@ function getTemplatePart($slug = null, $name = null, array $params = array()) {
 }
 
 
+add_action('init', 'custom_rewrite_basic_v2');
+function custom_rewrite_basic_v2() {
+ $categories = get_categories();
+ // $terms = get_terms('category');
+ // var_dump("terms", $terms);
+ // $termsCat = get_terms('post_cat');
+ // // global
+ // var_dump("termsCat", $termsCat);
+ // var_dump($categories);
+    // global $post;
+    // global $wp_post_types;
+    // var_dump("post type", $wp_post_types);
+    foreach ($categories as $category) {
+     // var_dump($wp_post_type);
+        // if ($category->_builtin) continue;
+        // if (!$category->has_archive && isset($category->rewrite) && isset($category->rewrite['with_front']) && !$category->rewrite['with_front']) {
+            // $slug = (isset($category->rewrite['slug']) ? $category->rewrite['slug'] : $category->name);
+            // var_dump($category);
+            // var_dump("get slug of category");
+            $slug = $category->slug;
+            $cat = $category->term_taxonomy_id;
+            // var_dump($category);
+            add_rewrite_rule('^' . $slug. '/page/([0-9]+)/?$', 'index.php?cat=' . $cat . '&paged=$matches[1]', 'top');
+            // var_dump('^' . $slug. '/page/([0-9]+)/?$', 'index.php?cat=' . $cat . '&paged=$matches[1]', 'top');
+            // var_dump($slug);
+            // var_dump($category->name, $category->rewrite['slug']);
+            // $page = get_page_by_slug($slug);
+            // var_dump($slug, $page, $page->ID);
+            // var_dump("call post");
+            // var_dump($post);
+            // if ($page) add_rewrite_rule('^' .$slug .'/page/([0-9]+)/?', 'index.php?page_id=' .$page->ID .'&paged=$matches[1]', 'top');
+        // }
+    }
+}
 
 
 
+function custom_init() {
+    global $wp_rewrite;
+     
+    // Declare our permalink structure
+    $post_type_structure = '/%post_type%/%taxonomy%/%term%';
+ 
+    // Make wordpress aware of our custom querystring variables
+    $wp_rewrite->add_rewrite_tag("%post_type%", '([^/]+)', "post_type=");
+    $wp_rewrite->add_rewrite_tag("%taxonomy%", '([^/]+)', "taxonomy=");
+    $wp_rewrite->add_rewrite_tag("%term%", '([^/]+)', "term=");
+ 
+    // Only get custom and public post types
+    $args=array(
+        'public'   => true,
+        '_builtin' => false
+    );
+    $output = 'names'; // names or objects, note names is the default
+    $operator = 'and'; // 'and' or 'or'
+    $post_types=get_post_types($args,$output,$operator);
+    $post_types_string = implode("|", $post_types);
+ 
+    $taxonomies=get_taxonomies($args,$output,$operator); // Note the use of same arguments as with get_post_types()
+    $taxonomies_string = implode("|", $taxonomies);
+ 
+    // Now add the rewrite rules, note that the order in which we declare them are important
+    add_rewrite_rule('^('.$post_types_string.')/('.$taxonomies_string.')/([^/]*)/?','index.php?post_type=$matches[1]&$matches[2]=$matches[3]','top');
+    add_rewrite_rule('^('.$post_types_string.')/([^/]*)/?','index.php?post_type=$matches[1]&name=$matches[2]','top');
+    add_rewrite_rule('^('.$post_types_string.')/?','index.php?post_type=$matches[1]','top');
+ 
+    // Finally, flush and recreate the rewrite rules
+    flush_rewrite_rules();
+}
+ 
+function post_type_permalink($permalink, $post_id, $leavename){
+    $post = get_post($post_id);
+    var_dump($post); die;
+    // An array of our custom query variables
+    $rewritecode = array(
+        '%post_type%',
+        '/%taxonomy%',
+        '/%term%',
+        $leavename? '' : '%postname%',
+        $leavename? '' : '%pagename%',
+    );
+ 
+    // Avoid trying to rewrite permalinks when not applicable
+    if ('' != $permalink && !in_array($post->post_status, array('draft', 'pending', 'auto-draft'))) {
+        // Fetch the post type
+        $post_type = get_post_type( $post->ID );
+ 
+        // Setting these isn't necessary if the taxonomy has rewrite = true,
+        // otherwise you need to fetch the relevant data from the current post
+        $taxonomy = "";
+        $term = "";
+ 
+        // Now we do the permalink rewrite
+        $rewritereplace = array(
+            $post_type,
+            $taxonomy,
+            $term,
+            $post->post_name,
+            $post->post_name,
+        );
+        $permalink = str_replace($rewritecode, $rewritereplace, $permalink);
+    }
+ 
+    return $permalink;
+}
+ 
+// Create custom rewrite rules
+add_action('init', 'custom_init');
+ 
+// Translate the custom post type permalink tags
+add_filter('post_type_link', 'post_type_permalink', 10, 3);

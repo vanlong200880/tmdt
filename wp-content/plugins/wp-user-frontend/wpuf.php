@@ -351,7 +351,7 @@ class WP_User_Frontend{
         wp_enqueue_script('jquery-ui-timepicker', WPUF_ASSET_URI . '/js/jquery-ui-timepicker-addon.js',
             array('jquery-ui-datepicker'));
         wp_enqueue_script('bootstrap-3.3.6', WPUF_ASSET_URI . '/js/bootstrap.min.js', array('jquery'));
-        wp_enqueue_script('jquery-jcrop', WPUF_ASSET_URI . '/js/jquery.Jcrop.min.js', array('bootstrap-3.3.6'));
+        wp_enqueue_script('jquery-jcrop', WPUF_ASSET_URI . '/js/jquery.Jcrop.min.js', array('jquery'));
         wp_enqueue_script('wpuf-upload', WPUF_ASSET_URI . '/js/upload.js', array('jquery-jcrop'));
         wp_enqueue_script('addDivAroundSoDienThoai', WPUF_ASSET_URI . '/js/addDivAroundSoDienThoai.js',
             array('jquery'));

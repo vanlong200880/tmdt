@@ -34,7 +34,6 @@
       $top_category = 'advertisement_top_category';
     }
     
-    
     if($slug ==='xe-cong-nghe-moi'){
       $slug = 'xe-cong-nghe-quang-cao';
       $adv_category = 'quang_cao_slider_trang_tap_chi_moi';
@@ -74,14 +73,14 @@
       $adv_category = 'advertisement_top_category';
     }
   }
-  if(is_page('page-tap-chi-online')){
+  if($slug =='tap-chi-online'){
     $slug = '4-mua-khuyen-mai-quang-cao,am-thuc-tiec-quang-cao,dien-gia-dung-quang-cao,nguon-dia-oc-quang-cao,thoi-trang-suc-khoe-quang-cao,xe-cong-nghe-quang-cao';
     $adv_category = 'quang_cao_slider_trang_tap_chi';
   }
 	$args = array (
 			'post_status'    => 'publish',
 			'order'          => 'DESC',
-			'orderby'        => 'menu_order',
+			'orderby'        => 'post_date',
 			'post_type'      => 'post',
 			'category_name'  => $slug,
 			'meta_query'     => array(

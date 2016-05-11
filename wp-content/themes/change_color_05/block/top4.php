@@ -90,7 +90,7 @@
       $top_category = 'top_category';
     }
   }
-  if(is_page('page-tap-chi-online')){
+  if($slug =='tap-chi-online'){
     $slug = '4-mua-khuyen-mai-quang-cao,am-thuc-tiec-quang-cao,dien-gia-dung-quang-cao,nguon-dia-oc-quang-cao,thoi-trang-suc-khoe-quang-cao,xe-cong-nghe-quang-cao';
     $top_category = 'quang_cao_top_3_trang_tạp_chi';
   }

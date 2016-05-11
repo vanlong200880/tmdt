@@ -39,7 +39,7 @@ get_header(); ?>
                   <?php while ($the_query->have_posts()){
                       $the_query->the_post();
                       ?>
-            <li class="col-md-4 col-sm-4 col-xs-6 show-article">
+            <li class="col-md-6 col-sm-6 col-xs-12 show-article">
               <div class="item-news">
                 <div class="title">
                   

@@ -13,25 +13,6 @@ get_header(); ?>
 <?php 
 $category = get_queried_object();
 $parent = get_category($category->category_parent);
-global $language;
-if($category->slug == 'tap-chi-online'): ?>
-<?php get_template_part('block/block_category'); ?>
-<section id="categories" class="categories all-article page-magazine-online">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <ol class="breadcrumb">
-          <li><a href="<?php echo get_site_url() ?>"><?php echo ($language =='vi')?'Trang chủ': 'Home' ?></a></li>
-          <li class="active"><h1 class="title-h1"><?php printf( __( '%s', 'twentyfourteen' ), single_cat_title( '', false ) ); ?></h1></li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
-<?php get_template_part('block/tap_chi_online'); ?>
-<?php
-else:   
-
 if($parent->slug =='voucher'): ?>
 <?php 
 global $post;
@@ -243,7 +224,7 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
           <div class="row">
           <div class="col-md-6">
             <ol class="breadcrumb">
-              <li><a href="<?php echo get_site_url() ?>"><?php echo ($language =='vi')?'Trang chủ': 'Home' ?></a></li>
+              <li><a href="<?php echo get_site_url() ?>">Trang chủ</a></li>
               <li class="active"><h1 class="title-h1"><?php printf( __( '%s', 'twentyfourteen' ), single_cat_title( '', false ) ); ?></h1></li>
             </ol>
           </div>
@@ -280,7 +261,7 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
         <div class="row">
           <div class="col-md-12">
             <ol class="breadcrumb">
-              <li><a href="<?php echo get_site_url() ?>"><?php echo ($language =='vi')?'Trang chủ': 'Home' ?></a></li>
+              <li><a href="<?php echo get_site_url() ?>">Trang chủ</a></li>
               <li class="active"><h1 class="title-h1"><?php printf( __( '%s', 'twentyfourteen' ), single_cat_title( '', false ) ); ?></h1></li>
             </ol>
           </div>
@@ -362,9 +343,6 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
   
     
     <?php if($category->slug == 'khuyen-mai'){ ?>
-    <div class="row title-sale-weekly">
-      <div class="col-md-12"><h2>khuyến mãi trong tuần</h2></div>
-    </div>
     <div class="row">
       <?php get_template_part('block/sale-weekly'); ?>
     </div>
@@ -373,9 +351,6 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
       header('Location: http://unimedia.vn/vi/khuyen-mai/');
     }
     ?>
-    <div class="row title-sale-weekly">
-      <div class="col-md-12"><h2>Doanh nghiệp khuyến mãi</h2></div>
-    </div>
       <ul class="row sale-category">
         <?php while ( have_posts() ) : the_post();
           ?>
@@ -389,8 +364,6 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
             <div class="news-icon hot"><span>Hot</span></div>
             <?php endif; ?>
           <?php endif; ?>
-            
-            
             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
               <?php 
                     $attachment_id = get_post_thumbnail_id(get_the_ID());
@@ -461,30 +434,33 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
       </ul>
 
     <?php } else{ ?>
+    <?php var_dump("abc");?>
     <?php getTemplatePart('block/trademark',  null, array('product_cat' => $category->slug)); ?>
       <ul class="row">
         <?php
-//     var_dump($category->slug);
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+     var_dump($category->slug);
+        
+        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+        var_dump($paged);
         $arg_category = array (					 
 			'post_status'    => 'publish',		
 //			'order'          => 'DESC',
 //			'orderby'        => 'date',
-            'order'				=> 'DESC',
-            'meta_key'			=> 'order_by_list_category',
-            'orderby'			=> 'meta_value post_date',
+//            'order'				=> 'DESC',
+//            'meta_key'			=> 'order_by_list_category',
+//            'orderby'			=> 'meta_value post_date',
 //        
 			'post_type'      => 'post',
 			'category_name'  => $category->slug,
-            'paged' => $paged,
-			'posts_per_page' => 80,
-//            'caller_get_posts'=> 1
+//			'posts_per_page' => 12,
+            'paged'          => 5,
+			'posts_per_page' => 5,
 		);
-  $category_the_post_query = new WP_Query( $arg_category ); 
-//        query_posts($arg_category);    
-  if($category_the_post_query->have_posts()){
-    while ($category_the_post_query->have_posts()){
-				$category_the_post_query->the_post();
+        query_posts($arg_category);
+//  $category_the_post_query = new WP_Query( $arg_category ); 
+  if(have_posts()){
+    while (have_posts()){
+				the_post();
 //    }
 //  }
 //        while ( have_posts() ) : the_post();
@@ -552,7 +528,7 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
         </figure>
         </li>
         <?php //endif; ?>
-  <?php }}; ?>
+  <?php }}; wp_reset_postdata(); ?>
       </ul>
       
    <?php }
@@ -578,6 +554,6 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
 </section>
 <?php endif ?>
 
-<?php endif; ?>
+
 <?php
 get_footer();

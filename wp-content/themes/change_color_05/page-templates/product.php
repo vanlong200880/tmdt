@@ -9,6 +9,7 @@
 
 get_header(); 
 global $post;
+global $language;
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $args = array(
   'post_status'    => 'publish',
@@ -63,7 +64,7 @@ $cats = array();
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Nhận voucher - Vui thả ga</h1>
+        <h1><?php echo ($language == 'vi')?'Nhận voucher - Vui thả ga': 'Get Voucher – Non-Stop Fun ' ?></h1>
       </div>
     </div>
   </div>
@@ -113,7 +114,7 @@ $cats = array();
                 <?php echo $sale; ?>
                 <?php endif; ?>
               </p>
-              <p class="payment"><a data-code="<?php the_ID() ?>">Nhận voucher</a></p>
+              <p class="payment"><a data-code="<?php the_ID() ?>"><?php echo ($language == 'vi')?'Nhận voucher': 'Get Voucher' ?></a></p>
             </div>
           </div>
         </div>
@@ -148,14 +149,14 @@ $cats = array();
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="icon-voucher"></div>
-      <h3>Nhận</h3>
+      <h3><?php echo ($language == 'vi')? 'Nhận':'Get'; ?></h3>
       <h2>Voucher</h2>
       <div class="form-voucher">
         <form class="form-horizontal" id="voucher_form" action="voucher_form">
           <div class="voucher-error"></div>
           <input type="hidden" id="voucher-code" name="voucher-code" value="">
           <div class="form-group">
-            <label for="voucher-name">Họ và tên</label>
+            <label for="voucher-name"><?php echo ($language == 'vi')? 'Họ và tên':'Fullname'; ?></label>
             <input type="text" class="form-control" id="voucher-fullname" name="fullname">
           </div>
 
@@ -165,22 +166,22 @@ $cats = array();
           </div>
 
           <div class="form-group">
-            <label for="voucher-phone">Điện thoại</label>
+            <label for="voucher-phone"><?php echo ($language == 'vi')? 'Điện thoại':'Phone'; ?></label>
             <input type="tel" class="form-control" id="voucher-phone" name="phone">
           </div>
           
           <div class="form-group">
-            <label for="voucher-phone">Số lượng</label>
+            <label for="voucher-phone"><?php echo ($language == 'vi')? 'Số lượng':'Quantity'; ?></label>
             <input type="number" max="7" min="1" value="1" class="form-control" id="voucher-total" name="total">
           </div>
           
           <div class="form-group">
-            <label for="voucher-note">Ghi chú</label>
+            <label for="voucher-note"><?php echo ($language == 'vi')? 'Ghi chú':'Note'; ?></label>
             <textarea class="form-control note" id="voucher-note" rows="3"></textarea>
           </div>
           <div class="form-group submit-voucher">
-            <button type="submit" class="btn btn-primary send">Gửi</button>
-            <button type="submit" class="btn btn-primary close" data-dismiss="modal">Hủy</button>
+            <button type="submit" class="btn btn-primary send"><?php echo ($language == 'vi')? 'Gửi':'Send'; ?></button>
+            <button type="submit" class="btn btn-primary close" data-dismiss="modal"><?php echo ($language == 'vi')? 'Hủy':'Cancel'; ?></button>
             <img class="image-loading" src="<?php echo get_stylesheet_directory_uri(); ?>/images/Floating rays-32.gif" width="20px" style="display: none;">
           </div>
         </form>

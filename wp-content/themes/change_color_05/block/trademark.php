@@ -1,6 +1,6 @@
 <?php
 wp_reset_postdata();
-  $item = 36;
+  $item = 16;
   $slug  = isset($product_cat) ? $product_cat : 0;
   if($slug =='4-mua-khuyen-mai-moi'){
     $slug = '4-mua-khuyen-mai';
@@ -40,7 +40,7 @@ wp_reset_postdata();
           $link = get_field('url', get_the_ID());
         ?>
         <li class="col-md-1 col-sm-2 col-xs-4">
-          <a href="<?php echo $link; ?>" title="<?php the_title(); ?>">
+          <a href="<?php echo $link; ?>" target="_blank" title="<?php the_title(); ?>">
             <?php
               $attachment_id = get_post_thumbnail_id(get_the_ID());
               if (!empty($attachment_id))

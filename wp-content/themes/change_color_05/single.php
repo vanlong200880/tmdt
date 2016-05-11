@@ -7,6 +7,7 @@
  * @since Twenty Fourteen 1.0
 4 */
 global $post;
+global $language;
 $category = get_the_category($post->ID);
 $parent = get_category($category[0]->category_parent);
 global $current_user; ?>
@@ -25,10 +26,8 @@ get_template_part('block/block_category');
 					<div class="col-md-12">
 						<div class="row">
 							 <ol class="breadcrumb">
-										<?php if(function_exists('bcn_display'))
-										{
-												bcn_display();
-										}?>
+                               <li><a href="<?php echo home_url(); ?>"><?php echo ($language =='vi')?'Trang chủ': 'Home'; ?></a></li>
+                               <li><span><?php the_title() ?></span></li>
 								</ol>
 						</div>	
 					</div>
@@ -302,7 +301,7 @@ get_template_part('block/block_category');
                                                     
                                                     <div class="voucher-payment">
                                                       <ul class="list-voucher-free">
-                                                        <li><p class="payment"><a data-code="<?php the_ID(); ?>">Nhận voucher</a></p></li>
+                                                        <li><p class="payment"><a data-code="<?php the_ID(); ?>"><?php echo ($language == 'vi')?'Nhận voucher': 'Get Voucher' ?></a></p></li>
                                                       </ul>
                                                     </div>
                                                 </div>
@@ -318,14 +317,14 @@ get_template_part('block/block_category');
                                           <div class="modal-dialog modal-sm">
                                             <div class="modal-content">
                                               <div class="icon-voucher"></div>
-                                              <h3>Nhận</h3>
+                                              <h3><?php echo ($language == 'vi')?'Nhận': 'Get' ?></h3>
                                               <h2>Voucher</h2>
                                               <div class="form-voucher">
                                                 <form class="form-horizontal" id="voucher_form" action="voucher_form">
                                                   <div class="voucher-error"></div>
                                                   <input type="hidden" id="voucher-code" name="voucher-code" value="">
                                                   <div class="form-group">
-                                                    <label for="voucher-name">Họ và tên</label>
+                                                    <label for="voucher-name"><?php echo ($language == 'vi')? 'Họ và tên':'Fullname'; ?></label>
                                                     <input type="text" class="form-control" id="voucher-fullname" name="fullname">
                                                   </div>
 
@@ -335,22 +334,22 @@ get_template_part('block/block_category');
                                                   </div>
 
                                                   <div class="form-group">
-                                                    <label for="voucher-phone">Điện thoại</label>
+                                                    <label for="voucher-phone"><?php echo ($language == 'vi')? 'Điện thoại':'Phone'; ?></label>
                                                     <input type="tel" class="form-control" id="voucher-phone" name="phone">
                                                   </div>
 
                                                   <div class="form-group">
-                                                    <label for="voucher-phone">Số lượng</label>
+                                                    <label for="voucher-phone"><?php echo ($language == 'vi')? 'Số lượng':'Quantity'; ?></label>
                                                     <input type="number" max="7" min="1" value="1" class="form-control" id="voucher-total" name="total">
                                                   </div>
 
                                                   <div class="form-group">
-                                                    <label for="voucher-note">Ghi chú</label>
+                                                    <label for="voucher-note"><?php echo ($language == 'vi')? 'Ghi chú':'Note'; ?></label>
                                                     <textarea class="form-control note" id="voucher-note" rows="3"></textarea>
                                                   </div>
                                                   <div class="form-group submit-voucher">
-                                                    <button type="submit" class="btn btn-primary send">Gửi</button>
-                                                    <button type="submit" class="btn btn-primary close" data-dismiss="modal">Hủy</button>
+                                                    <button type="submit" class="btn btn-primary send"><?php echo ($language == 'vi')? 'Gửi':'Send'; ?></button>
+                                                    <button type="submit" class="btn btn-primary close" data-dismiss="modal"><?php echo ($language == 'vi')? 'Hủy':'Cancel'; ?></button>
                                                     <img class="image-loading" src="<?php echo get_stylesheet_directory_uri(); ?>/images/Floating rays-32.gif" width="20px" style="display: none;">
                                                   </div>
                                                 </form>
@@ -365,11 +364,11 @@ get_template_part('block/block_category');
 							<div class="tab-content-details">
 								<!-- Nav tabs -->
 							   <ul class="nav nav-tabs" role="tablist">
-							      <li class="active"><a href="#info" aria-controls="info" data-toggle="tab">Thông tin</a></li>
+							      <li class="active"><a href="#info" aria-controls="info" data-toggle="tab"><?php echo ($language == 'vi')? 'Thông tin':'Information'; ?></a></li>
 							      <li><span>|</span></li>
-							      <li><a href="#map1" aria-controls="map1" data-toggle="tab">Bản đồ</a></li>
+							      <li><a href="#map1" aria-controls="map1" data-toggle="tab"><?php echo ($language == 'vi')? 'Bản đồ':'Map'; ?></a></li>
 							      <li><span>|</span></li>
-							      <li><a href="#comment" aria-controls="comment" data-toggle="tab">Bình luận</a></li>
+							      <li><a href="#comment" aria-controls="comment" data-toggle="tab"><?php echo ($language == 'vi')? 'Bình luận':'Comment'; ?></a></li>
 							   </ul>
 							   <!-- Tab panes -->
 								<div class="tab-content">
@@ -377,7 +376,7 @@ get_template_part('block/block_category');
 										<div class="show-dt-editor">
                       <div id="dvContainer">
                       <?php the_content(); ?>
-                        <p style="text-align: right;">Tin đăng bởi: <?php echo get_the_author(); ?></p>
+                        <p style="text-align: right;"><?php echo ($language == 'vi')? 'Tin đăng bởi:':'Author'; ?> <?php echo get_the_author(); ?></p>
                       </div>
                                           
 <!--											<p>Người đăng: 
@@ -587,7 +586,7 @@ get_footer(); ?>
 
   <?php else: ?>
 <?php 
-if($parent->slug == 'online-magazine' || $category[0]->slug == 'khuyen-mai-trong-tuan'): ?>
+if($parent->slug == 'tap-chi-online' || $category[0]->slug == 'khuyen-mai-trong-tuan'): ?>
 <?php while ( have_posts() ) : the_post(); 
         $listGalery = getGaleryFromPost($post);
         if($listGalery[0]){ ?>
@@ -599,13 +598,19 @@ if($parent->slug == 'online-magazine' || $category[0]->slug == 'khuyen-mai-trong
 <html>
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-   
+   <title><?php wp_title( '|', true, 'right' ); ?></title>
     <!-- viewport -->
     <meta content="width=device-width,initial-scale=1" name="viewport">
        
     <!-- title -->
-    <title><?php the_title() ?></title>        
-        
+    <link rel="icon" type="image/x-icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/images/favicon-unimedia.png" />
+	<!--[if lt IE 9]>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
+	<![endif]-->
+    <meta property="fb:admins" content="1153644291354406"/>
+    <meta name="p:domain_verify" content="3d495a4f121c49f830eab68fcd02c927"/>
+    
+    <?php wp_head(); ?>    
     <!-- add css and js for flipbook -->
     <link type="text/css" href="<?php echo get_template_directory_uri() ?>/slipbook/css/style.css" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Play:400,700">
@@ -1028,12 +1033,10 @@ get_template_part('block/block_category');
 				<div class="container">
 					<div class="col-md-12">
 						<div class="row">
-							 <ol class="breadcrumb">
-										<?php if(function_exists('bcn_display'))
-										{
-												bcn_display();
-										}?>
-								</ol>
+                              <ol class="breadcrumb">
+                                <li><a href="<?php echo home_url(); ?>"><?php echo ($language =='vi')?'Trang chủ': 'Home'; ?></a></li>
+                                 <li><span><?php the_title() ?></span></li>
+                              </ol>
 						</div>	
 					</div>
 					<div class="row">
@@ -1123,17 +1126,29 @@ get_template_part('block/block_category');
 											</div>
 										</p>
                                         </div>
-                                        
-                                          <?php if(get_field('gia') && get_field('dien_tich')): ?>
                                         <div class="price-task">
+                                          <?php if(get_field('gia') && get_field('dien_tich')): ?>
+                                        
                                           <p class="vote-details">
                                             Giá: <span class="detail-price"><?php echo get_field('gia'); ?></span>
                                           </p>
                                           <p class="vote-details">
-                                            Diện tích: <var><?php echo get_field('dien_tich') ?></var>
+                                            Diện tích thực: <var><strong><?php echo get_field('dien_tich') ?></strong></var>
                                           </p>
-                                          </div>
+                                          
                                           <?php endif; ?>
+                                          <?php if(get_field('dien_tich_su_dung')) : ?>
+                                        <p class="vote-details">
+                                            Diện tích sử dụng: <var><strong><?php echo get_field('dien_tich_su_dung') ?></strong></var>
+                                          </p>
+                                        <?php endif; ?>
+                                        <?php if(get_field('huong_nha')) : ?>
+                                        <p class="vote-details">
+                                          Hướng nhà: <var><strong><?php echo get_field('huong_nha') ?></strong></var>
+                                          </p>
+                                        <?php endif; ?>
+                                          </div>
+                                        
                                         
                                           <?php if(get_field('page_sale')): ?>
                                           <div class="detail-sale">
@@ -1336,11 +1351,11 @@ get_template_part('block/block_category');
 							<div class="tab-content-details">
 								<!-- Nav tabs -->
 							   <ul class="nav nav-tabs" role="tablist">
-							      <li class="active"><a href="#info" aria-controls="info" data-toggle="tab">Thông tin</a></li>
+							      <li class="active"><a href="#info" aria-controls="info" data-toggle="tab"><?php echo ($language =='vi')?'Thông tin':'Information'; ?></a></li>
 							      <li><span>|</span></li>
-							      <li><a href="#map1" aria-controls="map1" data-toggle="tab">Bản đồ</a></li>
+							      <li><a href="#map1" aria-controls="map1" data-toggle="tab"><?php echo ($language =='vi')?'Bản đồ':'Map'; ?></a></li>
 							      <li><span>|</span></li>
-							      <li><a href="#comment" aria-controls="comment" data-toggle="tab">Bình luận</a></li>
+							      <li><a href="#comment" aria-controls="comment" data-toggle="tab"><?php echo ($language =='vi')?'Bình luận':'Comment'; ?></a></li>
 							   </ul>
 							   <!-- Tab panes -->
 								<div class="tab-content">
@@ -1348,7 +1363,7 @@ get_template_part('block/block_category');
 										<div class="show-dt-editor">
                       <div id="dvContainer">
                       <?php the_content(); ?>
-                        <p style="text-align: right;">Tin đăng bởi: <?php echo get_the_author(); ?></p>
+                        <p style="text-align: right;"><?php echo ($language =='vi')?'Tin đăng bởi:':'Author'; ?> <?php echo get_the_author(); ?></p>
                       </div>
                                           
 <!--											<p>Người đăng: 
@@ -1464,7 +1479,7 @@ get_template_part('block/block_category');
 								<div class="title-details">
 									<h2>
 										<span class="fa fa-newspaper-o"></span>
-										Bài liên quan
+										<?php echo ($language == 'vi')?'Bài liên quan': 'Post Related' ?>
 									</h2>
 								</div>
               <div class="post-related <?php echo $row; ?>">
