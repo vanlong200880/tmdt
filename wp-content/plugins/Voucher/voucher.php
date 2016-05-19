@@ -292,8 +292,181 @@ add_action('admin_menu', 'voucher_settings');
 function voucher_settings() {
     add_menu_page('Create code', 'Create code', 'manage_options', 'voucher_vn_currency_settings', 'voucher_display_settings');
     add_menu_page('List voucher', 'List voucher', 'manage_options', 'list_voucher_settings', 'list_voucher_display_settings');
+    add_menu_page('Sitemaps Generator', 'Sitemaps Generator', 'manage_options', 'list_sitemap_settings', 'list_sitemap_display_settings');
 }
 
+function list_sitemap_display_settings () {
+  // create page sitemap
+  $xmldoc = new DOMDocument('1.0', 'UTF-8'); 
+  $xmldoc->formatOutput = true;
+  $root = $xmldoc->createElement("urlset");
+  $xmldoc->appendChild( $root );
+  $url = $xmldoc->createElement( "url" );
+  $page = array(
+      'http://www.unimedia.vn/gioi-thieu/',
+      'http://www.unimedia.vn/tin-tuc/',
+      'http://www.unimedia.vn/diem-dat-ke/',
+      'http://www.unimedia.vn/hop-tac-dau-tu/',
+      'http://www.unimedia.vn/bao-gia/',
+      'http://www.unimedia.vn/tuyen-dung/',
+      'http://www.unimedia.vn/lien-he/',
+      'http://www.unimedia.vn/tap-chi-online/',
+      'http://www.unimedia.vn/tap-chi-moi/',
+      'http://www.unimedia.vn/voucher/',
+  );
+  if($page){
+    foreach ($page as $val){
+      $locCreate = $xmldoc->createElement("loc");
+      $locCreate->appendChild($xmldoc->createTextNode($val));
+      $lastmodCreate = $xmldoc->createElement("lastmod");
+      $lastmodCreate->appendChild( $xmldoc->createTextNode(date('Y-m-d : h:i:s')));
+
+      $changefreqCreate = $xmldoc->createElement("changefreq");
+      $changefreqCreate->appendChild($xmldoc->createTextNode('weekly'));
+
+      $priorityCreate = $xmldoc->createElement("priority");
+      $priorityCreate->appendChild($xmldoc->createTextNode('0.69'));
+      $url->appendChild($locCreate);
+      $url->appendChild($lastmodCreate);
+      $url->appendChild($changefreqCreate);
+      $url->appendChild($priorityCreate);
+      $root->appendChild($url);
+    }
+  }
+  $xmldoc->save("../pages.xml");
+
+        $count_posts = wp_count_posts();
+        $published_posts = (int)$count_posts->publish;
+        $paged = (($published_posts % 500) == 0)? (int)($published_posts / 500): (int)($published_posts / 500) + 1;
+        $query = array(
+          'post_type' => 'post',
+          'post_status' => array('publish'),
+          'posts_per_page' => 500
+        );
+        $link = '';
+        // create post sitemap
+        if($paged){
+          for($i = 1; $i<=$paged; $i++){
+            $xmldoc = new DOMDocument('1.0', 'UTF-8'); 
+            $xmldoc->formatOutput = true;
+            $root = $xmldoc->createElement("urlset");
+            $xmldoc->appendChild( $root );
+            $query['paged'] = $i;
+            $loop = new WP_Query($query);
+            while ($loop->have_posts()){
+              $loop->the_post();
+              $loc = get_the_permalink();
+              $lastmod = get_the_time('Y-m-d h:i:s');
+              $changefreq = 'weekly';
+              $priority = "0.69";
+              $url = $xmldoc->createElement( "url" );
+              $locCreate = $xmldoc->createElement("loc");
+              $locCreate->appendChild($xmldoc->createTextNode($loc));
+              $lastmodCreate = $xmldoc->createElement("lastmod");
+              $lastmodCreate->appendChild( $xmldoc->createTextNode($lastmod));
+
+              $changefreqCreate = $xmldoc->createElement("changefreq");
+              $changefreqCreate->appendChild($xmldoc->createTextNode($changefreq));
+
+              $priorityCreate = $xmldoc->createElement("priority");
+              $priorityCreate->appendChild($xmldoc->createTextNode($priority));
+
+            $url->appendChild($locCreate);
+            $url->appendChild($lastmodCreate);
+            $url->appendChild($changefreqCreate);
+            $url->appendChild($priorityCreate);
+            $root->appendChild($url);
+            }
+            $xmldoc->save("../sitemap_".$i.".xml");
+            $link .= '<li><a href="'.  home_url().'/sitemap_'.$i.'.xml" target="_blank">'.home_url().'/sitemap_'.$i.'.xml</a></li>';
+          }
+        }
+
+        $xmldoc = new DOMDocument('1.0', 'UTF-8');
+        $xmldoc->formatOutput = true;
+        $root = $xmldoc->createElement("urlset");
+        $xmldoc->appendChild( $root );
+        // Get list category by array slug
+          $arrParent = array('news', 'voucher-moi', 'quang-cao', 'thuong-hieu');
+          $url = $xmldoc->createElement( "url" );
+              $locCreate = $xmldoc->createElement("loc");
+              $locCreate->appendChild($xmldoc->createTextNode('http://www.unimedia.vn/'));
+              $lastmodCreate = $xmldoc->createElement("lastmod");
+              $lastmodCreate->appendChild( $xmldoc->createTextNode(date('Y-m-d h:i:s')));
+              $changefreqCreate = $xmldoc->createElement("changefreq");
+              $changefreqCreate->appendChild($xmldoc->createTextNode('weekly'));
+              $priorityCreate = $xmldoc->createElement("priority");
+              $priorityCreate->appendChild($xmldoc->createTextNode('1.0'));
+              $url->appendChild($locCreate);
+              $url->appendChild($lastmodCreate);
+              $url->appendChild($changefreqCreate);
+              $url->appendChild($priorityCreate);
+              $root->appendChild($url);
+          
+          foreach ($arrParent as $val){
+            $parentId = get_category_by_slug($val);
+            $args = array(
+              'category_custom_field' => 'category_order',
+              'orderby'           => 'category_order',
+              'order'             => 'DESC',
+              'parent'            => $parentId->term_id,
+              'taxonomy'          => 'category',
+              'hide_empty'        => 0
+            );
+            $categories = get_categories( $args );
+            if($categories){
+              $url = $xmldoc->createElement( "url" );
+              $locCreate = $xmldoc->createElement("loc");
+              $noteParent = 'http://www.unimedia.vn/'.$val.'/';
+              $locCreate->appendChild($xmldoc->createTextNode($noteParent));
+              $lastmodCreate = $xmldoc->createElement("lastmod");
+              $lastmodCreate->appendChild( $xmldoc->createTextNode(date('Y-m-d h:i:s')));
+              $changefreqCreate = $xmldoc->createElement("changefreq");
+              $changefreqCreate->appendChild($xmldoc->createTextNode('weekly'));
+              $priorityCreate = $xmldoc->createElement("priority");
+              $priorityCreate->appendChild($xmldoc->createTextNode('0.85'));
+              $url->appendChild($locCreate);
+              $url->appendChild($lastmodCreate);
+              $url->appendChild($changefreqCreate);
+              $url->appendChild($priorityCreate);
+              $root->appendChild($url);
+
+              foreach ($categories as $value){
+                $loc = home_url().'/'.$value->slug.'/';
+                $lastmod = date('Y-m-d h:i:s');
+                $changefreq = 'weekly';
+                $priority = '0.85';
+                $url = $xmldoc->createElement( "url" );
+                $locCreate = $xmldoc->createElement("loc");
+                $locCreate->appendChild($xmldoc->createTextNode($loc));
+                $lastmodCreate = $xmldoc->createElement("lastmod");
+                $lastmodCreate->appendChild( $xmldoc->createTextNode($lastmod));
+
+                $changefreqCreate = $xmldoc->createElement("changefreq");
+                $changefreqCreate->appendChild($xmldoc->createTextNode($changefreq));
+
+                $priorityCreate = $xmldoc->createElement("priority");
+                $priorityCreate->appendChild($xmldoc->createTextNode($priority));
+
+              $url->appendChild($locCreate);
+              $url->appendChild($lastmodCreate);
+              $url->appendChild($changefreqCreate);
+              $url->appendChild($priorityCreate);
+              $root->appendChild($url);
+              }
+            }
+          }
+
+          
+        $xmldoc->save("../category.xml");
+        $link .= '<li><a href="'.  home_url().'/category.xml" target="_blank">'.home_url().'/category.xml</a></li>';
+        $link .= '<li><a href="'.  home_url().'/pages.xml" target="_blank">'.home_url().'/pages.xml</a></li>';
+  echo '<div class="sitemap">';
+    echo '<ul>';
+      echo $link;
+    echo '</ul>';
+  echo '</div>';
+}
 
 function list_voucher_display_settings () {
   global $wpdb;

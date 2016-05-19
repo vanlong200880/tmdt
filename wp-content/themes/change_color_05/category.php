@@ -11,10 +11,47 @@
 
 get_header(); ?>
 <?php 
+global $language;
 $category = get_queried_object();
 $parent = get_category($category->category_parent);
-global $language;
-if($category->slug == 'tap-chi-online'): ?>
+if($category->slug == 'thuong-hieu' || $category->slug == 'quang-cao'){
+  header("Location: http://www.unimedia.vn");
+}
+
+$linkRedirect = home_url()."/".$language.'/'.$category->slug;
+if($category->slug == 'thuong-hieu-4-mua-khuyen-mai' || $category->slug == '4-mua-khuyen-mai-quang-cao'){
+  $linkRedirect = home_url()."/".$language.'/4-mua-khuyen-mai/';
+  header("Location: ".$linkRedirect);
+}
+if($category->slug == 'thuong-hieu-am-thuc-tiec' || $category->slug == 'am-thuc-tiec-quang-cao'){
+  $linkRedirect = home_url()."/".$language.'/am-thuc-tiec/';
+  header("Location: ".$linkRedirect);
+}
+if($category->slug == 'thuong-hieu-dien-may-gia-dung' || $category->slug == 'dien-gia-dung-quang-cao'){
+  $linkRedirect = home_url()."/".$language.'/dien-may-gia-dung/';
+  header("Location: ".$linkRedirect);
+}
+if($category->slug == 'thuong-hieu-nguon-dia-oc' || $category->slug == 'nguon-dia-oc-quang-cao'){
+  $linkRedirect = home_url()."/".$language.'/nguon-dia-oc/';
+  header("Location: ".$linkRedirect);
+}
+if($category->slug == 'thuong-hieu-thoi-trang-suc-khoe' || $category->slug == 'thoi-trang-suc-khoe-quang-cao'){
+  $linkRedirect = home_url()."/".$language.'/thoi-trang-suc-khoe/';
+  header("Location: ".$linkRedirect);
+}
+if($category->slug == 'thuong-hieu-xe-cong-nghe' || $category->slug == '	xe-cong-nghe-quang-cao'){
+  $linkRedirect = home_url()."/".$language.'/xe-cong-nghe/';
+  header("Location: ".$linkRedirect);
+}
+if($category->slug == 'thuong-hieu-du-lich' || $category->slug == 'du-lich-quang-cao'){
+  $linkRedirect = home_url()."/".$language.'/du-lich/';
+  header("Location: ".$linkRedirect);
+}
+
+
+?>
+<?php
+if($category->slug == 'tap-chi-online' || $parent->slug == 'tap-chi-online'): ?>
 <?php get_template_part('block/block_category'); ?>
 <section id="categories" class="categories all-article page-magazine-online">
   <div class="container">
@@ -31,8 +68,8 @@ if($category->slug == 'tap-chi-online'): ?>
 <?php get_template_part('block/tap_chi_online'); ?>
 <?php
 else:   
-
-if($parent->slug =='voucher'): ?>
+//  var_dump($parent);
+if($parent->slug =='voucher-moi'): ?>
 <?php 
 global $post;
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
@@ -63,7 +100,7 @@ if(wpmd_is_phone())
   <?php get_template_part('block/slider-voucher'); ?>
 </div>
 <?php 
-$parentId = get_category_by_slug('voucher');
+$parentId = get_category_by_slug('voucher-moi');
 $args = array(
 	'category_custom_field' => 'category_order',
 	'orderby'           => 'category_order',
@@ -87,6 +124,9 @@ $cats = array();
   <div class="container">
     <div class="row">
       <ul id="list-home-voucher">
+        <li class="col-md-2">
+          <a href="<?php echo home_url() ?>/voucher/"><?php echo ($language == 'vi')?'Tất cả': 'All' ?></a>
+        </li>
         <?php 
         foreach ($cats as $value){ ?>
         <?php $active = '';
@@ -105,7 +145,7 @@ $cats = array();
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Nhận voucher - Vui thả ga</h1>
+        <h1><?php echo ($language == 'vi')?'Nhận voucher - Vui thả ga': 'Get Voucher – Non-Stop Fun ' ?></h1>
       </div>
     </div>
   </div>
@@ -116,8 +156,9 @@ $cats = array();
     <?php 
     $args_voucher = array(
           'post_status'    => 'publish',
-          'order'          => 'DESC',
-          'orderby'        => 'menu_order',
+          'order' => 'DESC',
+          'meta_key' => 'voucher_key',
+          'orderby'   => 'meta_value post_date',
           'post_type'      => 'post',
           'category_name'  => $category->slug,
           'meta_query'     => array(
@@ -159,10 +200,16 @@ $cats = array();
                 <?php 
                 $sale = get_field('sale', get_the_ID());
                 if($sale): ?>
-                -<?php echo $sale; ?>%
+                <?php echo $sale; ?>
                 <?php endif; ?>
               </p>
-              <p class="payment"><a data-code="<?php the_ID() ?>">Nhận voucher</a></p>
+              <p class="payment"><a data-code="<?php the_ID() ?>">
+                <?php if(get_field('voucher_key') == 2): ?>
+                <?php echo ($language == 'vi')?'Nhận coupon': 'Get coupon' ?>
+                <?php else: ?>
+                  <?php echo ($language == 'vi')?'Nhận voucher': 'Get Voucher' ?>
+                  <?php endif; ?>
+                </a></p>
             </div>
           </div>
         </div>
@@ -182,14 +229,14 @@ $cats = array();
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="icon-voucher"></div>
-      <h3>Nhận</h3>
+      <h3><?php echo ($language == 'vi')? 'Nhận': 'Get' ?></h3>
       <h2>Voucher</h2>
       <div class="form-voucher">
         <form class="form-horizontal" id="voucher_form" action="voucher_form">
           <div class="voucher-error"></div>
           <input type="hidden" id="voucher-code" name="voucher-code" value="">
           <div class="form-group">
-            <label for="voucher-name">Họ và tên</label>
+            <label for="voucher-name"><?php echo ($language == 'vi')? 'Họ và tên': 'Fullname' ?></label>
             <input type="text" class="form-control" id="voucher-fullname" name="fullname">
           </div>
 
@@ -199,22 +246,22 @@ $cats = array();
           </div>
 
           <div class="form-group">
-            <label for="voucher-phone">Điện thoại</label>
+            <label for="voucher-phone"><?php echo ($language == 'vi')? 'Điện thoại': 'Phone' ?></label>
             <input type="tel" class="form-control" id="voucher-phone" name="phone">
           </div>
           
           <div class="form-group">
-            <label for="voucher-phone">Số lượng</label>
+            <label for="voucher-phone"><?php echo ($language == 'vi')? 'Số lượng': 'Quanlity' ?></label>
             <input type="number" max="7" min="1" value="1" class="form-control" id="voucher-total" name="total">
           </div>
           
           <div class="form-group">
-            <label for="voucher-note">Ghi chú</label>
+            <label for="voucher-note"><?php echo ($language == 'vi')? 'Ghi chú': 'Note' ?></label>
             <textarea class="form-control note" id="voucher-note" rows="3"></textarea>
           </div>
           <div class="form-group submit-voucher">
-            <button type="submit" class="btn btn-primary send">Gửi</button>
-            <button type="submit" class="btn btn-primary close" data-dismiss="modal">Hủy</button>
+            <button type="submit" class="btn btn-primary send"><?php echo ($language == 'vi')? 'Gửi': 'Send' ?></button>
+            <button type="submit" class="btn btn-primary close" data-dismiss="modal"><?php echo ($language == 'vi')? 'Hủy': 'Cancel' ?></button>
             <img class="image-loading" src="<?php echo get_stylesheet_directory_uri(); ?>/images/Floating rays-32.gif" width="20px" style="display: none;">
           </div>
         </form>
@@ -277,6 +324,7 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
         </div>
       <?php else: ?>
         <?php if($category->slug != 'tap-chi-moi'): ?>
+        <?php if($category->slug != 'giai-tri'): ?>
         <div class="row">
           <div class="col-md-12">
             <ol class="breadcrumb">
@@ -285,6 +333,7 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
             </ol>
           </div>
         </div>
+         <?php endif; ?>
         <?php endif; ?>
       <?php endif; ?>
       </div>
@@ -297,8 +346,9 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
   if ( have_posts() ) :
   if($parent->slug === 'tap-chi-moi' || $category->slug == 'tap-chi-moi'): ?>
     <?php getTemplatePart('block/trademark',  null, array('product_cat' => $category->slug)); ?>
-    
-    <?php 
+    <?php get_template_part('block/sale-weekly-update'); ?>
+    <?php
+    if(!$parent->slug):
     $parent_obj = get_category_by_slug('tap-chi-moi');
     if($parent_obj):
     $args = array(
@@ -356,25 +406,64 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
           </ul>
     <?php   endif;
     } ?>
+    <?php 
+    else: 
+      $args = array(
+        'post_status'    => 'publish',
+        'orderby'  => array( 'meta_value_num' => 'ASC', 'post_date' => 'DESC' ),
+        'meta_key'			=> 'kich_thuoc_trang',
+        'post_type'      => 'post',
+        'category_name'  => $category->slug,
+          );
+      ?>
+      <ul class="row show-post-online-magezine">
+        <?php query_posts($args);
+          while ( have_posts() ) : the_post();
+            $number = get_field('kich_thuoc_trang');
+            $num = 3;
+            $class = '';
+                        $nummobile = 6;
+                        if($number == 1){
+              $class = 'magazine-couple';
+                            $num = 6;
+                            $nummobile = 12;
+                        }
+            if($number == 2){
+              $class = 'magazine-single';
+                        }
+
+            if($number == '3'){
+                $class = 'magazine-1-2 magazine-single-half';
+            }
+          ?>
+          <li class="col-md-<?php echo $num; ?> col-sm-<?php echo $nummobile; ?> col-xs-<?php echo $nummobile; ?> <?php echo $class; ?> show-article">
+            <figure>
+                    <?php
+                      $attachment_id = get_post_thumbnail_id(get_the_ID());
+                      $link = wp_get_attachment_link($attachment_id, 'full');
+                    echo $link;
+                    ?>
+            </figure>
+        </li>
+          <?php endwhile; ?>
+          </ul>
     
+    <?php endif;
+    ?>
   
     <?php else: ?>
   
     
     <?php if($category->slug == 'khuyen-mai'){ ?>
     <div class="row title-sale-weekly">
-      <div class="col-md-12"><h2>khuyến mãi trong tuần</h2></div>
+      <div class="col-md-12"><h2><?php echo ($language == 'vi')? 'khuyến mãi trong tuần': 'Sale weekly' ?></h2></div>
     </div>
     <div class="row">
       <?php get_template_part('block/sale-weekly'); ?>
     </div>
-    <?php 
-    if($language == 'en'){
-      header('Location: http://unimedia.vn/vi/khuyen-mai/');
-    }
-    ?>
+    
     <div class="row title-sale-weekly">
-      <div class="col-md-12"><h2>Doanh nghiệp khuyến mãi</h2></div>
+      <div class="col-md-12"><h2><?php echo ($language == 'vi')? 'Doanh nghiệp khuyến mãi': 'Promotional news' ?></h2></div>
     </div>
       <ul class="row sale-category">
         <?php while ( have_posts() ) : the_post();
@@ -426,7 +515,9 @@ if(in_array($category->slug, $array) && wpmd_is_notdevice()){
       <?php endwhile; ?>
       </ul>
       
-    <?php } elseif ($category->slug == 'copon') { ?>
+    <?php }elseif($category->slug == 'giai-tri'){
+      get_template_part('block/entertainment');
+    }elseif ($category->slug == 'copon') { ?>
       <ul class="row voucher grid">
         <div class="grid-sizer col-md-12"></div>
         <?php while ( have_posts() ) : the_post();

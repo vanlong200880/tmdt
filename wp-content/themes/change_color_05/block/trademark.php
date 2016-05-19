@@ -1,6 +1,6 @@
 <?php
 wp_reset_postdata();
-  $item = 16;
+  $item = 24;
   $slug  = isset($product_cat) ? $product_cat : 0;
   if($slug =='4-mua-khuyen-mai-moi'){
     $slug = '4-mua-khuyen-mai';

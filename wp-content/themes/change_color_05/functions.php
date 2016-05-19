@@ -270,9 +270,10 @@ function twentyfourteen_scripts() {
 //			'nextText' => __( 'Next', 'twentyfourteen' )
 //		) );
 //	}
-  wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/jquery.js', array( 'jquery' ), true );
+//  wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/jquery.js', array( 'jquery' ), true );
 //  wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150315', true );
 //  wp_enqueue_script( 'twentyfourteen-bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), true );
+//  wp_enqueue_script('twentyfourteen-bootstrap-scrop', get_template_directory_uri() . '/js/jquery.Jcrop.min.js', array('twentyfourteen-bootstrap-script'));
 	wp_enqueue_script( 'twentyfourteen-bootstrap-script-ui','//code.jquery.com/ui/1.11.4/jquery-ui.js', array( 'jquery' ), true );
   wp_enqueue_script( 'twentyfourteen-script-jquery-mCustomScrollbar', get_template_directory_uri() . '/js/jquery.mCustomScrollbar.js', array( 'jquery' ), true );
   wp_enqueue_script( 'twentyfourteen-script-owl-carousel-min', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ), true );

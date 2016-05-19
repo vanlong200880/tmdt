@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(function($) {
   $("#owl-product-carousel-first").owlCarousel({
       items : 1,
       itemsDesktop: [1400, 1],

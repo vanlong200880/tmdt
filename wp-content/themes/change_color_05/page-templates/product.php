@@ -50,6 +50,9 @@ $cats = array();
   <div class="container">
     <div class="row">
       <ul id="list-home-voucher">
+        <li class="col-md-2">
+          <a href="<?php echo home_url() ?>/voucher/"><?php echo ($language == 'vi')?'Tất cả': 'All' ?></a>
+        </li>
         <?php 
         foreach ($cats as $value){ ?>
         <li class="item-coupon-list-<?php echo $value->term_id; ?> col-md-2">
@@ -75,7 +78,9 @@ $cats = array();
     $args_voucher = array(
           'post_status'    => 'publish',
           'order'          => 'DESC',
-          'orderby'        => 'menu_order',
+//          'orderby'        => 'menu_order',
+          'meta_key' => 'voucher_key',
+          'orderby'   => 'meta_value post_date',
           'post_type'      => 'post',
           'meta_query'     => array(
           array(
@@ -114,7 +119,13 @@ $cats = array();
                 <?php echo $sale; ?>
                 <?php endif; ?>
               </p>
-              <p class="payment"><a data-code="<?php the_ID() ?>"><?php echo ($language == 'vi')?'Nhận voucher': 'Get Voucher' ?></a></p>
+              <p class="payment"><a data-code="<?php the_ID() ?>">
+                  <?php if(get_field('voucher_key') == 2): ?>
+                <?php echo ($language == 'vi')?'Nhận coupon': 'Get coupon' ?>
+                <?php else: ?>
+                  <?php echo ($language == 'vi')?'Nhận voucher': 'Get Voucher' ?>
+                  <?php endif; ?>
+                </a></p>
             </div>
           </div>
         </div>
@@ -196,29 +207,29 @@ $cats = array();
   </div>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.firstVisitPopup.js"></script>
 <script type="text/javascript">
-            $(function () {
-                $('#my-welcome-message').firstVisitPopup({
-                    cookieName: 'homepage',
-                    showAgainSelector: '#show-message'
-                });
-                $("#owl-voucher").owlCarousel({
-                  items : 1,
-                  itemsDesktop: [1400, 1],
-                  itemsDesktopSmall: [1100, 1],
-                  itemsTablet: [767, 1],
-                  itemsMobile: [500, 1],
-                  autoPlay: 4000,
-                  navigation : true,
-                  slideSpeed : 300,
-                  paginationSpeed : 400,
-                  pagination : false,
-                  paginationNumbers: false,
-                      //singleItem : true,
-                  navigationText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-                  rewindNav : true,
-                  stopOnHover : true
-              });
-            });
+  jQuery(document).ready(function($){
+    $('#my-welcome-message').firstVisitPopup({
+        cookieName: 'homepage',
+        showAgainSelector: '#show-message'
+    });
+    $("#owl-voucher").owlCarousel({
+        items : 1,
+        itemsDesktop: [1400, 1],
+        itemsDesktopSmall: [1100, 1],
+        itemsTablet: [767, 1],
+        itemsMobile: [500, 1],
+        autoPlay: 4000,
+        navigation : true,
+        slideSpeed : 300,
+        paginationSpeed : 400,
+        pagination : false,
+        paginationNumbers: false,
+            //singleItem : true,
+        navigationText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+        rewindNav : true,
+        stopOnHover : true
+    });
+  });
 </script>
 <?php
 get_footer();

@@ -9,7 +9,9 @@
  * @since Twenty Fourteen 1.0
  */
 global $language;
+$category = get_queried_object();
 ?>
+<?php if($category->slug != 'giai-tri'): ?>
 <div class="list-icon">
   <div class="container">
     <ul class="row">
@@ -89,6 +91,7 @@ global $language;
     </ul>
   </div>
 </div>
+<?php endif; ?>
 <footer id="footer">
   <div class="container">
     <div class="row">
@@ -324,49 +327,26 @@ global $language;
              }, 500);
         });
     });
-    
-		$(function () {
-			var sources = [];
-			$('#searchAjax span').each(function(i,ele){
-				sources.push({'label': $(ele).text(), 'value': $(ele).text(), 'key' : $(ele).attr('data-key')});
-			});
-    $("#keyword").autocomplete({
-        source: sources,
-        minLength: 0,
-				select: function (event, ui){
-					$(this).val(ui.item.value);
-					$('#searchform').submit();
-				}
-    }).focus(function(event){ 
-       $(this).autocomplete('search', $(this).val());
-			 
-     });
-});
+//    
+//		$(function () {
+//			var sources = [];
+//			$('#searchAjax span').each(function(i,ele){
+//				sources.push({'label': $(ele).text(), 'value': $(ele).text(), 'key' : $(ele).attr('data-key')});
+//			});
+//    $("#keyword").autocomplete({
+//        source: sources,
+//        minLength: 0,
+//				select: function (event, ui){
+//					$(this).val(ui.item.value);
+//					$('#searchform').submit();
+//				}
+//    }).focus(function(event){ 
+//       $(this).autocomplete('search', $(this).val());
+//			 
+//     });
+//}
+//        );
 		</script>
-		
-		<script type="text/javascript">
-        	var summaries = $('#sidebar');
-        	summaries.each(function(i) {
-            var summary = $(summaries[i]);
-            var next = summaries[i + 1];
-
-            summary.scrollToFixed({
-                marginTop: 10,
-                limit: function() {
-                    var limit = 0;
-                    if (next) {
-                        limit = $(next).offset().top - $(this).outerHeight(true) - 10;
-                    } else {
-                        limit = $('footer').offset().top - $(this).outerHeight(true) - 10;
-                    }
-                    return limit;
-                },
-                zIndex: 999,
-
-            });
-        });
-        </script>
-        
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

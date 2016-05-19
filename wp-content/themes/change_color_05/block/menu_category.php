@@ -25,7 +25,7 @@ global $language;
         <?php echo ($language =='en')?'Magazine':'Tạp chí online'; ?></a>
   </li>
   <li class="color-item-6">
-    <a href="<?php echo get_site_url() ?><?php echo $language; ?>//tap-chi-moi/">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/tap-chi-moi/">
       <span class="fonts fonts-new-document"></span> 
       <strong><?php echo ($language =='en')?'New Advertising':'Mới cập nhật'; ?></strong></a>
 <!--    <ul class="menu-level color-item-6">
@@ -71,7 +71,7 @@ global $language;
   <li class="color-item-7">
     <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/4-mua-khuyen-mai/">
       <span class="icon-7 icon-icon-health-7"></span>
-        <?php echo ($language =='en')?'4 Seasons & Promotion':'4 Mùa & Khuyến mãi'; ?></a>
+        <?php echo ($language =='en')?'4 Seasons':'4 Mùa'; ?></a>
   </li>
 
   <li class="color-item-7">
@@ -81,9 +81,14 @@ global $language;
   </li>
   
   <li class="color-item-copon">
-    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/voucher/" title="Copon">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/voucher/">
       <span class="fonts fonts-clothes-tag"></span>
       <?php echo ($language =='en')?'Voucher & Coupon':'Voucher & Coupon'; ?></a>   
+  </li>
+  <li class="color-item-copon">
+    <a href="<?php echo get_site_url() ?>/<?php echo $language; ?>/giai-tri/">
+      <span class="game game-game-controller"></span>
+      <?php echo ($language =='en')?'Entertainment':'Giải trí'; ?></a>   
   </li>
   
   

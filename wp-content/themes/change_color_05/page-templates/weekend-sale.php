@@ -7,9 +7,6 @@
  * @since Twenty Fourteen 1.0
  */
 global $language;
-if($language == 'en'){
-  header('Location: http://unimedia.vn/vi/khuyen-mai/');
-}
 get_header(); ?>
 <?php get_template_part('block/block_category');  ?>
 <section id="categories" class="categories all-article page-weekend">

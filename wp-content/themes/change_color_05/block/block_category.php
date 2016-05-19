@@ -1,5 +1,6 @@
 <?php
 global $language;
+$category = get_queried_object();
 ?>
 <section id="wrap-new-adv" class="wrap-new-adv">
 				<div class="container">
@@ -15,12 +16,18 @@ global $language;
 							</div>
 						</div>
             <?php endif; ?>
+                        <?php if($category->slug == 'giai-tri'): ?>
+                      <div class="col-md-10 col-sm-8 col-xs-12">
+                        <?php get_template_part('block/slider-entertainment'); ?>
+                      </div>
+                      <?php else: ?>
 						<div class="col-md-6 col-sm-8 col-xs-12">
 							<?php get_template_part('block/slider'); ?>
 						</div>
 						<div class="col-md-4 col-sm-12 col-xs-12">
               <?php get_template_part('block/top3'); ?>
 						</div>
+                      <?php endif;?>
 					</div>
 				</div>
 			</section>

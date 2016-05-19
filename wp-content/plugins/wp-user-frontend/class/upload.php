@@ -138,6 +138,7 @@ class WPUF_Upload {
 //        $html .= sprintf( '<div class="caption"><a href="#" class="btn btn-danger btn-small attachment-delete" data-attach_id="%d">%s</a></div>', $attach_id, __( 'Delete', 'wpuf' ) );
 //        $html .= '</li>';
         $html = sprintf( '<input type="hidden" id="imageIdServer" value="%d">', $attach_id );
+        $html .= sprintf( '<div class="attachment-name"><img src="%s" alt="an image" /></div>', $image);
         return $html;
     }
 

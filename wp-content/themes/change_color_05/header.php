@@ -48,7 +48,7 @@ global $language;
       <div class="row">
       <div class="col-md-2 col-sm-2">
         <nav class="header-navigation">
-          <h2><i class="fa fa-bars"></i> Danh mục</h2>
+          <h2><i class="fa fa-bars"></i> <?php echo ($language =='vi')? 'Danh mục': ' Category'; ?></h2>
           <div class="category-menu-left">
             <ul class="menu-left">
               <?php get_template_part('block/menu_category'); ?>
@@ -62,14 +62,14 @@ global $language;
           <div class="form input-group form-search-scroll">
             <div class="input-group-btn">
               <button type="button" class="btn btn-default dropdown-toggle show-all-button" data-toggle="dropdown" aria-expanded="false">
-                <span class="filter_box_scroll" data-category="all">Tất cả</span><span class="caret"></span>
+                <span class="filter_box_scroll" data-category="all"><?php echo ($language == 'vi')? 'Tất cả': 'All'; ?></span><span class="caret"></span>
               </button>
               <?php get_template_part('block/menu-search'); ?>
             </div>
-            <input type="text"  class="form-control" id="search-scroll" name="search" placeholder="Tìm kiếm sản phẩm, danh mục hay thương hiệu mong muốn...">
+            <input type="text"  class="form-control" id="search-scroll" name="search" placeholder="<?php echo ($language == 'vi')?'Tìm kiếm sản phẩm, danh mục hay thương hiệu mong muốn...':'keyword' ?>">
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">
-                <span class="hidden-sm hidden-xs">Tìm</span>
+                <span class="hidden-sm hidden-xs"><?php echo ($language == 'vi')? 'Tìm': 'Search'; ?></span>
                 <i class="fa fa-search hidden-lg hidden-md"></i>
               </button>
             </span>
@@ -307,12 +307,12 @@ global $language;
                                 <?php echo adrotate_ad(11); ?>
                               </div>
                               <script type="text/javascript">
-                                  $(function () {
-                                  // Slideshow 1
+                                jQuery(document).ready(function($){
                                   $(".a-single").responsiveSlides({
                                       speed: 800
                                   });
-                              });
+                                });
+                                  
                               </script>
 							</div>
 						</div>
@@ -684,7 +684,7 @@ global $language;
 										</li>
 									</ul>
 									<script type="text/javascript">
-									$('ul.user_login li.dropdown').hover(function() {
+									jQuery('ul.user_login li.dropdown').hover(function($) {
 												$(this).find('.dropdown-menu').stop(true, true).fadeIn();
 											}, function() {
 												$(this).find('.dropdown-menu').stop(true, true).fadeOut();
@@ -762,7 +762,7 @@ global $language;
                                           </li>
                                       </ul>
                                       <script type="text/javascript">
-                                      $('ul.user_login li.dropdown').hover(function() {
+                                      jQuery('ul.user_login li.dropdown').hover(function($) {
                                                   $(this).find('.dropdown-menu').stop(true, true).fadeIn();
                                               }, function() {
                                                   $(this).find('.dropdown-menu').stop(true, true).fadeOut();

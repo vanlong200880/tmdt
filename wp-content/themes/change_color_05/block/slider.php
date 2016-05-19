@@ -73,7 +73,9 @@
       $adv_category = 'advertisement_top_category';
     }
   }
-  if($slug =='tap-chi-online'){
+  // Magazine online
+  $arrMagazine = array('tap-chi-online','4-mua-khuyen-mai-online', 'am-thuc-tiec-online', 'dien-gia-dung-online', 'nguon-dia-oc-online', 'thoi-trang-suc-khoe-online', 'xe-cong-nghe-online');
+  if(in_array($slug, $arrMagazine)){
     $slug = '4-mua-khuyen-mai-quang-cao,am-thuc-tiec-quang-cao,dien-gia-dung-quang-cao,nguon-dia-oc-quang-cao,thoi-trang-suc-khoe-quang-cao,xe-cong-nghe-quang-cao';
     $adv_category = 'quang_cao_slider_trang_tap_chi';
   }

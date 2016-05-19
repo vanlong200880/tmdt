@@ -1,4 +1,9 @@
+
 <?php 
+
+
+
+die;
 global $current_user;
 $role = $current_user->roles;
 if(in_array('manager', $role) || in_array('author', $role) || in_array('administrator', $role)): ?>

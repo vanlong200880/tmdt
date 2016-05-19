@@ -118,41 +118,47 @@
 								return replacements[all] || all;
 							});
 							window.alert(warn);
-						}else{
-							/**
-							 * set height for imageContainer
-							 */
-							var containerWidth = 0;
-							var containerHeight = Math.round(window.innerHeight * 7 / 10);
-							if(containerHeight < imageHeight){
-								wpUpload.scaleImageRate = containerHeight / imageHeight;
-								console.log("wp.scaleImageRate: %s", wpUpload.scaleImageRate);
-								containerWidth = imageWidth * wpUpload.scaleImageRate;
-							}
-							if(containerHeight > imageHeight){
-								containerHeight = imageHeight;
-								containerWidth = imageWidth;
-							}
-							imageContainer.css({
-								width: containerWidth,
-								height: containerHeight
-							});
-							imageContainer.Jcrop({
-								minSize: [wpUpload.ACCEPT_WIDTH, wpUpload.ACCEPT_HEIGHT],
-								maxSize: [wpUpload.ACCEPT_WIDTH, wpUpload.ACCEPT_HEIGHT],
-								setSelect: [0, 0, wpUpload.ACCEPT_WIDTH, wpUpload.ACCEPT_HEIGHT],
-								aspectRatio: 1,
-								onSelect: $.proxy(wpUpload, 'getCoords')
-							}, function(){
-								wpUpload.jCropAPI = this;
-							});
-							resizeImageModal.find(".modal-dialog").css({
-								width: (containerWidth + 38)
-							});
-							resizeImageModal.modal("show");
+							return;
 						}
-
-
+						/**
+						 * set height for imageContainer
+						 */
+						var containerWidth = 0;
+						var containerHeight = Math.round(window.innerHeight * 7 / 10);
+						if(containerHeight < imageHeight){
+							wpUpload.scaleImageRate = containerHeight / imageHeight;
+							console.log("wp.scaleImageRate: %s", wpUpload.scaleImageRate);
+							containerWidth = imageWidth * wpUpload.scaleImageRate;
+						}
+						if(containerHeight > imageHeight){
+							containerHeight = imageHeight;
+							containerWidth = imageWidth;
+						}
+						imageContainer.css({
+							width: containerWidth,
+							height: containerHeight
+						});
+						var jcropMinSizeWidth = containerWidth;
+						var jcropMinSizeHeight = containerHeight;
+						if(containerWidth > wpUpload.ACCEPT_WIDTH){
+							jcropMinSizeWidth = wpUpload.ACCEPT_WIDTH;
+						}
+						if(containerHeight > wpUpload.ACCEPT_HEIGHT){
+							jcropMinSizeHeight = wpUpload.ACCEPT_HEIGHT;
+						}
+						imageContainer.Jcrop({
+							minSize: [jcropMinSizeWidth, jcropMinSizeHeight],
+							maxSize: [wpUpload.ACCEPT_WIDTH, wpUpload.ACCEPT_HEIGHT],
+							setSelect: [0, 0, wpUpload.ACCEPT_WIDTH, wpUpload.ACCEPT_HEIGHT],
+							// aspectRatio: 1,
+							onSelect: $.proxy(wpUpload, 'getCoords')
+						}, function(){
+							wpUpload.jCropAPI = this;
+						});
+						resizeImageModal.find(".modal-dialog").css({
+							width: (containerWidth + 38)
+						});
+						resizeImageModal.modal("show");
 					});
 				};
 				reader.readAsDataURL(nativeFile);
@@ -174,6 +180,8 @@
 			//set width, height for canvas
 			canvas.width = selectArea.w;
 			canvas.height = selectArea.h;
+			// canvas.width = ;
+			// canvas.height = selectArea.h;
 			console.log("cropImage\nresizeImage by canvas");
 			var s = this.scaleImageRate;
 			//crop + resize (511, 511)

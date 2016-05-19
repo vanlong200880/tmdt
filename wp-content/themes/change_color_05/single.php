@@ -10,9 +10,14 @@ global $post;
 global $language;
 $category = get_the_category($post->ID);
 $parent = get_category($category[0]->category_parent);
+$link = "http://www.unimedia.vn/".$language.'/giai-tri/';
+if($category[0]->slug == 'giai-tri' || $parent->slug == 'giai-tri'){
+  header("Location: ".$link);
+  die();
+}
 global $current_user; ?>
 <?php
-if($category[0]->slug == 'voucher-moi'): ?>
+if($category[0]->slug == 'voucher-moi' || $parent->slug == 'voucher-moi'): ?>
 
 
 <?php
@@ -301,7 +306,13 @@ get_template_part('block/block_category');
                                                     
                                                     <div class="voucher-payment">
                                                       <ul class="list-voucher-free">
-                                                        <li><p class="payment"><a data-code="<?php the_ID(); ?>"><?php echo ($language == 'vi')?'Nhận voucher': 'Get Voucher' ?></a></p></li>
+                                                        <li><p class="payment"><a data-code="<?php the_ID(); ?>">
+                                                          <?php if(get_field('voucher_key') == 2): ?>
+                                                          <?php echo ($language == 'vi')?'Nhận coupon': 'Get coupon' ?>
+                                                          <?php else: ?>
+                                                            <?php echo ($language == 'vi')?'Nhận voucher': 'Get Voucher' ?>
+                                                            <?php endif; ?>
+                                                            </a></p></li>
                                                       </ul>
                                                     </div>
                                                 </div>
@@ -409,7 +420,7 @@ get_template_part('block/block_category');
                         </div>
                         <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>    
                         <script type="text/javascript">
-                        jQuery(document).ready(function(){
+                        jQuery(document).ready(function($){
                           $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                             e.target
                             e.relatedTarget
@@ -638,7 +649,7 @@ if($parent->slug == 'tap-chi-online' || $category[0]->slug == 'khuyen-mai-trong-
 <body>
   <a id="make-zip-file" style="position: absolute;z-index: 999;right: 0;right: 85px;top: 20px;height: 30px; cursor: pointer;height: 30px;background: red;color: #FFF;line-height: 30px;padding: 0 15px;border-radius: 3px;">Download</a>
 
-  
+  <h1 style="position: absolute; left: -1000px;">Tạp chí online <?php the_title(); ?></h1>
   <?php 
   $arrLink = array();
   foreach ($listGalery[0]['ids'] as $k => $galery) {
@@ -1147,6 +1158,11 @@ get_template_part('block/block_category');
                                           Hướng nhà: <var><strong><?php echo get_field('huong_nha') ?></strong></var>
                                           </p>
                                         <?php endif; ?>
+                                          <?php if(get_field('so_hop_dong')) : ?>
+                                          <p class="vote-details">
+                                            Số hợp đồng: <var><strong><?php echo get_field('so_hop_dong') ?></strong></var>
+                                          </p>
+                                          <?php endif; ?>
                                           </div>
                                         
                                         
@@ -1577,6 +1593,8 @@ get_template_part('block/block_category');
   });
   });
 </script>
+
+
 <?php
 get_footer(); ?>
 <?php endif; ?>

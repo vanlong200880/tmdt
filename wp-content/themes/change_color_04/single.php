@@ -11,7 +11,8 @@ $category = get_the_category($post->ID);
 $parent = get_category($category[0]->category_parent);
 global $current_user; ?>
 <?php
-if($category[0]->slug == 'voucher-moi'): ?>
+if($category[0]->slug == 'voucher-moi'): 
+  ?>
 
 
 <?php
